@@ -11,4 +11,20 @@ public class TrashScript : MonoBehaviour
         rb.AddForce(transform.forward * spd, ForceMode.Impulse);
     }
 
+    //private void Update()
+    //{
+    //    if (transform.position.y < 0)
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.CompareTag("Finish"))
+        {
+            Destroy(gameObject);
+        }
+    }
+
 }
