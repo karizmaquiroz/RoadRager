@@ -3,7 +3,7 @@ using UnityEngine;
 public class TrashScript : MonoBehaviour
 {
     Rigidbody rb;
-    float spd 10f;
+    float spd = 10f;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
