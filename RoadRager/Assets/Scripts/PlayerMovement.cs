@@ -1,6 +1,8 @@
+using UnityEditor.ShaderGraph.Internal;
 using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.Rendering;
+using System;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 direction;
 
     public Vector3 playerPos;
+    public Vector3 origPlayerPos;
 
     int playerLane;
     string message;
@@ -15,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         playerLane = 0;
+       
        
     }
 
@@ -34,37 +38,81 @@ public class PlayerMovement : MonoBehaviour
     void TouchPhaseTracker()
     {
 #if UNITY_ANDROID || UNITY_IOS
+        playerPos = transform.position;
+        float bTime = 0;
+        float eTime = 0;
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
+
+            
 
             switch (touch.phase)
             {
                 case TouchPhase.Began:
                     startPos = touch.position;
-                    message = "Began";
+                    Debug.Log("Touch Started");
+                    bTime = Time.time;
+                    Debug.Log("bTime" + bTime);
                     break;
 
                 case TouchPhase.Moved:
-                    if(touch.position.x - startPos.x > 0)
-                    {
-                        playerPos.x += 2;
-                    }
-                    else
-                    {
-                        playerPos.x -= 2;
-                    }
+                   
+                        if (touch.position.x - startPos.x > 0 && (playerLane == -1) && touch.position.x > 50 )
+                        {
+                            Debug.Log("Moving Right");
+                            Vector3 newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
+                            transform.position = newPos;
+                            playerLane += 1;
 
-                    message = "Moving";
+                        }
+                        else if (touch.position.x - startPos.x < 0 && (playerLane == 1) && touch.position.x > 50)
+                        {
+                            Debug.Log("Moving Left");
+                            Vector3 newPos = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
+                            transform.position = newPos;
+                            playerLane -= 1;
+                        }
+                        else if (playerLane == 0)
+                        {
+                            if (touch.position.x - startPos.x > 0 && touch.position.x > 50)
+                            {
+                                Debug.Log("Centered: Moving Right");
+                                Vector3 newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
+                                transform.position = newPos;
+                                playerLane += 1;
+                            }
+                            else if (touch.position.x - startPos.x < 0 && touch.position.x > 50)
+                            {
+                                Debug.Log("Centered: Moving Left");
+                                Vector3 newPos = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
+                                transform.position = newPos;
+                                playerLane -= 1;
+                            }
+                        }
+
+                    
+
                     break;
 
                 case TouchPhase.Ended:
-                    message = "Ending";
+                    Debug.Log("Touch Ended");
                     break;
 
             }
         }
 #endif
+    }
+
+    float TouchTime()
+    {
+        float bTime = Time.time;
+        float eTime = Time.time + 3.0f;
+
+        Debug.Log("Time.time: " + bTime);
+        Debug.Log("Time.time +3: " + eTime);
+
+        return eTime;
     }
 
     void PCMovement()
