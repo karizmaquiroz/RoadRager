@@ -14,12 +14,14 @@ public class PlayerMovement : MonoBehaviour
 
     int playerLane;
     string message;
+
+    bool swiped = false;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerLane = 0;
-       
-       
     }
 
     // Update is called once per frame
@@ -27,81 +29,83 @@ public class PlayerMovement : MonoBehaviour
     {
 #if UNITY_ANDROID || UNITY_IOS
         TouchPhaseTracker();
-           
 #else
         PCMovement();
-    
 #endif
     }
 
 
     void TouchPhaseTracker()
     {
-#if UNITY_ANDROID || UNITY_IOS
-        playerPos = transform.position;
-        float bTime = 0;
-        float eTime = 0;
-        if (Input.touchCount > 0)
-        {
+//#if UNITY_ANDROID || UNITY_IOS
+    playerPos = transform.position;
+    float bTime = 0;
+    float eTime = 0;
+    if (Input.touchCount > 0)// && swipeTimer > 60)
+    {
+            Debug.Log(Input.touchCount);
             Touch touch = Input.GetTouch(0);
 
             
 
-            switch (touch.phase)
-            {
-                case TouchPhase.Began:
-                    startPos = touch.position;
-                    Debug.Log("Touch Started");
-                    bTime = Time.time;
-                    Debug.Log("bTime" + bTime);
-                    break;
+        switch (touch.phase)
+        {
+            case TouchPhase.Began:
+                startPos = touch.position;
+               // Debug.Log("Touch Started");
+                bTime = Time.time;
+                //Debug.Log("bTime" + bTime);
+                break;
 
-                case TouchPhase.Moved:
-                   
-                        if (touch.position.x - startPos.x > 0 && (playerLane == -1) && touch.position.x > 50 )
+            case TouchPhase.Moved:
+
+                    if (!swiped && touch.position.x - startPos.x > 0) // && touch.position.x > 50) //&& (playerLane == -1)
+                    {
+                        //Debug.Log("Moving Right");
+                        //Vector3 newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
+                        transform.position = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
+                        playerLane += 1;
+
+                    }
+                    else if (!swiped && touch.position.x - startPos.x < 0)// && touch.position.x > 50) //&& (playerLane == 1) 
+                    {
+                        //Debug.Log("Moving Left");
+                        //Vector3 newPos = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
+                        transform.position = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
+                        playerLane -= 1;
+                    }
+                    else if (playerLane == 0)
+                    {
+                        if (!swiped && touch.position.x - startPos.x > 0 && touch.position.x > 50)
                         {
-                            Debug.Log("Moving Right");
-                            Vector3 newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
-                            transform.position = newPos;
+                            //Debug.Log("Centered: Moving Right");
+                            //Vector3 newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
+                            transform.position = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
                             playerLane += 1;
-
                         }
-                        else if (touch.position.x - startPos.x < 0 && (playerLane == 1) && touch.position.x > 50)
+                        else if (!swiped && touch.position.x - startPos.x < 0 && touch.position.x > 50)
                         {
-                            Debug.Log("Moving Left");
-                            Vector3 newPos = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
-                            transform.position = newPos;
+                            //Debug.Log("Centered: Moving Left");
+                            //Vector3 newPos = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
+                            transform.position = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
                             playerLane -= 1;
                         }
-                        else if (playerLane == 0)
-                        {
-                            if (touch.position.x - startPos.x > 0 && touch.position.x > 50)
-                            {
-                                Debug.Log("Centered: Moving Right");
-                                Vector3 newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
-                                transform.position = newPos;
-                                playerLane += 1;
-                            }
-                            else if (touch.position.x - startPos.x < 0 && touch.position.x > 50)
-                            {
-                                Debug.Log("Centered: Moving Left");
-                                Vector3 newPos = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
-                                transform.position = newPos;
-                                playerLane -= 1;
-                            }
-                        }
+                    }
 
-                    
+                    swiped = true;
+
 
                     break;
 
-                case TouchPhase.Ended:
-                    Debug.Log("Touch Ended");
-                    break;
+            case TouchPhase.Ended:
+                    //Debug.Log("Touch Ended");
+                    swiped = false;
+                break;
 
-            }
+
         }
-#endif
+    }
+//#endif
     }
 
     float TouchTime()
