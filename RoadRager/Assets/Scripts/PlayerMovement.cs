@@ -27,11 +27,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-#if UNITY_ANDROID || UNITY_IOS
+//#if UNITY_ANDROID || UNITY_IOS
         TouchPhaseTracker();
-#else
-        PCMovement();
-#endif
+//#else
+//        PCMovement();
+//#endif
     }
 
 
