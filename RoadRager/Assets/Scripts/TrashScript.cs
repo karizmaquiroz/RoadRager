@@ -8,7 +8,7 @@ public class TrashScript : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * spd, ForceMode.Impulse);
+        rb.AddForce(-transform.forward * spd, ForceMode.Impulse);
     }
 
     //private void Update()
