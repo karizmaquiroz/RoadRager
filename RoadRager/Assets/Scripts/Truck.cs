@@ -11,7 +11,7 @@ public class Truck : MonoBehaviour
 
     void Update()
     {
-        if (spawnInt == 50)
+        if (spawnInt == 900)
         {
             Debug.Log("spawn trash");
             Instantiate(trashPrefab, spawnPts[Random.Range(0, spawnPts.Count)].transform.position, Quaternion.identity);

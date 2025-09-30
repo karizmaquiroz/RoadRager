@@ -1,8 +1,8 @@
-using UnityEditor.ShaderGraph.Internal;
-using UnityEditor.VersionControl;
+//using UnityEditor.ShaderGraph.Internal;
+//using UnityEditor.VersionControl;
 using UnityEngine;
-using UnityEngine.Rendering;
-using System;
+//using UnityEngine.Rendering;
+//using System;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 origPlayerPos;
 
     int playerLane;
-    string message;
+    //string message;
 
     bool swiped = false;
 
@@ -27,11 +27,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-//#if UNITY_ANDROID || UNITY_IOS
+#if UNITY_ANDROID || UNITY_IOS
         TouchPhaseTracker();
-//#else
-//        PCMovement();
-//#endif
+#else
+        PCMovement();
+#endif
     }
 
 
@@ -39,8 +39,8 @@ public class PlayerMovement : MonoBehaviour
     {
 //#if UNITY_ANDROID || UNITY_IOS
     playerPos = transform.position;
-    float bTime = 0;
-    float eTime = 0;
+    //float bTime = 0;
+    //float eTime = 0;
     if (Input.touchCount > 0)// && swipeTimer > 60)
     {
             Debug.Log(Input.touchCount);
@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
             case TouchPhase.Began:
                 startPos = touch.position;
                // Debug.Log("Touch Started");
-                bTime = Time.time;
+                //bTime = Time.time;
                 //Debug.Log("bTime" + bTime);
                 break;
 
@@ -108,16 +108,16 @@ public class PlayerMovement : MonoBehaviour
 //#endif
     }
 
-    float TouchTime()
-    {
-        float bTime = Time.time;
-        float eTime = Time.time + 3.0f;
+    //float TouchTime()
+    //{
+    //    float bTime = Time.time;
+    //    float eTime = Time.time + 3.0f;
 
-        Debug.Log("Time.time: " + bTime);
-        Debug.Log("Time.time +3: " + eTime);
+    //    Debug.Log("Time.time: " + bTime);
+    //    Debug.Log("Time.time +3: " + eTime);
 
-        return eTime;
-    }
+    //    return eTime;
+    //}
 
     void PCMovement()
     {
