@@ -8,16 +8,8 @@ public class TrashScript : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * spd, ForceMode.Impulse);
+        rb.AddForce(-transform.forward * spd, ForceMode.Impulse);
     }
-
-    //private void Update()
-    //{
-    //    if (transform.position.y < 0)
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //}
 
     private void OnTriggerEnter(Collider collision)
     {
