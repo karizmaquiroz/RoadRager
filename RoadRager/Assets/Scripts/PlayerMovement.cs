@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
 
     int playerLane;
     string message;
+
+    int playerHp = 3;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,6 +39,10 @@ public class PlayerMovement : MonoBehaviour
         PCMovement();
     
 #endif
+        if(playerHp == 0)
+        {
+            endGame();
+        }
     }
 
 
@@ -228,4 +234,27 @@ public class PlayerMovement : MonoBehaviour
         }
        
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        GameObject gameObject = collision.gameObject;
+
+        if(gameObject.tag == "Enemy")
+        {
+            setHP(1);
+        }
+    }
+
+    void setHP(int damage)
+    {
+        playerHp -= damage;
+    }
+
+    void endGame()
+    {
+        
+    }
+
+
 }
+
