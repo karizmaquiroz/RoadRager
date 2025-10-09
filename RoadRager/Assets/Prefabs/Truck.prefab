@@ -158,7 +158,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb455374eeadf3d46904b0fa3d74c5e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Truck
-  spawnPts: []
+  spawnPts:
+  - {fileID: 3364161077173295098}
+  - {fileID: 4491219593165240219}
+  - {fileID: 1615668617544917237}
   trashPrefab: {fileID: 5323399431095422900, guid: cb2d0114747709a489ec3ef2d09edaa8, type: 3}
 --- !u!1 &3364161077173295098
 GameObject:
