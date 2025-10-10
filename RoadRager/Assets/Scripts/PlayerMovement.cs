@@ -252,7 +252,7 @@ public class PlayerMovement : MonoBehaviour
 
     void endGame()
     {
-        
+        Debug.Log("Game Over");
     }
 
 
