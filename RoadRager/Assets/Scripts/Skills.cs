@@ -5,26 +5,15 @@ public class Skills : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    //Skill thoughts: Elevate playstyles
-    /*
-             * Common:
-        -Add one heart to healthpool
-        -Gain 10% more money
-        -Reduce required distance by 10%
+    public PlayerMovement playerAttr;
+    public Progression distanceRef;
+    public GameObject skillCanvas;
 
-        Rare:
-        -Add two hearts to healthpool
-        -Gain 15% more money
-        -Reduce required distance by 15%
+    int[,] skillArray;
 
-        Epic:
-        -Add three hearts to healthpool, your car moves slower.
-        -Gain 30% more money, but you lose one heart from your healthpool
-        -Reduce required distance by 20%
-     */
     void Start()
     {
-        
+        skillArray = new int[1, 2];
     }
 
     // Update is called once per frame
@@ -38,14 +27,17 @@ public class Skills : MonoBehaviour
         switch (rarity)
         {
             case "common":
-                //gain 10% more money
+                playerAttr.setMoneyMultiplier(0.10f);
                 break;
             case "rare":
                 //gain 15% more money
+                playerAttr.setMoneyMultiplier(0.15f);
                 break;
             case "epic":
                 //gain 30% more money, but lose one heart from your healthpool
                 //reduce overall HP not HP in the moment. 
+                playerAttr.setMoneyMultiplier(0.30f);
+                playerAttr.setOverallHp(2);
                 break;
         }
     }
@@ -55,13 +47,17 @@ public class Skills : MonoBehaviour
         switch (rarity)
         {
             case "common":
-             //Add one heart to healthpool
+                //Add one heart to healthpool
+                playerAttr.setOverallHp(4);
                 break;
             case "rare":
-                //Add two hearts to healthpool
+                //Add two hearts to
+                playerAttr.setOverallHp(5);
                 break;
             case "epic":
                 //add three hearts to healthpool, but required distance increases by 15%
+                playerAttr.setOverallHp(6);
+                distanceRef.setNewDistance(0.15f);
                 break;
         }
     }
@@ -72,14 +68,36 @@ public class Skills : MonoBehaviour
         {
             case "common":
                 //Reduce required distance by 10%
+                distanceRef.setNewDistance(-0.10f);
                 break;
             case "rare":
                 //Reduce required distance by 15%
+                distanceRef.setNewDistance(-0.15f);
                 break;
             case "epic":
                 //Reduce required distance by 20%, but you gain less money.
+                distanceRef.setNewDistance(-0.20f);
+                playerAttr.setMoneyMultiplier(-0.30f);
                 break;
         }
+    }
+
+    void generateRandomSkill()
+    {
+        skillArray[0, 0] = Random.Range(0, 3);
+        skillArray[0, 1] = Random.Range(0, 3);
+        skillArray[1, 0] = Random.Range(0, 3);
+        skillArray[1, 1] = Random.Range(0, 3);
+        skillArray[2,0] = Random.Range(0, 3);
+        skillArray[2, 1] = Random.Range(0, 3);
+
+    }
+
+    public void DisplaySkills()
+    {
+        generateRandomSkill();
+
+        
     }
 
 }

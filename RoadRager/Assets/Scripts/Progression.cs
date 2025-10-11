@@ -4,7 +4,9 @@ public class Progression : MonoBehaviour
 {
     float playerDistance;
     float distance;
-    int levelCount = 1;
+    float levelCount = 1;
+
+    Skills skillRef;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,8 +32,14 @@ public class Progression : MonoBehaviour
             levelCount++;
             CalculateDistance();
             ChangeLevel();
+            skillRef.DisplaySkills();
 
         }
+    }
+
+    public void setNewDistance(float distanceMultiplier)
+    {
+        levelCount += distanceMultiplier;
     }
 
     void ChangeLevel()

@@ -18,13 +18,19 @@ public class PlayerMovement : MonoBehaviour
     float requiredSwipe = 200.0f;
 
     int playerLane;
-    string message;
 
-    int playerHp = 3;
+    int playerHp;
+    int totalPlayerHp;
+
+    float moneyAmount;
+    float moneyMultiplier;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerLane = 0;
+        playerHp = 3;
+        moneyAmount = 0;
+        moneyMultiplier = 1;
        
        
     }
@@ -243,6 +249,11 @@ public class PlayerMovement : MonoBehaviour
         {
             setHP(1);
         }
+
+        if(gameObject.tag == "Money")
+        {
+            moneyAmount *= moneyMultiplier;
+        }
     }
 
     void setHP(int damage)
@@ -253,6 +264,20 @@ public class PlayerMovement : MonoBehaviour
     void endGame()
     {
         Debug.Log("Game Over");
+    }
+
+    public void setOverallHp(int hp)
+    {
+        totalPlayerHp = hp;
+    }
+    public void setMoneyMultiplier(float multiplier)
+    {
+        moneyMultiplier += multiplier;
+    }
+
+    public void setRequiredDistance()
+    {
+
     }
 
 
