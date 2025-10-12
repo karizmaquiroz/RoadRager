@@ -5,7 +5,7 @@ public class TrashScript : MonoBehaviour
     Rigidbody rb;
     float spd = 10f;
 
-    void Awake()
+    public void Move()
     {
         rb = GetComponent<Rigidbody>();
         rb.AddForce(-transform.forward * spd, ForceMode.Impulse);
@@ -15,7 +15,7 @@ public class TrashScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Finish"))
         {
-            Destroy(gameObject);
+            GetComponent<MeshRenderer>().enabled = false;
         }
     }
 
