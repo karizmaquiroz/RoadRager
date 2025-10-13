@@ -1,0 +1,39 @@
+using UnityEngine;
+using System.Collections.Generic;
+
+
+public class Truck : MonoBehaviour
+{
+    public List<Transform> spawnPts;
+    public GameObject trashPrefab;
+    Queue<GameObject> trashCollection = new Queue<GameObject>();
+    int spawnInt = 0; //temp var, figure out how to use clock later
+    public int spawnIntLim;
+    public int maxTrash;
+
+    void Start()
+    {
+        for (int i = 0; i < maxTrash; i++)
+        {
+            trashCollection.Enqueue(Instantiate(trashPrefab, spawnPts[Random.Range(0, spawnPts.Count)].position, Quaternion.identity));
+        }
+    }
+
+    void Update()
+    {
+        if (spawnInt >= spawnIntLim && trashCollection.Count > 0)
+        {
+            GameObject currentTrash = trashCollection.Dequeue();
+            currentTrash.SetActive(true);
+            currentTrash.transform.position = spawnPts[Random.Range(0, spawnPts.Count)].position;
+            currentTrash.SendMessage("Move");
+            spawnInt = 0;
+        }
+        spawnInt++;
+    }
+
+    void ReAddTrash(GameObject trash)
+    {
+        trashCollection.Enqueue(trash);
+    }
+}

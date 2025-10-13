@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 3551054630227918105}
   m_Layer: 0
   m_Name: Truck
-  m_TagString: Untagged
+  m_TagString: Truck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,9 +159,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Truck
   spawnPts:
-  - {fileID: 3364161077173295098}
-  - {fileID: 4491219593165240219}
-  - {fileID: 1615668617544917237}
+  - {fileID: 610132436635813301}
+  - {fileID: 2278835604303446020}
+  - {fileID: 4096709548738305438}
   trashPrefab: {fileID: 5323399431095422900, guid: cb2d0114747709a489ec3ef2d09edaa8, type: 3}
   spawnIntLim: 0
 --- !u!1 &3364161077173295098

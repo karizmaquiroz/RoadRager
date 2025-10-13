@@ -51,7 +51,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5323399431095422900}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -152,3 +152,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d188eeeb1bfab642a327276b228b2e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spd: 300
+  truck: {fileID: 2602357238511001883, guid: d0a2ac8632d0d1747a95738a758f4ac8, type: 3}
