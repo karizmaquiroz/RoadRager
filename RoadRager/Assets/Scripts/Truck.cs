@@ -10,6 +10,7 @@ public class Truck : MonoBehaviour
     int spawnInt = 0; //temp var, figure out how to use clock later
     public int spawnIntLim;
     public int maxTrash;
+    public float trashSpd;
 
     void Start()
     {
@@ -19,14 +20,14 @@ public class Truck : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (spawnInt >= spawnIntLim && trashCollection.Count > 0)
         {
             GameObject currentTrash = trashCollection.Dequeue();
-            currentTrash.SetActive(true);
             currentTrash.transform.position = spawnPts[Random.Range(0, spawnPts.Count)].position;
-            currentTrash.SendMessage("Move");
+            currentTrash.SetActive(true);
+            currentTrash.GetComponent<Rigidbody>().AddForce(transform.forward * trashSpd * Time.fixedDeltaTime, ForceMode.Impulse);
             spawnInt = 0;
         }
         spawnInt++;

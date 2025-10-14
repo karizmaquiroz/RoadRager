@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4164266475289801168}
   - component: {fileID: 1860676873303827559}
   - component: {fileID: 7006852695478145889}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
@@ -153,4 +153,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spd: 300
-  truck: {fileID: 2602357238511001883, guid: d0a2ac8632d0d1747a95738a758f4ac8, type: 3}

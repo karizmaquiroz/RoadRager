@@ -958,7 +958,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3551054630227918105, guid: d0a2ac8632d0d1747a95738a758f4ac8, type: 3}
       propertyPath: maxTrash
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3551054630227918105, guid: d0a2ac8632d0d1747a95738a758f4ac8, type: 3}
       propertyPath: spawnIntLim
@@ -970,7 +970,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3596879777434808435, guid: d0a2ac8632d0d1747a95738a758f4ac8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.23
+      value: 1.37
       objectReference: {fileID: 0}
     - target: {fileID: 3596879777434808435, guid: d0a2ac8632d0d1747a95738a758f4ac8, type: 3}
       propertyPath: m_LocalPosition.z
