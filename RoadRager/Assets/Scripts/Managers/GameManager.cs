@@ -9,11 +9,13 @@ public class GameManager : MonoBehaviour
     public GameObject MainMenuUIPanel;
     public GameObject SettingUIPanel;
     public GameObject ShopUIPanel;
+    public GameObject ModifyUIPanel;
     //public Button Profile1;
 
     public Button SettingButton;
     public Button StoreButton;
     public Button BackButton;
+    public Button ModifySelectButton;
 
 
 
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour
         MainMenuUIPanel.SetActive(true);
         SettingUIPanel.SetActive(false);
         ShopUIPanel.SetActive(false);
+        ModifyUIPanel.SetActive(false);
 
     }
 
@@ -35,24 +38,20 @@ public class GameManager : MonoBehaviour
         MainMenuUIPanel.SetActive(true);
         SettingUIPanel.SetActive(false);
         ShopUIPanel.SetActive(false);
+        ModifyUIPanel.SetActive(false);
 
     }
 
 
     public void quit() //inside gameOver when pressed application quits
     {
+        //title scene
+            //or
         //SceneManager.LoadScene("Credits");
 
         Application.Quit();
     }
 
-    /*
-    public void Exit()
-    {
-        SceneManager.LoadScene("MainMenu");
-
-    }
-    */
 
 
     public void startGame()
@@ -65,7 +64,7 @@ public class GameManager : MonoBehaviour
     
     public void creditButton()
     {
-        SceneManager.LoadScene("Credits");
+        //SceneManager.LoadScene("Credits");
         //Debug.Log("In the credits scene");
 
 
@@ -73,10 +72,4 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void creditBackButton()
-    {
-        SceneManager.LoadScene("Menu");
-        //Debug.Log("Back in MainMenu scene");
-
-    }
 }
