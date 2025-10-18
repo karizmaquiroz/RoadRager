@@ -52,17 +52,21 @@ public class Truck : MonoBehaviour
 
     void SpawnCar()
     {
-        if (carCollection.Count > 0)
+        if (carCollection.Count > 0) //note: mb make it so 2 cars can't spawn in same lane? Or higher time lim or lower spawn lim
         {
             GameObject currentCar = carCollection.Dequeue();
             currentCar.transform.position = carSpawnPts[Random.Range(0, carSpawnPts.Count)].position;
             currentCar.SetActive(true);
-            currentCar.GetComponent<Rigidbody>().AddForce(transform.forward * trashSpd * Time.fixedDeltaTime, ForceMode.Impulse);
+            currentCar.GetComponent<EnemyCar>().movingForward = true;
         }
     }
 
     void ReAddTrash(GameObject trash)
     {
         trashCollection.Enqueue(trash);
+    }
+    void ReAddCar(GameObject trash)
+    {
+        carCollection.Enqueue(trash);
     }
 }

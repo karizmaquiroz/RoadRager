@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 708224840096040498}
   - component: {fileID: 1524397260220601594}
   - component: {fileID: 1790593354066853607}
+  - component: {fileID: -937661861699980539}
   m_Layer: 3
   m_Name: Car
   m_TagString: Untagged
@@ -139,3 +140,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
+--- !u!114 &-937661861699980539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147820128088607849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd1a8445ea7803545bfe86ec9827aab4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyCar
