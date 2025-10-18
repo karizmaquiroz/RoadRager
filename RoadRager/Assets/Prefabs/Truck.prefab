@@ -67,6 +67,9 @@ Transform:
   - {fileID: 610132436635813301}
   - {fileID: 2278835604303446020}
   - {fileID: 4096709548738305438}
+  - {fileID: 8471230933723482872}
+  - {fileID: 1108250193031826012}
+  - {fileID: 5724955766187728711}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8569035945813862069
@@ -158,14 +161,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb455374eeadf3d46904b0fa3d74c5e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Truck
-  spawnPts:
+  trashSpawnPts:
   - {fileID: 610132436635813301}
   - {fileID: 2278835604303446020}
   - {fileID: 4096709548738305438}
+  carSpawnPts:
+  - {fileID: 8471230933723482872}
+  - {fileID: 1108250193031826012}
+  - {fileID: 5724955766187728711}
   trashPrefab: {fileID: 5323399431095422900, guid: cb2d0114747709a489ec3ef2d09edaa8, type: 3}
-  spawnIntLim: 100
-  maxTrash: 5
-  trashSpd: 300
+  carPrefab: {fileID: 1147820128088607849, guid: 0eaffe4afb604c14ab032e35a6ac4368, type: 3}
 --- !u!1 &3364161077173295098
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,6 +202,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3596879777434808435}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3392984645408420547
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5724955766187728711}
+  m_Layer: 0
+  m_Name: CarSpawn3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5724955766187728711
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3392984645408420547}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -3, y: 0, z: 26.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3596879777434808435}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &4491219593165240219
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,3 +264,65 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3596879777434808435}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6506156098252303999
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8471230933723482872}
+  m_Layer: 0
+  m_Name: CarSpawn1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8471230933723482872
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6506156098252303999}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 3, y: 0, z: 26.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3596879777434808435}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &8279969013552094412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1108250193031826012}
+  m_Layer: 0
+  m_Name: CarSpawn2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1108250193031826012
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8279969013552094412}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 26.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3596879777434808435}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
