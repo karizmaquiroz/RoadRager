@@ -10,8 +10,10 @@ public class Truck : MonoBehaviour
     public GameObject carPrefab;
     Queue<GameObject> trashCollection = new Queue<GameObject>();
     Queue<GameObject> carCollection = new Queue<GameObject>();
-    int spawnInt = 0; //temp var, figure out how to use clock later
-    int spawnIntLim = 100;
+    float trashSpawnTimeMax = 3f;
+    float carSpawnTimeMax = 7f;
+    float trashSpawnTime = 0f;
+    float carSpawnTime = 0f;
     int maxTrash = 5;
     int maxCars = 3;
     float trashSpd = 300f;
@@ -30,34 +32,39 @@ public class Truck : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (spawnInt >= spawnIntLim)
-        {
-            SpawnTrash();
-            SpawnCar(); //putting in same counter fn
-            spawnInt = 0;
-        }
-        spawnInt++;
+        SpawnTrash();
+        SpawnCar();
     }
 
     void SpawnTrash()
     {
-        if (trashCollection.Count > 0)
+        if (trashCollection.Count > 0 && trashSpawnTime > trashSpawnTimeMax)
         {
             GameObject currentTrash = trashCollection.Dequeue();
             currentTrash.transform.position = trashSpawnPts[Random.Range(0, trashSpawnPts.Count)].position;
             currentTrash.SetActive(true);
             currentTrash.GetComponent<Rigidbody>().AddForce(transform.forward * trashSpd * Time.fixedDeltaTime, ForceMode.Impulse);
+            trashSpawnTime = 0f;
+        }
+        else
+        {
+            trashSpawnTime += Time.fixedDeltaTime;
         }
     }
 
     void SpawnCar()
     {
-        if (carCollection.Count > 0) //note: mb make it so 2 cars can't spawn in same lane? Or higher time lim or lower spawn lim
+        if (carCollection.Count > 0 && carSpawnTime > carSpawnTimeMax) //note: mb make it so 2 cars can't spawn in same lane? Or higher time lim or lower spawn lim
         {
             GameObject currentCar = carCollection.Dequeue();
             currentCar.transform.position = carSpawnPts[Random.Range(0, carSpawnPts.Count)].position;
             currentCar.SetActive(true);
             currentCar.GetComponent<EnemyCar>().movingForward = true;
+            carSpawnTime = 0f;
+        }
+        else
+        {
+            carSpawnTime += Time.fixedDeltaTime;
         }
     }
 

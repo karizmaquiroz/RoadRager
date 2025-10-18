@@ -25,7 +25,6 @@ public class EnemyCar : MonoBehaviour
         }
         if (movingForward)
         {
-            Debug.Log("moving");
             MoveForward();
         }
         else
