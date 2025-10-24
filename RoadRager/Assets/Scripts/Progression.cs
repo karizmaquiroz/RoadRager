@@ -32,7 +32,7 @@ public class Progression : MonoBehaviour
             levelCount++;
             CalculateDistance();
             ChangeLevel();
-            skillRef.DisplaySkills();
+            
 
         }
     }
