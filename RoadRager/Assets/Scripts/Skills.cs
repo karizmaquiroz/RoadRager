@@ -162,7 +162,7 @@ public class Skills : MonoBehaviour
         //iterate and set
         for (int i = 0; i < 3; i++)
         {
-            skillArray[i, 0] = UnityEngine.Random.Range(0, 3);
+            skillArray[i, 0] = UnityEngine.Random.Range(0, 8);
             for (int j = 0; j < 2; j++)
             {
                 skillArray[0, j] = UnityEngine.Random.Range(0, 11);
@@ -170,10 +170,12 @@ public class Skills : MonoBehaviour
             }
         }
 
+        /*
         if (!CheckForDuplicateSkill(skillArray))
         {
             SkillGenerator();
         }
+        */
 
 
         //now we parse the array -- array format [skill type, skill rarity]
@@ -184,16 +186,30 @@ public class Skills : MonoBehaviour
             switch (tempNumber)
             {
                 case 0:
-                    stringSkillArray[i,0] = "speed";
+                    stringSkillArray[i,0] = "gainmoney";
 
                     break;
                 case 1:
-                    stringSkillArray[i,0] = "durability";
+                    stringSkillArray[i,0] = "gainhp";
 
                     break;
                 case 2:
-                    stringSkillArray[i, 0] = "money";
-
+                    stringSkillArray[i, 0] = "reducedistance";
+                    break;
+                case 3:
+                    stringSkillArray[i, 0] = "magnetize";
+                    break;
+                case 4:
+                    stringSkillArray[i, 0] = "increasearmor";
+                    break;
+                case 5:
+                    stringSkillArray[i, 0] = "negate";
+                    break;
+                case 6:
+                    stringSkillArray[i, 0] = "fastcar";
+                    break;
+                case 7:
+                    stringSkillArray[i, 0] = "slowenemy";
                     break;
 
             }
@@ -226,19 +242,17 @@ public class Skills : MonoBehaviour
                    
                 }
             }
-
-
-
-
             DisplaySkills(stringSkillArray);
 
     }
+
+    /*
 
     bool CheckForDuplicateSkill(int[,] skillArray)
     {
         //Make a set, if the set size < the size of the array, then there's duplicates. 	//Genius work actually
         HashSet<int> skillNumbers = new HashSet<int>();
-        for (int i = 0; i < skillArray.Length; i++)
+        for (int i = 0; i < 2; i++)
         {
             int curRow = skillArray[i,0];
             skillNumbers.Add(curRow);
@@ -251,12 +265,13 @@ public class Skills : MonoBehaviour
 
             return false;
     }
+    */
     
     string DetermineSkill(string skill)
     {
         string[] skillParse = skill.Split(',');
         string fullSkill = null;
-        if(skill.Contains("money") == true)
+        if(skill.Contains("gainmoney") == true)
         {
             switch (skillParse[1])
             {
@@ -273,7 +288,7 @@ public class Skills : MonoBehaviour
             }
         }
 
-        if (skill.Contains("durability"))
+        if (skill.Contains("gainhp"))
         {
             switch (skillParse[1])
             {
@@ -289,7 +304,7 @@ public class Skills : MonoBehaviour
             }
         }
 
-        if (skill.Contains("speed"))
+        if (skill.Contains("reducedistance"))
         {
             switch (skillParse[1])
             {
@@ -301,6 +316,89 @@ public class Skills : MonoBehaviour
                     break;
                 case "epic":
                     fullSkill = "Reduce distance needed by 30%, but you collect 15% less money";
+                    break;
+            }
+        }
+
+        if (skill.Contains("magnetize"))
+        {
+            switch (skillParse[1])
+            {
+                case "common":
+                    fullSkill = "Money is magnetized by 5%";
+                    break;
+                case "rare":
+                    fullSkill = "Money is magnetized by 8%";
+                    break;
+                case "epic":
+                    fullSkill = "Money is magnetized by 10% -- (add more)";
+                    break;
+            }
+        }
+
+        if (skill.Contains("increasearmor"))
+        {
+            switch (skillParse[1])
+            {
+                case "common":
+                    fullSkill = "You take 50% less damage.";
+                    break;
+                case "rare":
+                    fullSkill = "You take 75% less damage";
+                    break;
+                case "epic":
+                    fullSkill = "You take 100% less damage, but your travel distance is increased by 50%";
+                    break;
+            }
+        }
+
+        if (skill.Contains("negate"))
+        {
+            switch (skillParse[1])
+            {
+                case "common":
+                    fullSkill = "You have a 10% chance to not take damage.";
+                    break;
+                case "rare":
+                    fullSkill = "You have a 15% chance to not take damage.";
+                    break;
+                case "epic":
+                    fullSkill = "You have a 20% chance to not take damage.";
+                    break;
+            }
+        }
+
+        if (skill.Contains("fastcar"))
+        {
+            //Ivy here :)
+            switch (skillParse[1])
+            {
+                case "common":
+                    fullSkill = "";
+                    break;
+                case "rare":
+                    fullSkill = "";
+                    break;
+                case "epic":
+                    fullSkill = "";
+                    break;
+
+            }
+        }
+
+        if (skill.Contains("slowenemy"))
+        {
+            //Aiden here :)
+            switch (skillParse[1])
+            {
+                case "common":
+                    fullSkill = "";
+                    break;
+                case "rare":
+                    fullSkill = "";
+                    break;
+                case "epic":
+                    fullSkill = "";
                     break;
             }
         }
