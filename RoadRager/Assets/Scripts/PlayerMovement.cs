@@ -18,13 +18,23 @@ public class PlayerMovement : MonoBehaviour
     float requiredSwipe = 200.0f;
 
     int playerLane;
-    string message;
+
+    int playerHp;
+    int totalPlayerHp;
+
+    float moneyAmount;
+    float moneyMultiplier;
+    float armorMultiplier;
+    float noDamageChance;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerLane = 0;
-       
-       
+        playerHp = 3;
+        moneyAmount = 0;
+        moneyMultiplier = 1;
+
+
     }
 
     // Update is called once per frame
@@ -35,8 +45,12 @@ public class PlayerMovement : MonoBehaviour
            
 #else
         PCMovement();
-    
+
 #endif
+        if (playerHp == 0)
+        {
+            endGame();
+        }
     }
 
 
@@ -129,9 +143,9 @@ public class PlayerMovement : MonoBehaviour
 
     bool DetectSwipe(TouchPhase phase1, Vector2 startingSwipePos, Vector2 endSwipePos)
     {
-        Debug.Log("Detecting a swipe"); 
-       
-        if(phase1 == TouchPhase.Ended)
+        Debug.Log("Detecting a swipe");
+
+        if (phase1 == TouchPhase.Ended)
         {
             Debug.Log("End.");
             Vector2 endPosSwipe = endSwipePos;
@@ -172,8 +186,8 @@ public class PlayerMovement : MonoBehaviour
 
         }
         */
-            
-        
+
+
         Debug.Log("Swipe not Detected");
         return false;
     }
@@ -192,7 +206,7 @@ public class PlayerMovement : MonoBehaviour
                 playerLane -= 1;
             }
         }
-        else if(playerLane == 0)
+        else if (playerLane == 0)
         {
             Debug.Log("Player Lane: " + playerLane);
             if (Input.GetKeyDown(KeyCode.D))
@@ -213,7 +227,7 @@ public class PlayerMovement : MonoBehaviour
 
             }
         }
-        else if(playerLane == -1)
+        else if (playerLane == -1)
         {
             Debug.Log("Player Lane: " + playerLane);
             if (Input.GetKeyDown(KeyCode.D))
@@ -226,6 +240,57 @@ public class PlayerMovement : MonoBehaviour
 
             }
         }
-       
+
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        GameObject gameObject = collision.gameObject;
+
+        if (gameObject.tag == "Enemy")
+        {
+            setHP(1);
+        }
+
+        if (gameObject.tag == "Money")
+        {
+            moneyAmount *= moneyMultiplier;
+        }
+    }
+
+    void setHP(int damage)
+    {
+        playerHp -= damage;
+    }
+
+    void endGame()
+    {
+        Debug.Log("Game Over");
+    }
+
+    public void setOverallHp(int hp)
+    {
+        totalPlayerHp = hp;
+    }
+    public void setMoneyMultiplier(float multiplier)
+    {
+        moneyMultiplier += multiplier;
+    }
+
+    public void setRequiredDistance()
+    {
+
+    }
+
+    public void setArmorMultiplier(float multiplier)
+    {
+        armorMultiplier = multiplier;
+    }
+
+    public void setNoDamageChance(float damageChance)
+    {
+        noDamageChance = damageChance;
+    }
+
 }
+
