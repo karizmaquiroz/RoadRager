@@ -162,13 +162,24 @@ public class Skills : MonoBehaviour
         //iterate and set
         for (int i = 0; i < 3; i++)
         {
-            skillArray[i, 0] = UnityEngine.Random.Range(0, 8);
+         
             for (int j = 0; j < 2; j++)
             {
-                skillArray[0, j] = UnityEngine.Random.Range(0, 11);
+                if(j == 0)
+                {
+                    skillArray[i, j] = UnityEngine.Random.Range(0, 8);
+                }
+                else if(j == 1)
+                {
+                    skillArray[i, j] = UnityEngine.Random.Range(0, 11);
+                }
+
+                    Debug.Log("Skillset " + i + ": " + skillArray[i, j]);
 
             }
         }
+
+
 
         /*
         if (!CheckForDuplicateSkill(skillArray))
@@ -182,67 +193,94 @@ public class Skills : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             int tempNumber = skillArray[i,0];
+            Debug.Log("TempNumberOfSA: " + tempNumber);
 
             switch (tempNumber)
             {
                 case 0:
+                    Debug.Log("Case 0");
                     stringSkillArray[i,0] = "gainmoney";
 
                     break;
                 case 1:
+                    Debug.Log("Case 1");
                     stringSkillArray[i,0] = "gainhp";
 
                     break;
                 case 2:
+                    Debug.Log("Case 2");
                     stringSkillArray[i, 0] = "reducedistance";
                     break;
                 case 3:
+                    Debug.Log("Case 3");
                     stringSkillArray[i, 0] = "magnetize";
                     break;
                 case 4:
+                    Debug.Log("Case 4");
                     stringSkillArray[i, 0] = "increasearmor";
                     break;
                 case 5:
+                    Debug.Log("5");
                     stringSkillArray[i, 0] = "negate";
                     break;
                 case 6:
+                    Debug.Log("6");
                     stringSkillArray[i, 0] = "fastcar";
                     break;
                 case 7:
+                    Debug.Log("7");
                     stringSkillArray[i, 0] = "slowenemy";
                     break;
 
             }
+
+           
         }
 
-                
+        int counter = 0;
+        for (int i = 0; i < 3; i++)
+        {
+           
+            int tempNumber2 = skillArray[i, 1];
+            Debug.Log("TempNumberOfRaritySA: " + tempNumber2);
+
+            switch (tempNumber2)
+            {
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                    stringSkillArray[i, 1] = "common";
+                    break;
+
+                case 7:
+                case 8:
+                case 9:
+                    stringSkillArray[i, 1] = "rare";
+                    break;
+                case 10:
+                    stringSkillArray[i, 1] = "epic";
+                    break;
+
+            }
+            counter++;
+        }
+
+
+
+
+        for (int i = 0; i < 3; i++)
+        {
             for (int j = 0; j < 2; j++)
             {
-                int tempNumber2 = skillArray[0,j];
-
-                switch (tempNumber2)
-                {
-                    case 1:
-                    case 2:
-                    case 3:
-                    case 4:
-                    case 5:
-                    case 6:
-                        stringSkillArray[0, j] = "common";
-                        break;
-
-                    case 7:
-                    case 8:
-                    case 9:
-                        stringSkillArray[0, j] = "rare";
-                        break;
-                    case 10:
-                        stringSkillArray[0, j] = "epic";
-                        break;
-                   
-                }
+                Debug.Log("Skill + Rarity BEFORE PASS: " + stringSkillArray[i, j]);
             }
-            DisplaySkills(stringSkillArray);
+        }
+
+
+        DisplaySkills(stringSkillArray);
 
     }
 
@@ -269,6 +307,7 @@ public class Skills : MonoBehaviour
     
     string DetermineSkill(string skill)
     {
+        Debug.Log("DS skillPass: " +  skill);
         string[] skillParse = skill.Split(',');
         string fullSkill = null;
         if(skill.Contains("gainmoney") == true)
@@ -374,13 +413,13 @@ public class Skills : MonoBehaviour
             switch (skillParse[1])
             {
                 case "common":
-                    fullSkill = "";
+                    fullSkill = "placeholder";
                     break;
                 case "rare":
-                    fullSkill = "";
+                    fullSkill = "placeholder";
                     break;
                 case "epic":
-                    fullSkill = "";
+                    fullSkill = "placeholder";
                     break;
 
             }
@@ -392,13 +431,13 @@ public class Skills : MonoBehaviour
             switch (skillParse[1])
             {
                 case "common":
-                    fullSkill = "";
+                    fullSkill = "placeholder";
                     break;
                 case "rare":
-                    fullSkill = "";
+                    fullSkill = "placeholder";
                     break;
                 case "epic":
-                    fullSkill = "";
+                    fullSkill = "placeholder";
                     break;
             }
         }
@@ -408,6 +447,13 @@ public class Skills : MonoBehaviour
 
     public void DisplaySkills(string[,] skillArray)
     {
+        for(int i = 0; i < 3; i++)
+        {
+            for(int j = 0; j <2; j++)
+            {
+                Debug.Log("Skill + Rarity DS PASS: " + skillArray[i,j]);
+            }
+        }
         string skill0 = null;
         string skill1 = null;
         string skill2 = null;
@@ -434,11 +480,22 @@ public class Skills : MonoBehaviour
             {
                 skill2 = tempString;
             }
+
+            tempString = null;
         }
+
+        Debug.Log("Skill0 " + skill0);
+        Debug.Log("Skill1 " + skill1);
+        Debug.Log("Skill2 " + skill2);
+
 
         skillText1.text = DetermineSkill(skill0);
         skillText2.text = DetermineSkill(skill1);
         skillText3.text = DetermineSkill(skill2);
+
+        Debug.Log("1.String: " + skillText1.text);
+        Debug.Log("2.String: " + skillText2.text);
+        Debug.Log("3.String: " + skillText3.text);
 
     }
 
