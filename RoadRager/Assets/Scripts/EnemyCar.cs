@@ -15,6 +15,9 @@ public class EnemyCar : MonoBehaviour
         truck = GameObject.FindWithTag("Truck");
         initPos = transform.position;
         gameObject.SetActive(false);
+
+        Skills.pauseGame.AddListener(Reset);
+        Skills.resumeGame.AddListener(Reset);
     }
 
     void FixedUpdate()
@@ -43,15 +46,20 @@ public class EnemyCar : MonoBehaviour
         transform.position -= new Vector3(0f, 0f, moveSpd) * Time.fixedDeltaTime;
     }
 
+    private void Reset()
+    {
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        transform.position = initPos;
+        truck.SendMessage("ReAddCar", gameObject);
+        gameObject.SetActive(false);
+    }
+
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Finish"))
         {
-            rb.linearVelocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-            transform.position = initPos;
-            truck.SendMessage("ReAddCar", gameObject);
-            gameObject.SetActive(false);
+            Reset();
         }
     }
 }

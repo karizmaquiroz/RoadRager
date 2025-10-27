@@ -8,6 +8,7 @@ using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class Skills : MonoBehaviour
 {
@@ -27,6 +28,9 @@ public class Skills : MonoBehaviour
     string skill0;
     string skill1;
     string skill2;
+
+    public static UnityEvent pauseGame = new UnityEvent();
+    public static UnityEvent resumeGame = new UnityEvent();
 
     void Start()
     {
@@ -175,6 +179,8 @@ public class Skills : MonoBehaviour
 
     public void SkillGenerator()
     {
+        pauseGame.Invoke();
+        skillCanvas.SetActive(true);
         //iterate and set
         for (int i = 0; i < 3; i++)
         {
@@ -534,6 +540,9 @@ public class Skills : MonoBehaviour
     {
         TMP_Text buttonText = clickedButton.GetComponentInChildren<TMP_Text>();
         string tempString = buttonText.text;
+
+        skillCanvas.SetActive(false);
+        resumeGame.Invoke();
 
         Debug.Log(tempString);
         Debug.Log("SkillText1: " + skillText1.text);

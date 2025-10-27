@@ -3,6 +3,8 @@ using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.Rendering;
 using System;
+using TMPro;
+using UnityEditor.TerrainTools;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -28,7 +30,10 @@ public class PlayerMovement : MonoBehaviour
     float noDamageChance;
 
     public Animator playerAnim;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    public TMP_Text hpText;
+    bool paused = false;
+
     void Start()
     {
         playerLane = 0;
@@ -36,23 +41,37 @@ public class PlayerMovement : MonoBehaviour
         moneyAmount = 0;
         moneyMultiplier = 1;
 
-
+        Skills.pauseGame.AddListener(Pause);
+        Skills.resumeGame.AddListener(Unpause);
     }
 
     // Update is called once per frame
     void Update()
     {
+        hpText.text = "HP: " + playerHp.ToString();
+        if (!paused)
+        {
 #if UNITY_ANDROID || UNITY_IOS
         TouchPhaseTracker();
            
 #else
-        PCMovement();
+            PCMovement();
 
 #endif
-        if (playerHp == 0)
-        {
-            endGame();
+            if (playerHp == 0)
+            {
+                endGame();
+            }
         }
+    }
+
+    void Pause()
+    {
+        paused = true;
+    }
+    void Unpause()
+    {
+        paused = false;
     }
 
 

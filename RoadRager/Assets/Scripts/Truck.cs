@@ -18,6 +18,8 @@ public class Truck : MonoBehaviour
     int maxCars = 3;
     float trashSpd = 300f;
 
+    bool paused = false;
+
     void Start()
     {
         for (int i = 0; i < maxTrash; i++)
@@ -28,12 +30,27 @@ public class Truck : MonoBehaviour
         {
             carCollection.Enqueue(Instantiate(carPrefab, carSpawnPts[Random.Range(0, carSpawnPts.Count)].position, Quaternion.identity));
         }
+
+        Skills.pauseGame.AddListener(Pause);
+        Skills.resumeGame.AddListener(Unpause);
     }
 
     void FixedUpdate()
     {
-        SpawnTrash();
-        SpawnCar();
+        if (!paused)
+        {
+            SpawnTrash();
+            SpawnCar();
+        }
+    }
+
+    void Pause()
+    {
+        paused = true;
+    }
+    void Unpause()
+    {
+        paused = false;
     }
 
     void SpawnTrash()
