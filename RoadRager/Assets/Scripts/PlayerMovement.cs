@@ -26,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
     float moneyMultiplier;
     float armorMultiplier;
     float noDamageChance;
+
+    public Animator playerAnim;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -201,6 +203,7 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.A))
             {
                 Debug.Log("moving left");
+                playerAnim.Play("Steering Wheel Left");
                 Vector3 newPos = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
                 transform.position = newPos;
                 playerLane -= 1;
@@ -213,6 +216,7 @@ public class PlayerMovement : MonoBehaviour
             {
 
                 Debug.Log("moving right");
+                playerAnim.Play("Steering Wheel Right");
                 Vector3 newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
                 transform.position = newPos;
                 playerLane += 1;
@@ -221,6 +225,7 @@ public class PlayerMovement : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.A))
             {
                 Debug.Log("moving left");
+                playerAnim.Play("Steering Wheel Left");
                 Vector3 newPos = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
                 transform.position = newPos;
                 playerLane -= 1;
@@ -234,6 +239,7 @@ public class PlayerMovement : MonoBehaviour
             {
 
                 Debug.Log("moving right");
+                playerAnim.Play("Steering Wheel Right");
                 Vector3 newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
                 transform.position = newPos;
                 playerLane += 1;
