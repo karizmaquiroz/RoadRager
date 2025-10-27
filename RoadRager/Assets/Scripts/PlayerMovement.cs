@@ -34,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
     public TMP_Text hpText;
     bool paused = false;
 
+    public GameObject gameOver;
+
     void Start()
     {
         playerLane = 0;
@@ -49,6 +51,11 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         hpText.text = "HP: " + playerHp.ToString();
+        if (playerHp <= 0)
+        {
+            Skills.pauseGame.Invoke();
+            gameOver.SetActive(true);
+        }
         if (!paused)
         {
 #if UNITY_ANDROID || UNITY_IOS
@@ -268,12 +275,13 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         GameObject gameObject = collision.gameObject;
 
-        if (gameObject.tag == "Enemy")
+        if (gameObject.layer == 3) //obstacle layer
         {
+            Debug.Log("hit");
             setHP(1);
         }
 
