@@ -5,6 +5,7 @@ public class Progression : MonoBehaviour
     float playerDistance;
     float distance;
     float levelCount = 1;
+    float paceMultiplier = 1f; //changes as speed gets faster?
 
     Skills skillRef;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -20,6 +21,11 @@ public class Progression : MonoBehaviour
         CheckIfDistanceCrossed();
     }
 
+    private void FixedUpdate()
+    {
+        playerDistance += paceMultiplier;
+    }
+
     void CalculateDistance()
     {
         distance *= levelCount;
@@ -27,7 +33,7 @@ public class Progression : MonoBehaviour
 
     void CheckIfDistanceCrossed()
     {
-        if(playerDistance == distance)
+        if(playerDistance >= distance)
         {
             levelCount++;
             CalculateDistance();
@@ -44,6 +50,7 @@ public class Progression : MonoBehaviour
 
     void ChangeLevel()
     {
+        Debug.Log("new level!");
         //grab some object unique to the level scene, so that we know what scene we are in.
         //then, choose a level at random that ISN'T the current one. 
     }

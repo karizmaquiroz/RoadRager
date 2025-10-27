@@ -986,6 +986,7 @@ GameObject:
   - component: {fileID: 960876993}
   - component: {fileID: 960876997}
   - component: {fileID: 960876998}
+  - component: {fileID: 960876999}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1132,6 +1133,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &960876999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960876992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb3aa6723defa66428125827f0ad578d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Progression
 --- !u!1 &982060710
 GameObject:
   m_ObjectHideFlags: 0

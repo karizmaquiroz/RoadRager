@@ -202,7 +202,7 @@ public class PlayerMovement : MonoBehaviour
             
             if (Input.GetKeyDown(KeyCode.A))
             {
-                Debug.Log("moving left");
+                //Debug.Log("moving left");
                 playerAnim.Play("Steering Wheel Left");
                 Vector3 newPos = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
                 transform.position = newPos;
@@ -215,7 +215,7 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.D))
             {
 
-                Debug.Log("moving right");
+                //Debug.Log("moving right");
                 playerAnim.Play("Steering Wheel Right");
                 Vector3 newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
                 transform.position = newPos;
@@ -224,7 +224,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.A))
             {
-                Debug.Log("moving left");
+                //Debug.Log("moving left");
                 playerAnim.Play("Steering Wheel Left");
                 Vector3 newPos = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
                 transform.position = newPos;
@@ -238,7 +238,7 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.D))
             {
 
-                Debug.Log("moving right");
+                //Debug.Log("moving right");
                 playerAnim.Play("Steering Wheel Right");
                 Vector3 newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
                 transform.position = newPos;
