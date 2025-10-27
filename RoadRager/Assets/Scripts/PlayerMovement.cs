@@ -197,7 +197,7 @@ public class PlayerMovement : MonoBehaviour
         playerPos = transform.position;
         if (playerLane == 1)
         {
-            Debug.Log("Player Lane: " + playerLane);
+            
             if (Input.GetKeyDown(KeyCode.A))
             {
                 Debug.Log("moving left");
@@ -208,7 +208,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (playerLane == 0)
         {
-            Debug.Log("Player Lane: " + playerLane);
+            
             if (Input.GetKeyDown(KeyCode.D))
             {
 
@@ -229,7 +229,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (playerLane == -1)
         {
-            Debug.Log("Player Lane: " + playerLane);
+            
             if (Input.GetKeyDown(KeyCode.D))
             {
 
