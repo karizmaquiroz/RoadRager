@@ -1,10 +1,10 @@
-using UnityEditor.ShaderGraph.Internal;
-using UnityEditor.VersionControl;
+//using UnityEditor.ShaderGraph.Internal;
+//using UnityEditor.VersionControl;
 using UnityEngine;
-using UnityEngine.Rendering;
+//using UnityEngine.Rendering;
 using System;
 using TMPro;
-using UnityEditor.TerrainTools;
+//using UnityEditor.TerrainTools;
 
 public class PlayerMovement : MonoBehaviour
 {
