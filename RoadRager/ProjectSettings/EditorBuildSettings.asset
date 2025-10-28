@@ -15,6 +15,8 @@ EditorBuildSettings:
     path: Assets/Scenes/CarAndTrash.unity
     guid: 2fc21f6695e8b07408cc03244eb12040
   m_configObjects:
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: 47513c297c720b44a94963deefa54275, type: 2}
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: fe066143fb56c96418a373d61b200e70, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 05c5a2137a395204fa987c903e366a9d, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
