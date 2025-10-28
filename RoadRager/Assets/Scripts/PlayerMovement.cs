@@ -3,6 +3,8 @@ using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.Rendering;
 using System;
+using TMPro;
+using UnityEditor.TerrainTools;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -26,7 +28,14 @@ public class PlayerMovement : MonoBehaviour
     float moneyMultiplier;
     float armorMultiplier;
     float noDamageChance;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    public Animator playerAnim;
+
+    public TMP_Text hpText;
+    bool paused = false;
+
+    public GameObject gameOver;
+
     void Start()
     {
         playerLane = 0;
@@ -34,23 +43,42 @@ public class PlayerMovement : MonoBehaviour
         moneyAmount = 0;
         moneyMultiplier = 1;
 
-
+        Skills.pauseGame.AddListener(Pause);
+        Skills.resumeGame.AddListener(Unpause);
     }
 
     // Update is called once per frame
     void Update()
     {
+        hpText.text = "HP: " + playerHp.ToString();
+        if (playerHp <= 0)
+        {
+            Skills.pauseGame.Invoke();
+            gameOver.SetActive(true);
+        }
+        if (!paused)
+        {
 #if UNITY_ANDROID || UNITY_IOS
         TouchPhaseTracker();
            
 #else
-        PCMovement();
+            PCMovement();
 
 #endif
-        if (playerHp == 0)
-        {
-            endGame();
+            if (playerHp == 0)
+            {
+                endGame();
+            }
         }
+    }
+
+    void Pause()
+    {
+        paused = true;
+    }
+    void Unpause()
+    {
+        paused = false;
     }
 
 
@@ -197,10 +225,11 @@ public class PlayerMovement : MonoBehaviour
         playerPos = transform.position;
         if (playerLane == 1)
         {
-            Debug.Log("Player Lane: " + playerLane);
+            
             if (Input.GetKeyDown(KeyCode.A))
             {
-                Debug.Log("moving left");
+                //Debug.Log("moving left");
+                playerAnim.Play("Steering Wheel Left");
                 Vector3 newPos = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
                 transform.position = newPos;
                 playerLane -= 1;
@@ -208,11 +237,12 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (playerLane == 0)
         {
-            Debug.Log("Player Lane: " + playerLane);
+            
             if (Input.GetKeyDown(KeyCode.D))
             {
 
-                Debug.Log("moving right");
+                //Debug.Log("moving right");
+                playerAnim.Play("Steering Wheel Right");
                 Vector3 newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
                 transform.position = newPos;
                 playerLane += 1;
@@ -220,7 +250,8 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.A))
             {
-                Debug.Log("moving left");
+                //Debug.Log("moving left");
+                playerAnim.Play("Steering Wheel Left");
                 Vector3 newPos = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
                 transform.position = newPos;
                 playerLane -= 1;
@@ -229,11 +260,12 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (playerLane == -1)
         {
-            Debug.Log("Player Lane: " + playerLane);
+            
             if (Input.GetKeyDown(KeyCode.D))
             {
 
-                Debug.Log("moving right");
+                //Debug.Log("moving right");
+                playerAnim.Play("Steering Wheel Right");
                 Vector3 newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
                 transform.position = newPos;
                 playerLane += 1;
@@ -243,12 +275,13 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         GameObject gameObject = collision.gameObject;
 
-        if (gameObject.tag == "Enemy")
+        if (gameObject.layer == 3) //obstacle layer
         {
+            Debug.Log("hit");
             setHP(1);
         }
 

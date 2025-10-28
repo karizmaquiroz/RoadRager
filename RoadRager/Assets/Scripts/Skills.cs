@@ -2,9 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using TMPro.EditorUtilities;
 using Unity.Burst.Intrinsics;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class Skills : MonoBehaviour
 {
@@ -21,11 +25,22 @@ public class Skills : MonoBehaviour
     public TMP_Text skillText2;
     public TMP_Text skillText3;
 
+    string skill0;
+    string skill1;
+    string skill2;
+
+    public static UnityEvent pauseGame = new UnityEvent();
+    public static UnityEvent resumeGame = new UnityEvent();
+
     void Start()
     {
         skillArray = new int[3, 2];
-        stringSkillArray = new string[3, 2];    
-        
+        stringSkillArray = new string[3, 2];
+
+        skill0 = null;
+        skill1 = null;
+        skill2 = null;
+
     }
 
     // Update is called once per frame
@@ -36,6 +51,7 @@ public class Skills : MonoBehaviour
 
     void skillGainMoney(string rarity)
     {
+        Debug.Log("running skill");
         switch (rarity)
         {
             case "common":
@@ -56,6 +72,7 @@ public class Skills : MonoBehaviour
 
     void skillGainHP(string rarity)
     {
+        Debug.Log("running skill");
         switch (rarity)
         {
             case "common":
@@ -76,6 +93,7 @@ public class Skills : MonoBehaviour
 
     void skillReduceDistance(string rarity)
     {
+        Debug.Log("running skill");
         switch (rarity)
         {
             case "common":
@@ -94,13 +112,14 @@ public class Skills : MonoBehaviour
         }
     }
 
-    void skillMagnetizeMoney(float magnetStr)
+    void skillMagnetizeMoney(string rarity)
     {
-
+        Debug.Log("running skill");
     }
 
     void skillIncreaseArmor(string rarity)
     {
+        Debug.Log("running skill");
         switch (rarity)
         {
             case "common":
@@ -121,6 +140,7 @@ public class Skills : MonoBehaviour
 
     bool skillNegateDamage(string rarity)
     {
+        Debug.Log("running skill");
         int noDamageChance = UnityEngine.Random.Range(0, 11);
         switch (rarity)
         {
@@ -147,116 +167,189 @@ public class Skills : MonoBehaviour
         return false;
     }
 
-    void skillFasterCar()
+    void skillFasterCar(string rarity)
     {
-
+        Debug.Log("running skill");
     }
 
-    void skillSlowEnemy(float slowMultiplier)
+    void skillSlowEnemy(string rarity)
     {
-
+        Debug.Log("running skill");
     }
 
     public void SkillGenerator()
     {
+        pauseGame.Invoke();
+        skillCanvas.SetActive(true);
         //iterate and set
         for (int i = 0; i < 3; i++)
         {
-            skillArray[i, 0] = UnityEngine.Random.Range(0, 3);
+         
             for (int j = 0; j < 2; j++)
             {
-                skillArray[0, j] = UnityEngine.Random.Range(0, 11);
+                if(j == 0)
+                {
+                    skillArray[i, j] = UnityEngine.Random.Range(0, 8);
+                }
+                else if(j == 1)
+                {
+                    skillArray[i, j] = UnityEngine.Random.Range(0, 11);
+                }
+
+                    Debug.Log("Skillset " + i + ": " + skillArray[i, j]);
 
             }
         }
 
-        if (!CheckForDuplicateSkill(skillArray))
+
+
+        
+        if (CheckForDuplicateSkill(skillArray))
         {
+            Debug.Log("rerolling");
             SkillGenerator();
         }
+        
 
 
         //now we parse the array -- array format [skill type, skill rarity]
         for (int i = 0; i < 3; i++)
         {
             int tempNumber = skillArray[i,0];
+            Debug.Log("TempNumberOfSA: " + tempNumber);
 
             switch (tempNumber)
             {
                 case 0:
-                    stringSkillArray[i,0] = "speed";
+                    Debug.Log("Case 0");
+                    stringSkillArray[i,0] = "gainmoney";
 
                     break;
                 case 1:
-                    stringSkillArray[i,0] = "durability";
+                    Debug.Log("Case 1");
+                    stringSkillArray[i,0] = "gainhp";
 
                     break;
                 case 2:
-                    stringSkillArray[i, 0] = "money";
-
+                    Debug.Log("Case 2");
+                    stringSkillArray[i, 0] = "reducedistance";
+                    break;
+                case 3:
+                    Debug.Log("Case 3");
+                    stringSkillArray[i, 0] = "magnetize";
+                    break;
+                case 4:
+                    Debug.Log("Case 4");
+                    stringSkillArray[i, 0] = "increasearmor";
+                    break;
+                case 5:
+                    Debug.Log("5");
+                    stringSkillArray[i, 0] = "negate";
+                    break;
+                case 6:
+                    Debug.Log("6");
+                    stringSkillArray[i, 0] = "fastcar";
+                    break;
+                case 7:
+                    Debug.Log("7");
+                    stringSkillArray[i, 0] = "slowenemy";
                     break;
 
             }
+
+           
         }
 
-                
+        int counter = 0;
+        for (int i = 0; i < 3; i++)
+        {
+           
+            int tempNumber2 = skillArray[i, 1];
+            Debug.Log("TempNumberOfRaritySA: " + tempNumber2);
+
+            switch (tempNumber2)
+            {
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                    stringSkillArray[i, 1] = "common";
+                    break;
+
+                case 7:
+                case 8:
+                case 9:
+                    stringSkillArray[i, 1] = "rare";
+                    break;
+                case 10:
+                    stringSkillArray[i, 1] = "epic";
+                    break;
+
+            }
+            counter++;
+        }
+
+
+
+
+        for (int i = 0; i < 3; i++)
+        {
             for (int j = 0; j < 2; j++)
             {
-                int tempNumber2 = skillArray[0,j];
-
-                switch (tempNumber2)
-                {
-                    case 1:
-                    case 2:
-                    case 3:
-                    case 4:
-                    case 5:
-                    case 6:
-                        stringSkillArray[0, j] = "common";
-                        break;
-
-                    case 7:
-                    case 8:
-                    case 9:
-                        stringSkillArray[0, j] = "rare";
-                        break;
-                    case 10:
-                        stringSkillArray[0, j] = "epic";
-                        break;
-                   
-                }
+                Debug.Log("Skill + Rarity BEFORE PASS: " + stringSkillArray[i, j]);
             }
+        }
 
 
-
-
-            DisplaySkills(stringSkillArray);
+        DisplaySkills(stringSkillArray);
 
     }
+
 
     bool CheckForDuplicateSkill(int[,] skillArray)
     {
-        //Make a set, if the set size < the size of the array, then there's duplicates. 	//Genius work actually
-        HashSet<int> skillNumbers = new HashSet<int>();
-        for (int i = 0; i < skillArray.Length; i++)
+        int firstSkill = 0;
+        int secondSkill = 0;
+        int thirdSkill = 0;
+
+        Debug.Log("Checking for Duplicates.");
+
+        for (int i = 0; i < 3; i++)
         {
-            int curRow = skillArray[i,0];
-            skillNumbers.Add(curRow);
-           
-        }
-        if(skillNumbers.Count < skillArray.Length)
-        {
-            return true;
+            if (i == 1)
+            {
+                firstSkill = skillArray[i, 0];
+            }
+
+            if (i == 2)
+            {
+                secondSkill = skillArray[i, 0];
+            }
+
+            if (i == 3)
+            {
+                thirdSkill = skillArray[i, 0];
+            }
         }
 
+        if (firstSkill == secondSkill || firstSkill == thirdSkill || secondSkill == thirdSkill)
+        {
+            Debug.Log("Duplicate Found");
+            return true;
+        }
+        Debug.Log("Duplicate Not FOund");
             return false;
     }
+   
     
     string DetermineSkill(string skill)
     {
+        Debug.Log("DS skillPass: " +  skill);
         string[] skillParse = skill.Split(',');
         string fullSkill = null;
-        if(skill.Contains("money") == true)
+        if(skill.Contains("gainmoney") == true)
         {
             switch (skillParse[1])
             {
@@ -273,7 +366,7 @@ public class Skills : MonoBehaviour
             }
         }
 
-        if (skill.Contains("durability"))
+        if (skill.Contains("gainhp"))
         {
             switch (skillParse[1])
             {
@@ -289,7 +382,7 @@ public class Skills : MonoBehaviour
             }
         }
 
-        if (skill.Contains("speed"))
+        if (skill.Contains("reducedistance"))
         {
             switch (skillParse[1])
             {
@@ -305,14 +398,102 @@ public class Skills : MonoBehaviour
             }
         }
 
+        if (skill.Contains("magnetize"))
+        {
+            switch (skillParse[1])
+            {
+                case "common":
+                    fullSkill = "Money is magnetized by 5%";
+                    break;
+                case "rare":
+                    fullSkill = "Money is magnetized by 8%";
+                    break;
+                case "epic":
+                    fullSkill = "Money is magnetized by 10% -- (add more)";
+                    break;
+            }
+        }
+
+        if (skill.Contains("increasearmor"))
+        {
+            switch (skillParse[1])
+            {
+                case "common":
+                    fullSkill = "You take 50% less damage.";
+                    break;
+                case "rare":
+                    fullSkill = "You take 75% less damage";
+                    break;
+                case "epic":
+                    fullSkill = "You take 100% less damage, but your travel distance is increased by 50%";
+                    break;
+            }
+        }
+
+        if (skill.Contains("negate"))
+        {
+            switch (skillParse[1])
+            {
+                case "common":
+                    fullSkill = "You have a 10% chance to not take damage.";
+                    break;
+                case "rare":
+                    fullSkill = "You have a 15% chance to not take damage.";
+                    break;
+                case "epic":
+                    fullSkill = "You have a 20% chance to not take damage.";
+                    break;
+            }
+        }
+
+        if (skill.Contains("fastcar"))
+        {
+            //Ivy here :)
+            switch (skillParse[1])
+            {
+                case "common":
+                    fullSkill = "placeholder";
+                    break;
+                case "rare":
+                    fullSkill = "placeholder";
+                    break;
+                case "epic":
+                    fullSkill = "placeholder";
+                    break;
+
+            }
+        }
+
+        if (skill.Contains("slowenemy"))
+        {
+            //Aiden here :)
+            switch (skillParse[1])
+            {
+                case "common":
+                    fullSkill = "placeholder";
+                    break;
+                case "rare":
+                    fullSkill = "placeholder";
+                    break;
+                case "epic":
+                    fullSkill = "placeholder";
+                    break;
+            }
+        }
+
         return fullSkill;
     }
 
     public void DisplaySkills(string[,] skillArray)
     {
-        string skill0 = null;
-        string skill1 = null;
-        string skill2 = null;
+        for(int i = 0; i < 3; i++)
+        {
+            for(int j = 0; j <2; j++)
+            {
+                Debug.Log("Skill + Rarity DS PASS: " + skillArray[i,j]);
+            }
+        }
+       
         string tempString = null;
 
         for (int i = 0; i < 3; i++)
@@ -336,11 +517,405 @@ public class Skills : MonoBehaviour
             {
                 skill2 = tempString;
             }
+
+            tempString = null;
         }
+
+        Debug.Log("Skill0 " + skill0);
+        Debug.Log("Skill1 " + skill1);
+        Debug.Log("Skill2 " + skill2);
+
 
         skillText1.text = DetermineSkill(skill0);
         skillText2.text = DetermineSkill(skill1);
         skillText3.text = DetermineSkill(skill2);
+
+        Debug.Log("1.String: " + skillText1.text);
+        Debug.Log("2.String: " + skillText2.text);
+        Debug.Log("3.String: " + skillText3.text);
+
+    }
+
+    public void ApplySkills(Button clickedButton)
+    {
+        TMP_Text buttonText = clickedButton.GetComponentInChildren<TMP_Text>();
+        string tempString = buttonText.text;
+
+        skillCanvas.SetActive(false);
+        resumeGame.Invoke();
+
+        Debug.Log(tempString);
+        Debug.Log("SkillText1: " + skillText1.text);
+
+        Debug.Log(skill0);
+        
+
+        if(tempString == skillText1.text)
+        {
+            string[] skillParse = skill0.Split(',');
+            
+
+            if (skill0.Contains("gainhp"))
+            {
+                
+                switch (skillParse[1])
+                {
+                    case "common":
+                        skillGainHP("common");
+                        break;
+                    case "rare":
+                        skillGainHP("rare");
+                        break;
+                    case "epic":
+                        skillGainHP("epic");
+                        break;
+                }
+            }
+
+            if (skill0.Contains("reducedistance"))
+            {
+                switch (skillParse[1])
+                {
+                    case "common":
+                        skillReduceDistance("common");
+                        break;
+                    case "rare":
+                        skillReduceDistance("rare");
+                        break;
+                    case "epic":
+                        skillReduceDistance("epic");
+                        break;
+                }
+            }
+
+            if (skill0.Contains("magnetize"))
+            {
+                switch (skillParse[1])
+                {
+                    case "common":
+                        skillMagnetizeMoney("common");
+                        break;
+                    case "rare":
+                        skillMagnetizeMoney("rare");
+                        break;
+                    case "epic":
+                        skillMagnetizeMoney("epic");
+                        break;
+                }
+            }
+
+            if (skill0.Contains("increasearmor"))
+            {
+                switch (skillParse[1])
+                {
+                    case "common":
+                        skillIncreaseArmor("common");
+                        break;
+                    case "rare":
+                        skillIncreaseArmor("rare");
+                        break;
+                    case "epic":
+                        skillIncreaseArmor("epic");
+                        break;
+                }
+            }
+
+            if (skill0.Contains("negate"))
+            {
+                switch (skillParse[1])
+                {
+                    case "common":
+                        skillNegateDamage("common");
+                        break;
+                    case "rare":
+                        skillNegateDamage("rare");
+                        break;
+                    case "epic":
+                        skillNegateDamage("epic");
+                        break;
+                }
+            }
+
+            if (skill0.Contains("fastcar"))
+            {
+                //Ivy here :)
+                switch (skillParse[1])
+                {
+                    case "common":
+                        skillFasterCar("common");
+                        break;
+                    case "rare":
+                        skillFasterCar("rare");
+                        break;
+                    case "epic":
+                        skillFasterCar("epic");
+                        break;
+
+                }
+            }
+
+            if (skill0.Contains("slowenemy"))
+            {
+                //Aiden here :)
+                switch (skillParse[1])
+                {
+                    case "common":
+                        skillSlowEnemy("common");
+                        break;
+                    case "rare":
+                        skillSlowEnemy("rare");
+                        break;
+                    case "epic":
+                        skillSlowEnemy("epic");
+                        break;
+                }
+            }
+        }
+        else if(tempString == skillText2.text)
+        {
+            
+                string[] skillParse = skill1.Split(',');
+
+                if (skill1.Contains("gainhp"))
+                {
+
+                    switch (skillParse[1])
+                    {
+                        case "common":
+                            skillGainHP("common");
+                            break;
+                        case "rare":
+                            skillGainHP("rare");
+                            break;
+                        case "epic":
+                            skillGainHP("epic");
+                            break;
+                    }
+                }
+
+                if (skill1.Contains("reducedistance"))
+                {
+                    switch (skillParse[1])
+                    {
+                        case "common":
+                            skillReduceDistance("common");
+                            break;
+                        case "rare":
+                            skillReduceDistance("rare");
+                            break;
+                        case "epic":
+                            skillReduceDistance("epic");
+                            break;
+                    }
+                }
+
+                if (skill1.Contains("magnetize"))
+                {
+                    switch (skillParse[1])
+                    {
+                        case "common":
+                            skillMagnetizeMoney("common");
+                            break;
+                        case "rare":
+                            skillMagnetizeMoney("rare");
+                            break;
+                        case "epic":
+                            skillMagnetizeMoney("epic");
+                            break;
+                    }
+                }
+
+                if (skill1.Contains("increasearmor"))
+                {
+                    switch (skillParse[1])
+                    {
+                        case "common":
+                            skillIncreaseArmor("common");
+                            break;
+                        case "rare":
+                            skillIncreaseArmor("rare");
+                            break;
+                        case "epic":
+                            skillIncreaseArmor("epic");
+                            break;
+                    }
+                }
+
+                if (skill1.Contains("negate"))
+                {
+                    switch (skillParse[1])
+                    {
+                        case "common":
+                            skillNegateDamage("common");
+                            break;
+                        case "rare":
+                            skillNegateDamage("rare");
+                            break;
+                        case "epic":
+                            skillNegateDamage("epic");
+                            break;
+                    }
+                }
+
+                if (skill1.Contains("fastcar"))
+                {
+                    //Ivy here :)
+                    switch (skillParse[1])
+                    {
+                        case "common":
+                            skillFasterCar("common");
+                            break;
+                        case "rare":
+                            skillFasterCar("rare");
+                            break;
+                        case "epic":
+                            skillFasterCar("epic");
+                            break;
+
+                    }
+                }
+
+                if (skill1.Contains("slowenemy"))
+                {
+                    //Aiden here :)
+                    switch (skillParse[1])
+                    {
+                        case "common":
+                            skillSlowEnemy("common");
+                            break;
+                        case "rare":
+                            skillSlowEnemy("rare");
+                            break;
+                        case "epic":
+                            skillSlowEnemy("epic");
+                            break;
+                    }
+                }
+            
+        }
+        else if(tempString == skillText3.text)
+        {
+            
+                string[] skillParse = skill2.Split(',');
+
+                if (skill2.Contains("gainhp"))
+                {
+
+                    switch (skillParse[1])
+                    {
+                        case "common":
+                            skillGainHP("common");
+                            break;
+                        case "rare":
+                            skillGainHP("rare");
+                            break;
+                        case "epic":
+                            skillGainHP("epic");
+                            break;
+                    }
+                }
+
+                if (skill2.Contains("reducedistance"))
+                {
+                    switch (skillParse[1])
+                    {
+                        case "common":
+                            skillReduceDistance("common");
+                            break;
+                        case "rare":
+                            skillReduceDistance("rare");
+                            break;
+                        case "epic":
+                            skillReduceDistance("epic");
+                            break;
+                    }
+                }
+
+                if (skill2.Contains("magnetize"))
+                {
+                    switch (skillParse[1])
+                    {
+                        case "common":
+                            skillMagnetizeMoney("common");
+                            break;
+                        case "rare":
+                            skillMagnetizeMoney("rare");
+                            break;
+                        case "epic":
+                            skillMagnetizeMoney("epic");
+                            break;
+                    }
+                }
+
+                if (skill2.Contains("increasearmor"))
+                {
+                    switch (skillParse[1])
+                    {
+                        case "common":
+                            skillIncreaseArmor("common");
+                            break;
+                        case "rare":
+                            skillIncreaseArmor("rare");
+                            break;
+                        case "epic":
+                            skillIncreaseArmor("epic");
+                            break;
+                    }
+                }
+
+                if (skill2.Contains("negate"))
+                {
+                    switch (skillParse[1])
+                    {
+                        case "common":
+                            skillNegateDamage("common");
+                            break;
+                        case "rare":
+                            skillNegateDamage("rare");
+                            break;
+                        case "epic":
+                            skillNegateDamage("epic");
+                            break;
+                    }
+                }
+
+                if (skill2.Contains("fastcar"))
+                {
+                    //Ivy here :)
+                    switch (skillParse[1])
+                    {
+                        case "common":
+                            skillFasterCar("common");
+                            break;
+                        case "rare":
+                            skillFasterCar("rare");
+                            break;
+                        case "epic":
+                            skillFasterCar("epic");
+                            break;
+
+                    }
+                }
+
+                if (skill2.Contains("slowenemy"))
+                {
+                    //Aiden here :)
+                    switch (skillParse[1])
+                    {
+                        case "common":
+                            skillSlowEnemy("common");
+                            break;
+                        case "rare":
+                            skillSlowEnemy("rare");
+                            break;
+                        case "epic":
+                            skillSlowEnemy("epic");
+                            break;
+                    }
+                }
+            
+        }
+
 
     }
 

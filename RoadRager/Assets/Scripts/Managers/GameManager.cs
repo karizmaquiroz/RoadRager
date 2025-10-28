@@ -22,10 +22,13 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        MainMenuUIPanel.SetActive(true);
-        SettingUIPanel.SetActive(false);
-        ShopUIPanel.SetActive(false);
-        ModifyUIPanel.SetActive(false);
+        if (SceneManager.GetActiveScene().name.Equals("Menu"))
+        {
+            MainMenuUIPanel.SetActive(true);
+            SettingUIPanel.SetActive(false);
+            ShopUIPanel.SetActive(false);
+            ModifyUIPanel.SetActive(false);
+        }
 
     }
 
@@ -35,10 +38,13 @@ public class GameManager : MonoBehaviour
     public void Menu()
     {
         SceneManager.LoadScene("Menu");
-        MainMenuUIPanel.SetActive(true);
-        SettingUIPanel.SetActive(false);
-        ShopUIPanel.SetActive(false);
-        ModifyUIPanel.SetActive(false);
+        if (SceneManager.GetActiveScene().name.Equals("Menu"))
+        {
+            MainMenuUIPanel.SetActive(true);
+            SettingUIPanel.SetActive(false);
+            ShopUIPanel.SetActive(false);
+            ModifyUIPanel.SetActive(false);
+        }
 
     }
 
@@ -57,7 +63,7 @@ public class GameManager : MonoBehaviour
     public void startGame()
     {
         //SceneManager.LoadScene("nameofscene");
-
+        SceneManager.LoadScene("CarAndTrash");
 
     }
 
