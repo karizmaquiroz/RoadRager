@@ -45,6 +45,7 @@ public class Skills : MonoBehaviour
         
     }
 
+    //implemented -- not tested
     void skillGainMoney(string rarity)
     {
         Debug.Log("running skill");
@@ -61,32 +62,42 @@ public class Skills : MonoBehaviour
                 //gain 30% more money, but lose one heart from your healthpool
                 //reduce overall HP not HP in the moment. 
                 playerAttr.setMoneyMultiplier(0.30f);
-                playerAttr.setOverallHp(2);
+                int playerHp = playerAttr.getOverallHp();
+                playerHp -= 1;
+                playerAttr.setOverallHp(playerHp);
                 break;
         }
     }
 
+    //implemented -- not tested
     void skillGainHP(string rarity)
     {
+        int playerHp = playerAttr.getOverallHp();
         Debug.Log("running skill");
         switch (rarity)
         {
+            
             case "common":
                 //Add one heart to healthpool
-                playerAttr.setOverallHp(4);
+                
+                playerHp += 1;
+                playerAttr.setOverallHp(playerHp);
                 break;
             case "rare":
                 //Add two hearts to
-                playerAttr.setOverallHp(5);
+                playerHp += 2;
+                playerAttr.setOverallHp(playerHp);
                 break;
             case "epic":
                 //add three hearts to healthpool, but required distance increases by 15%
-                playerAttr.setOverallHp(6);
+                playerHp += 3;
+                playerAttr.setOverallHp(playerHp);
                 distanceRef.setNewDistance(0.15f);
                 break;
         }
     }
 
+    //implemented -- however, need to test because I'm not sure how this plays. 
     void skillReduceDistance(string rarity)
     {
         Debug.Log("running skill");
@@ -108,11 +119,13 @@ public class Skills : MonoBehaviour
         }
     }
 
+    //need to figure out implementation
     void skillMagnetizeMoney(string rarity)
     {
         Debug.Log("running skill");
     }
 
+    //implemented -- needs testing
     void skillIncreaseArmor(string rarity)
     {
         Debug.Log("running skill");
@@ -134,7 +147,8 @@ public class Skills : MonoBehaviour
        
     }
 
-    bool skillNegateDamage(string rarity)
+    //need to think about this one
+    public bool skillNegateDamage(string rarity)
     {
         Debug.Log("running skill");
         int noDamageChance = UnityEngine.Random.Range(0, 11);
@@ -163,11 +177,13 @@ public class Skills : MonoBehaviour
         return false;
     }
 
+    //talk to ivy
     void skillFasterCar(string rarity)
     {
         Debug.Log("running skill");
     }
 
+    //talk to aiden
     void skillSlowEnemy(string rarity)
     {
         Debug.Log("running skill");

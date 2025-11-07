@@ -3,6 +3,7 @@ using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.Rendering;
 using System;
+using System.Net;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -19,13 +20,16 @@ public class PlayerMovement : MonoBehaviour
 
     int playerLane;
 
-    int playerHp;
+    float playerHp;
     int totalPlayerHp;
 
     float moneyAmount;
     float moneyMultiplier;
     float armorMultiplier;
-    float noDamageChance;
+    string noDamageChance;
+
+    public Skills skillref;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
         playerHp = 3;
         moneyAmount = 0;
         moneyMultiplier = 1;
+        armorMultiplier = 1;
 
 
     }
@@ -249,18 +254,34 @@ public class PlayerMovement : MonoBehaviour
 
         if (gameObject.tag == "Enemy")
         {
-            setHP(1);
+            string rarity = getNoDamageChance();
+
+            if (rarity != null)
+            {
+                if (skillref.skillNegateDamage(rarity))
+                {
+                    setHP(0);
+                }
+                else
+                {
+                    setHP(1);
+                }
+            }
         }
 
         if (gameObject.tag == "Money")
         {
-            moneyAmount *= moneyMultiplier;
+            moneyAmount += 1;
+            if(moneyMultiplier > 1)
+            {
+                moneyAmount *= moneyMultiplier;
+            }
         }
     }
 
-    void setHP(int damage)
+    void setHP(float damage)
     {
-        playerHp -= damage;
+        playerHp -= (damage * armorMultiplier);
     }
 
     void endGame()
@@ -272,6 +293,13 @@ public class PlayerMovement : MonoBehaviour
     {
         totalPlayerHp = hp;
     }
+
+    public int getOverallHp()
+    {
+        return totalPlayerHp;
+    }
+
+ 
     public void setMoneyMultiplier(float multiplier)
     {
         moneyMultiplier += multiplier;
@@ -284,13 +312,26 @@ public class PlayerMovement : MonoBehaviour
 
     public void setArmorMultiplier(float multiplier)
     {
-        armorMultiplier = multiplier;
+        armorMultiplier += multiplier;
     }
 
-    public void setNoDamageChance(float damageChance)
+    public void setNoDamageChance(string rarity)
     {
-        noDamageChance = damageChance;
+        if(rarity != null)
+        {
+            noDamageChance = rarity;
+            
+        }
+      
+
+        
     }
 
+    public string getNoDamageChance()
+    {
+        return noDamageChance;
+    }
+
+ 
 }
 
