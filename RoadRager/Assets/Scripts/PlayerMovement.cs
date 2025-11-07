@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
     float moneyMultiplier;
     float armorMultiplier;
     string noDamageChance;
+    float magnetizeDistance;
+
 
     public Skills skillref;
 
