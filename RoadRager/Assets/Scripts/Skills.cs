@@ -32,6 +32,10 @@ public class Skills : MonoBehaviour
     public static UnityEvent pauseGame = new UnityEvent();
     public static UnityEvent resumeGame = new UnityEvent();
 
+    public Truck truck;
+    float initTrashSpd;
+    float initCarSpd;
+
     void Start()
     {
         skillArray = new int[3, 2];
@@ -40,6 +44,9 @@ public class Skills : MonoBehaviour
         skill0 = null;
         skill1 = null;
         skill2 = null;
+
+        initTrashSpd = truck.trashSpd;
+        initCarSpd = truck.carSpd;
 
     }
 
@@ -175,6 +182,21 @@ public class Skills : MonoBehaviour
     void skillSlowEnemy(string rarity)
     {
         Debug.Log("running skill");
+        switch (rarity)
+        {
+            case "common":
+                truck.carSpd = initCarSpd * 0.05f;
+                truck.trashSpd = initTrashSpd * 0.05f;
+                break;
+            case "rare":
+                truck.carSpd = initCarSpd * 0.1f;
+                truck.trashSpd = initTrashSpd * 0.1f;
+                break;
+            case "epic":
+                truck.carSpd = initCarSpd * 0.2f;
+                truck.trashSpd = initTrashSpd * 0.2f;
+                break;
+        }
     }
 
     public void SkillGenerator()
@@ -470,13 +492,13 @@ public class Skills : MonoBehaviour
             switch (skillParse[1])
             {
                 case "common":
-                    fullSkill = "placeholder";
+                    fullSkill = "trash and enemy cars go 5% slower";
                     break;
                 case "rare":
-                    fullSkill = "placeholder";
+                    fullSkill = "trash and enemy cars go 10% slower";
                     break;
                 case "epic":
-                    fullSkill = "placeholder";
+                    fullSkill = "trash and enemy cars go 20% slower";
                     break;
             }
         }

@@ -7,7 +7,7 @@ public class EnemyCar : MonoBehaviour
     GameObject truck;
     Vector3 initPos;
     public bool movingForward = true;
-    float moveSpd = 10f;
+    public float moveSpd = 10f;
 
     private void Start()
     {

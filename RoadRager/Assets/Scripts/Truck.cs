@@ -16,7 +16,8 @@ public class Truck : MonoBehaviour
     float carSpawnTime = 0f;
     int maxTrash = 5;
     int maxCars = 3;
-    float trashSpd = 300f;
+    public float trashSpd = 300f;
+    public float carSpd = 10f;
 
     bool paused = false;
 
@@ -77,6 +78,7 @@ public class Truck : MonoBehaviour
             currentCar.transform.position = carSpawnPts[Random.Range(0, carSpawnPts.Count)].position;
             currentCar.SetActive(true);
             currentCar.GetComponent<EnemyCar>().movingForward = true;
+            currentCar.GetComponent<EnemyCar>().moveSpd = carSpd;
             carSpawnTime = 0f;
         }
         else
