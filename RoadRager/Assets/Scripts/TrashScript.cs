@@ -32,5 +32,13 @@ public class TrashScript : MonoBehaviour
         {
            Reset();
         }
+        if (collision.gameObject.CompareTag("Player")) //add later; sound
+        {
+
+        }
+        if (collision.gameObject.CompareTag("Ground")) //add later; sound
+        {
+
+        }
     }
 }

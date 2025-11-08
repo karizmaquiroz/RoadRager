@@ -474,13 +474,13 @@ public class Skills : MonoBehaviour
             switch (skillParse[1])
             {
                 case "common":
-                    fullSkill = "placeholder";
+                    fullSkill = "Make your car 5% faster";
                     break;
                 case "rare":
-                    fullSkill = "placeholder";
+                    fullSkill = "Make your car 10% faster";
                     break;
                 case "epic":
-                    fullSkill = "placeholder";
+                    fullSkill = "Make your car 15% faster";
                     break;
 
             }

@@ -61,5 +61,9 @@ public class EnemyCar : MonoBehaviour
         {
             Reset();
         }
+        if (collision.gameObject.CompareTag("Player")) //add later; sound
+        {
+
+        }
     }
 }
