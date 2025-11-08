@@ -492,13 +492,13 @@ public class Skills : MonoBehaviour
             switch (skillParse[1])
             {
                 case "common":
-                    fullSkill = "trash and enemy cars go 5% slower";
+                    fullSkill = "Trash and enemy cars go 5% slower";
                     break;
                 case "rare":
-                    fullSkill = "trash and enemy cars go 10% slower";
+                    fullSkill = "Trash and enemy cars go 10% slower";
                     break;
                 case "epic":
-                    fullSkill = "trash and enemy cars go 20% slower";
+                    fullSkill = "Trash and enemy cars go 20% slower";
                     break;
             }
         }
