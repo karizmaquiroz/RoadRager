@@ -181,20 +181,20 @@ public class Skills : MonoBehaviour
 
     void skillSlowEnemy(string rarity)
     {
-        Debug.Log("running skill");
+        Debug.Log("running skill");  // if you have a rarer version of a skill, can you end up getting a common one too?
         switch (rarity)
         {
             case "common":
-                truck.carSpd = initCarSpd * 0.05f;
-                truck.trashSpd = initTrashSpd * 0.05f;
+                truck.carSpd = initCarSpd - initCarSpd * 0.2f;
+                truck.trashSpd = initTrashSpd - initTrashSpd * 0.2f;
                 break;
             case "rare":
-                truck.carSpd = initCarSpd * 0.1f;
-                truck.trashSpd = initTrashSpd * 0.1f;
+                truck.carSpd = initCarSpd - initCarSpd * 0.5f;
+                truck.trashSpd = initTrashSpd - initTrashSpd * 0.5f;
                 break;
             case "epic":
-                truck.carSpd = initCarSpd * 0.2f;
-                truck.trashSpd = initTrashSpd * 0.2f;
+                truck.carSpd = initCarSpd - initCarSpd * 0.75f;
+                truck.trashSpd = initTrashSpd - initTrashSpd * 0.75f;
                 break;
         }
     }
@@ -366,7 +366,7 @@ public class Skills : MonoBehaviour
     }
    
     
-    string DetermineSkill(string skill)
+    string DetermineSkill(string skill)  //some show up blank sometimes
     {
         Debug.Log("DS skillPass: " +  skill);
         string[] skillParse = skill.Split(',');
@@ -492,13 +492,13 @@ public class Skills : MonoBehaviour
             switch (skillParse[1])
             {
                 case "common":
-                    fullSkill = "Trash and enemy cars go 5% slower";
+                    fullSkill = "Trash and enemy cars go 20% slower";
                     break;
                 case "rare":
-                    fullSkill = "Trash and enemy cars go 10% slower";
+                    fullSkill = "Trash and enemy cars go 50% slower";
                     break;
                 case "epic":
-                    fullSkill = "Trash and enemy cars go 20% slower";
+                    fullSkill = "Trash and enemy cars go 75% slower";
                     break;
             }
         }
