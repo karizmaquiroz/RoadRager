@@ -8,6 +8,8 @@ public class EnemyCar : MonoBehaviour
     Vector3 initPos;
     public bool movingForward = true;
     public float moveSpd = 10f;
+    bool spinningOut = false;
+    int spinoutDir = 0;
 
     private void Start()
     {
@@ -19,20 +21,32 @@ public class EnemyCar : MonoBehaviour
         Skills.pauseGame.AddListener(Reset);
         Skills.resumeGame.AddListener(Reset);
     }
+    void OnAwake()
+    {
+        spinningOut = false;
+    }
+
 
     void FixedUpdate()
     {
-        if (Vector3.Distance(transform.position, truck.transform.position) < 10f)
+        if (!spinningOut)
         {
-            movingForward = false;
-        }
-        if (movingForward)
-        {
-            MoveForward();
+            if (Vector3.Distance(transform.position, truck.transform.position) < 10f)
+            {
+                movingForward = false;
+            }
+            if (movingForward)
+            {
+                MoveForward();
+            }
+            else
+            {
+                MoveBack();
+            }
         }
         else
         {
-            MoveBack();
+            SpinOut();
         }
     }
 
@@ -55,15 +69,34 @@ public class EnemyCar : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    void SpinOut()
+    {
+        transform.Rotate(0f, moveSpd * spinoutDir, 0f);
+        transform.position += new Vector3(spinoutDir * 0.5f, 0f, 1f);
+        Invoke("Reset", 5);
+    }
+
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Finish"))
         {
             Reset();
         }
-        if (collision.gameObject.CompareTag("Player")) //add later; sound
+        if (collision.gameObject.CompareTag("Player")) //add later; sound and explosion
         {
-
+            if (transform.position.x > truck.transform.position.x) //in right lane
+            {
+                spinoutDir = 1;
+            }
+            else if (transform.position.x < truck.transform.position.x) //in left lane
+            {
+                spinoutDir = -1;
+            }
+            else //in middle lane
+            {
+                spinoutDir = Random.Range(0, 2);
+            }
+            spinningOut = true;
         }
     }
 }
