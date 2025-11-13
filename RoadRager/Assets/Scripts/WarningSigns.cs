@@ -1,44 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WarningSigns : MonoBehaviour
 {
-    public Canvas warningSignCanvas;
-    GameObject leftSign;
-    GameObject midSign;
-    GameObject rightSign;
-
-    int leftTimer;
-    int midTimer;
-    int rightTimer;
-    int timerLim = 100;
-
-    private void Start()
-    {
-        leftSign = warningSignCanvas.transform.GetChild(0).gameObject;
-        midSign = warningSignCanvas.transform.GetChild(1).gameObject;
-        rightSign = warningSignCanvas.transform.GetChild(2).gameObject;
-    }
-
-    void FixedUpdate()
-    {
-        leftTimer++;
-        midTimer++;
-        rightTimer++;
-
-        if (leftTimer >= timerLim && leftSign.activeInHierarchy) //not sure if it's better to check or just set inactive every round
-        {
-            leftSign.SetActive(false);
-        }
-        if (midTimer >= timerLim && midSign.activeInHierarchy)
-        {
-            midSign.SetActive(false);
-        }
-        if (rightTimer >= timerLim && rightSign.activeInHierarchy)
-        {
-            rightSign.SetActive(false);
-        }
-    }
-
+    public Canvas warningSignCanvas; //idk if this still needs to be here
+    public GameObject warningSign;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -46,23 +12,9 @@ public class WarningSigns : MonoBehaviour
         {
             if (other.GetComponent<EnemyCar>().movingForward)
             {
-                if (other.transform.position.x < transform.position.x) //left
-                {
-                    leftTimer = 0;
-                    leftSign.SetActive(true);
-                }
-                else if (other.transform.position.x > transform.position.x) //right
-                {
-                    rightTimer = 0;
-                    rightSign.SetActive(true);
-                }
-                else //back
-                {
-                    midTimer = 0;
-                    midSign.SetActive(true);
-                }
-                //instantiate warning sign
-                //assign that car to the warning sign
+                GameObject sign = Instantiate(warningSign, new Vector3(0f, 0f, 0f), Quaternion.identity);
+                sign.transform.SetParent(warningSignCanvas.transform, false);
+                sign.GetComponent<WarningSignPrefab>().followCar = other.transform;
             }
         }
     }

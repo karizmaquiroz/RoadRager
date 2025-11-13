@@ -8,7 +8,7 @@ public class EnemyCar : MonoBehaviour
     Vector3 initPos;
     public bool movingForward = true;
     public float moveSpd = 10f;
-    bool spinningOut = false;
+    [System.NonSerialized] public bool spinningOut = false;
     int spinoutDir = 0;
 
     private void Start()
@@ -94,7 +94,7 @@ public class EnemyCar : MonoBehaviour
             }
             else //in middle lane
             {
-                spinoutDir = Random.Range(0, 2);
+                spinoutDir = Random.Range(-1, 2);
             }
             spinningOut = true;
         }
