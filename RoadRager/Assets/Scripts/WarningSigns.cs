@@ -46,21 +46,23 @@ public class WarningSigns : MonoBehaviour
         {
             if (other.GetComponent<EnemyCar>().movingForward)
             {
-                if (other.transform.position.x < transform.position.x) //left
-                {
-                    leftTimer = 0;
-                    leftSign.SetActive(true);
-                }
-                else if (other.transform.position.x > transform.position.x) //right
-                {
-                    rightTimer = 0;
-                    rightSign.SetActive(true);
-                }
-                else //back
-                {
-                    midTimer = 0;
-                    midSign.SetActive(true);
-                }
+                //if (other.transform.position.x < transform.position.x) //left
+                //{
+                //    leftTimer = 0;
+                //    leftSign.SetActive(true);
+                //}
+                //else if (other.transform.position.x > transform.position.x) //right
+                //{
+                //    rightTimer = 0;
+                //    rightSign.SetActive(true);
+                //}
+                //else //back
+                //{
+                //    midTimer = 0;
+                //    midSign.SetActive(true);
+                //}
+                //instantiate warning sign
+                //assign that car to the warning sign
             }
         }
     }
