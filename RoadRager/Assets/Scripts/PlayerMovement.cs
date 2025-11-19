@@ -17,6 +17,9 @@ public class PlayerMovement : MonoBehaviour
     Vector2 startPosSwipe;
     Vector2 endPosSwipe;
 
+    Vector3 newPos; //needs to be saved globally so Lerp works
+    public float spd = 3f;
+
     float requiredSwipe = 200.0f;
 
     int playerLane;
@@ -45,6 +48,8 @@ public class PlayerMovement : MonoBehaviour
 
         Skills.pauseGame.AddListener(Pause);
         Skills.resumeGame.AddListener(Unpause);
+
+        newPos = transform.position;
     }
 
     // Update is called once per frame
@@ -57,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
             gameOver.SetActive(true);
         }
         if (!paused)
-        {
+        { //mobile controls need to be tested!!
 #if UNITY_ANDROID || UNITY_IOS
         TouchPhaseTracker();
            
@@ -65,10 +70,15 @@ public class PlayerMovement : MonoBehaviour
             PCMovement();
 
 #endif
+            MovePlayer();
             if (playerHp == 0)
             {
                 endGame();
             }
+        }
+        else //if in skill select; makes sure the lane pos don't skew
+        {
+            transform.position = newPos;
         }
     }
 
@@ -85,7 +95,8 @@ public class PlayerMovement : MonoBehaviour
     void TouchPhaseTracker()
     {
 #if UNITY_ANDROID || UNITY_IOS
-        playerPos = transform.position;
+        playerPos = newPos;
+        Vector3 newPos = Vector3.zero;
         
         if (Input.touchCount > 0)
         {
@@ -99,14 +110,12 @@ public class PlayerMovement : MonoBehaviour
                     break;
 
                 case TouchPhase.Moved:
-                    
                         if (touch.position.x - startPos.x > 0 && (playerLane == -1))
                         {
                             endPosSwipe = touch.position;
                             if(DetectSwipe(TouchPhase.Ended, startPosSwipe, endPosSwipe))
                             {
-                                Vector3 newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
-                                transform.position = newPos;
+                                newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
                                 playerLane += 1;
                             }
                             
@@ -118,8 +127,7 @@ public class PlayerMovement : MonoBehaviour
                         endPosSwipe = touch.position;
                             if (DetectSwipe(TouchPhase.Ended,startPosSwipe, endPosSwipe))
                             {
-                                Vector3 newPos = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
-                                transform.position = newPos;
+                                newPos = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
                                 playerLane -= 1;
                             }
                            
@@ -131,8 +139,7 @@ public class PlayerMovement : MonoBehaviour
                             endPosSwipe = touch.position;
                                 if (DetectSwipe(TouchPhase.Ended,startPosSwipe, endPosSwipe))
                                 {
-                                    Vector3 newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
-                                    transform.position = newPos;
+                                    newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
                                     playerLane += 1;
                                 }
                                 
@@ -142,12 +149,12 @@ public class PlayerMovement : MonoBehaviour
                                 endPosSwipe = touch.position;
                                 if (DetectSwipe(TouchPhase.Ended,startPosSwipe, endPosSwipe))
                                 {
-                                    Vector3 newPos = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
-                                    transform.position = newPos;
+                                    newPos = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
                                     playerLane -= 1;
                                 }
                              
                             }
+
                         }
                     
                 break;
@@ -222,16 +229,14 @@ public class PlayerMovement : MonoBehaviour
 
     void PCMovement()
     {
-        playerPos = transform.position;
+        playerPos = newPos;
         if (playerLane == 1)
         {
             
             if (Input.GetKeyDown(KeyCode.A))
             {
-                //Debug.Log("moving left");
                 playerAnim.Play("Steering Wheel Left");
-                Vector3 newPos = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
-                transform.position = newPos;
+                newPos = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
                 playerLane -= 1;
             }
         }
@@ -241,19 +246,15 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.D))
             {
 
-                //Debug.Log("moving right");
                 playerAnim.Play("Steering Wheel Right");
-                Vector3 newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
-                transform.position = newPos;
+                newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
                 playerLane += 1;
 
             }
             else if (Input.GetKeyDown(KeyCode.A))
             {
-                //Debug.Log("moving left");
                 playerAnim.Play("Steering Wheel Left");
-                Vector3 newPos = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
-                transform.position = newPos;
+                newPos = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
                 playerLane -= 1;
 
             }
@@ -264,15 +265,20 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.D))
             {
 
-                //Debug.Log("moving right");
                 playerAnim.Play("Steering Wheel Right");
-                Vector3 newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
-                transform.position = newPos;
+                newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
                 playerLane += 1;
 
             }
         }
+    }
 
+    void MovePlayer()
+    {
+        if (newPos != Vector3.zero)
+        {
+            transform.position = Vector3.Lerp(transform.position, newPos, spd * Time.deltaTime);
+        }
     }
 
     private void OnTriggerEnter(Collider collision)

@@ -2698,6 +2698,7 @@ MonoBehaviour:
   direction: {x: 0, y: 0}
   playerPos: {x: 0, y: 0, z: 0}
   origPlayerPos: {x: 0, y: 0, z: 0}
+  spd: 4
   playerAnim: {fileID: 1264410964}
   hpText: {fileID: 459094805}
   gameOver: {fileID: 607830703}
