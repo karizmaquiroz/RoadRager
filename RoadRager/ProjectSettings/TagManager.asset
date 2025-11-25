@@ -7,6 +7,7 @@ TagManager:
   - Truck
   - Car
   - Road
+  - Trash
   layers:
   - Default
   - TransparentFX
