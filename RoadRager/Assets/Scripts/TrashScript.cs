@@ -5,7 +5,7 @@ public class TrashScript : MonoBehaviour
     Rigidbody rb;
     GameObject truck;
     Vector3 initPos;
-
+    AudioSource aud;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -15,6 +15,8 @@ public class TrashScript : MonoBehaviour
 
         Skills.pauseGame.AddListener(Reset);
         Skills.resumeGame.AddListener(Reset);
+
+        aud = GetComponent<AudioSource>();
     }
 
     private void Reset()
@@ -32,13 +34,13 @@ public class TrashScript : MonoBehaviour
         {
            Reset();
         }
-        if (collision.gameObject.CompareTag("Player")) //add later; sound
-        {
+    }
 
-        }
-        if (collision.gameObject.CompareTag("Road")) //add later; sound
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Road"))
         {
-
+            aud.Play();
         }
     }
 }
