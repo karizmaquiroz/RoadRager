@@ -122,6 +122,18 @@ public class Skills : MonoBehaviour
     void skillMagnetizeMoney(string rarity)
     {
         Debug.Log("running skill");
+        switch (rarity)
+        {
+            case "common":
+                playerAttr.setMagentizeMultiplier(1.0f);
+                break;
+            case "rare":
+                playerAttr.setMagentizeMultiplier(1.5f);
+                break;
+            case "epic":
+                playerAttr.setMagentizeMultiplier(3.0f);
+                break;
+        }
     }
 
     void skillIncreaseArmor(string rarity)
@@ -431,7 +443,7 @@ public class Skills : MonoBehaviour
                     fullSkill = "Money is magnetized by 8%";
                     break;
                 case "epic":
-                    fullSkill = "Money is magnetized by 10% -- (add more)";
+                    fullSkill = "Money is magnetized by 10%";
                     break;
             }
         }
