@@ -26,7 +26,6 @@ public class EnemyCar : MonoBehaviour
         spinningOut = false;
     }
 
-
     void FixedUpdate()
     {
         if (!spinningOut)
@@ -62,9 +61,11 @@ public class EnemyCar : MonoBehaviour
 
     private void Reset()
     {
+        spinningOut = false;
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
         transform.position = initPos;
+        transform.rotation = Quaternion.identity;
         truck.SendMessage("ReAddCar", gameObject);
         gameObject.SetActive(false);
     }
@@ -73,7 +74,7 @@ public class EnemyCar : MonoBehaviour
     {
         transform.Rotate(0f, moveSpd * spinoutDir, 0f);
         transform.position += new Vector3(spinoutDir * 0.5f, 0f, 1f);
-        Invoke("Reset", 5);
+        Invoke("Reset", 1);
     }
 
     private void OnTriggerEnter(Collider collision)
