@@ -8,14 +8,19 @@ public class Truck : MonoBehaviour
     public List<Transform> carSpawnPts;
     public GameObject trashPrefab;
     public GameObject carPrefab;
+    public GameObject moneyPrefab;
     Queue<GameObject> trashCollection = new Queue<GameObject>();
     Queue<GameObject> carCollection = new Queue<GameObject>();
+    Queue<GameObject> moneyCollection = new Queue<GameObject>();
     float trashSpawnTimeMax = 3f;
     float carSpawnTimeMax = 7f;
+    float moneySpawnTimeMax = 10f;
     float trashSpawnTime = 0f;
     float carSpawnTime = 0f;
+    float moneySpawnTime = 0f;
     int maxTrash = 5;
     int maxCars = 3;
+    int maxMoney = 20;
     public float trashSpd = 300f;
     public float carSpd = 10f;
 
@@ -31,6 +36,10 @@ public class Truck : MonoBehaviour
         {
             carCollection.Enqueue(Instantiate(carPrefab, carSpawnPts[Random.Range(0, carSpawnPts.Count)].position, Quaternion.identity));
         }
+        for (int i = 0; i < maxMoney; i++)
+        {
+            carCollection.Enqueue(Instantiate(moneyPrefab, carSpawnPts[Random.Range(0, carSpawnPts.Count)].position, Quaternion.identity));
+        }
 
         Skills.pauseGame.AddListener(Pause);
         Skills.resumeGame.AddListener(Unpause);
@@ -42,6 +51,7 @@ public class Truck : MonoBehaviour
         {
             SpawnTrash();
             SpawnCar();
+            SpawnMoney();
         }
     }
 
@@ -84,6 +94,22 @@ public class Truck : MonoBehaviour
         else
         {
             carSpawnTime += Time.fixedDeltaTime;
+        }
+    }
+
+    void SpawnMoney()
+    {
+        if (moneyCollection.Count > 0 && moneySpawnTime > moneySpawnTimeMax) //note: mb make it so 2 cars can't spawn in same lane? Or higher time lim or lower spawn lim
+        {
+            GameObject money = moneyCollection.Dequeue();
+            money.transform.position = trashSpawnPts[Random.Range(0, carSpawnPts.Count)].position;
+            money.SetActive(true);
+            money.GetComponent<MoneyScript>().moveSpd = carSpd;
+            moneySpawnTime = 0f;
+        }
+        else
+        {
+            moneySpawnTime += Time.fixedDeltaTime;
         }
     }
 

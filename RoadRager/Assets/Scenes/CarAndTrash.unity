@@ -5756,7 +5756,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 287.3, y: -226.63}
+  m_AnchoredPosition: {x: 370, y: -258.73}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1562779885
@@ -7463,7 +7463,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 279, y: -252}
+  m_AnchoredPosition: {x: 361.7, y: -284.1}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2003008668
@@ -7976,6 +7976,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Truck
       objectReference: {fileID: 0}
+    - target: {fileID: 3551054630227918105, guid: d0a2ac8632d0d1747a95738a758f4ac8, type: 3}
+      propertyPath: moneyPrefab
+      value: 
+      objectReference: {fileID: 2882171161938920689, guid: 8b07110798d6faf409ae7f2b7626d324, type: 3}
     - target: {fileID: 3596879777434808435, guid: d0a2ac8632d0d1747a95738a758f4ac8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
