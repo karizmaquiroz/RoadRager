@@ -38,6 +38,8 @@ public class Skills : MonoBehaviour
 
     public SkillUIManager skillManager = new SkillUIManager();
 
+    public GameObject pauseIcon;
+
     void Start()
     {
         skillArray = new int[3, 2];
@@ -213,9 +215,23 @@ public class Skills : MonoBehaviour
         }
     }
 
+    public void PauseUnpause() //for pause button
+    {
+        if (!PlayerMovement.paused)
+        {
+            pauseGame.Invoke();
+        }
+        else
+        {
+            resumeGame.Invoke();
+        }
+    }
+
     public void SkillGenerator()
     {
         pauseGame.Invoke();
+        pauseIcon.GetComponent<Image>().color = new Color (1f, 1f, 1f, 0.5f);
+        pauseIcon.GetComponent<Button>().interactable = false;
         skillCanvas.SetActive(true);
         //iterate and set
         for (int i = 0; i < 3; i++)
@@ -579,6 +595,8 @@ public class Skills : MonoBehaviour
 
         skillCanvas.SetActive(false);
         resumeGame.Invoke();
+        pauseIcon.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+        pauseIcon.GetComponent<Button>().interactable = true;
 
         Debug.Log(tempString);
         Debug.Log("SkillText1: " + skillText1.text);

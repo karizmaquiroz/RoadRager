@@ -11,6 +11,7 @@ public class Progression : MonoBehaviour
 
     public Skills skillRef;
     public GameObject distUIObj;
+    public GameObject distUITxt;
     Slider distUI;
     //public TMP_Text distUI;
 
@@ -46,14 +47,15 @@ public class Progression : MonoBehaviour
     void Pause()
     {
         paused = true;
-        distUI.minValue = playerDistance;
         distUIObj.SetActive(false);
+        distUITxt.SetActive(false);
     }
     void Unpause()
     {
         paused = false;
         distUI.maxValue = distance;
         distUIObj.SetActive(true);
+        distUITxt.SetActive(true);
     }
 
     void CalculateDistance()
@@ -70,6 +72,7 @@ public class Progression : MonoBehaviour
             ChangeLevel();
 
             skillRef.SkillGenerator();
+            distUI.minValue = playerDistance;
         }
     }
 

@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     public Animator playerAnim;
 
     public TMP_Text hpText;
-    bool paused = false;
+    public static bool paused = false;
 
     public GameObject gameOver;
 
@@ -44,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        paused = false;
         playerLane = 0;
         playerHp = 3;
         moneyAmount = 0;

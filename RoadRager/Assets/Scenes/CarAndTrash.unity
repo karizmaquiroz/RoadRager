@@ -1206,7 +1206,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &459094804
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2558,7 +2558,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &717946765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2689,6 +2689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Progression
   skillRef: {fileID: 1850410668}
   distUIObj: {fileID: 2003008666}
+  distUITxt: {fileID: 1562779883}
 --- !u!1 &780610374
 GameObject:
   m_ObjectHideFlags: 0
@@ -3906,7 +3907,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1084199340
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5556,8 +5557,8 @@ Transform:
   - {fileID: 399579819}
   - {fileID: 1761822594}
   - {fileID: 1716224457}
-  - {fileID: 1537031181}
   - {fileID: 717946768}
+  - {fileID: 1537031181}
   - {fileID: 607830707}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5573,7 +5574,7 @@ GameObject:
   - component: {fileID: 1562779886}
   - component: {fileID: 1562779885}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: DistanceText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6859,6 +6860,7 @@ MonoBehaviour:
   skillText3: {fileID: 1355942778}
   truck: {fileID: 0}
   skillManager: {fileID: 1716224458}
+  pauseIcon: {fileID: 2037830411}
 --- !u!4 &1850410669
 Transform:
   m_ObjectHideFlags: 0
@@ -7467,7 +7469,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2037830414}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1850410668}
+        m_TargetAssemblyTypeName: Skills, Assembly-CSharp
+        m_MethodName: PauseUnpause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2037830414
 MonoBehaviour:
   m_ObjectHideFlags: 0
