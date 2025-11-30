@@ -6,9 +6,11 @@ using UnityEngine.UI;
 
 public class CarAccessoryDisplay : MonoBehaviour
 {
+    [Header("Car Description")]
     [SerializeField] private TMP_Text carAccessoryName;
     [SerializeField] private Image carAccessoryImage; //[SerializeField] private Gameobject Car3DModel;
 
+    
     [SerializeField] private TMP_Text carAccessoryPrice;
     [SerializeField] private Button carAccessoryUse;
 
