@@ -93,8 +93,8 @@ public class SkillUIManager : MonoBehaviour
     {
         for(int i = 0; i< skillSlotsIcons.Length; i++)
         {
-            if (skillSlotsIcons[i].activeSelf  == false)
-            //if (skillSlotsSwoops[i].activeSelf  == false)
+            //if (skillSlotsIcons[i].activeSelf  == false)
+            if (skillSlotsSwoops[i].activeSelf  == false)
             {
                 if (skill == "fast")
                 {

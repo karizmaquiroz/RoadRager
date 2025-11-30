@@ -39,6 +39,7 @@ public class Skills : MonoBehaviour
     public SkillUIManager skillManager = new SkillUIManager();
 
     public GameObject pauseIcon;
+    public GameObject pauseTxt;
 
     void Start()
     {
@@ -220,10 +221,12 @@ public class Skills : MonoBehaviour
         if (!PlayerMovement.paused)
         {
             pauseGame.Invoke();
+            pauseTxt.SetActive(true);
         }
         else
         {
             resumeGame.Invoke();
+            pauseTxt.SetActive(false);
         }
     }
 
