@@ -1989,7 +1989,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 236.558, y: -196.54901}
+  m_AnchoredPosition: {x: 236.55798, y: -196.54901}
   m_SizeDelta: {x: 599.11597, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &295789689
@@ -2493,7 +2493,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 51.464996, y: -72.1895}
+  m_AnchoredPosition: {x: 51.464966, y: -72.1895}
   m_SizeDelta: {x: 41.070007, y: 27.621002}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &336572446
@@ -3473,6 +3473,7 @@ GameObject:
   - component: {fileID: 458167079}
   - component: {fileID: 458167078}
   - component: {fileID: 458167077}
+  - component: {fileID: 458167080}
   m_Layer: 5
   m_Name: Acessories_Pack_Selection
   m_TagString: Untagged
@@ -3619,6 +3620,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 458167075}
   m_CullTransparentMesh: 1
+--- !u!114 &458167080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458167075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96494ac71dc4b943a620f1dd11d1d52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarAccessoryDisplay
+  carAccessoryName: {fileID: 0}
+  carAccessoryImage: {fileID: 0}
+  carAccessoryPrice: {fileID: 0}
+  carAccessoryUse: {fileID: 0}
 --- !u!1 &458506277
 GameObject:
   m_ObjectHideFlags: 0
@@ -7582,6 +7599,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 927611090}
+  - component: {fileID: 927611091}
   m_Layer: 0
   m_Name: SaveManager
   m_TagString: Untagged
@@ -7604,6 +7622,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &927611091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927611089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d56b8055a78d8ea47a52b3e0b93b96c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveManager
+  currentItem: 0
+  money: 0
+  carItemUnlocked: 0100000000
 --- !u!1 &942151283
 GameObject:
   m_ObjectHideFlags: 0
@@ -7633,6 +7666,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a432887cdf83c142a3bcb25470a85b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  prevButton: {fileID: 0}
+  nextButton: {fileID: 0}
+  play: {fileID: 0}
+  locked: {fileID: 0}
 --- !u!4 &942151285
 Transform:
   m_ObjectHideFlags: 0
