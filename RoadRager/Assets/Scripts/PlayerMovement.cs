@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     float moneyMultiplier;
     float armorMultiplier;
     float noDamageChance;
+    float magnetizeMultiplier;
 
     public Animator playerAnim;
 
@@ -39,12 +40,15 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject gameOver;
 
+
+
     void Start()
     {
         playerLane = 0;
         playerHp = 3;
         moneyAmount = 0;
         moneyMultiplier = 1;
+        magnetizeMultiplier = 0;
 
         Skills.pauseGame.AddListener(Pause);
         Skills.resumeGame.AddListener(Unpause);
@@ -95,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
     void TouchPhaseTracker()
     {
 #if UNITY_ANDROID || UNITY_IOS
-        playerPos = newPos;
+        playerPos = transform.position;
         Vector3 newPos = Vector3.zero;
         
         if (Input.touchCount > 0)
@@ -291,10 +295,6 @@ public class PlayerMovement : MonoBehaviour
             setHP(1);
         }
 
-        if (gameObject.tag == "Money")
-        {
-            moneyAmount *= moneyMultiplier;
-        }
     }
 
     void setHP(int damage)
@@ -330,6 +330,23 @@ public class PlayerMovement : MonoBehaviour
     {
         noDamageChance = damageChance;
     }
+
+    public void setMagentizeMultiplier(float multiplier)
+    {
+        magnetizeMultiplier = multiplier;
+    }
+
+    public float getMagentizeMultiplier()
+    {
+        return magnetizeMultiplier;
+    }
+
+    public void collectMoney()
+    {
+        moneyAmount += moneyMultiplier;
+    }
+
+  
 
 }
 
