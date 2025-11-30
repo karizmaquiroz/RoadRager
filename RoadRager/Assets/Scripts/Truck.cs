@@ -14,7 +14,7 @@ public class Truck : MonoBehaviour
     Queue<GameObject> moneyCollection = new Queue<GameObject>();
     float trashSpawnTimeMax = 3f;
     float carSpawnTimeMax = 7f;
-    float moneySpawnTimeMax = 10f;
+    float moneySpawnTimeMax = 1f;
     float trashSpawnTime = 0f;
     float carSpawnTime = 0f;
     float moneySpawnTime = 0f;
@@ -38,7 +38,7 @@ public class Truck : MonoBehaviour
         }
         for (int i = 0; i < maxMoney; i++)
         {
-            carCollection.Enqueue(Instantiate(moneyPrefab, carSpawnPts[Random.Range(0, carSpawnPts.Count)].position, Quaternion.identity));
+            carCollection.Enqueue(Instantiate(moneyPrefab, trashSpawnPts[Random.Range(0, carSpawnPts.Count)].position, Quaternion.identity));
         }
 
         Skills.pauseGame.AddListener(Pause);

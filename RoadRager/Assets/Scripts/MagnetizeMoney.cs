@@ -8,7 +8,8 @@ public class MagnetizeMoney : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        //player = GameObject.FindWithTag("Player");
+        //magnetizeRef = player.GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -28,7 +29,7 @@ public class MagnetizeMoney : MonoBehaviour
         if (other.gameObject.CompareTag("player"))
         {
             magnetizeRef.collectMoney();
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 }
