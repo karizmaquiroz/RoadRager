@@ -47,15 +47,11 @@ public class Progression : MonoBehaviour
     void Pause()
     {
         paused = true;
-        distUIObj.SetActive(false);
-        distUITxt.SetActive(false);
     }
     void Unpause()
     {
         paused = false;
         distUI.maxValue = distance;
-        distUIObj.SetActive(true);
-        distUITxt.SetActive(true);
     }
 
     void CalculateDistance()
