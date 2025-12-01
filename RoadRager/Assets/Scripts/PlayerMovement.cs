@@ -36,14 +36,17 @@ public class PlayerMovement : MonoBehaviour
     public Animator playerAnim;
 
     public TMP_Text hpText;
-    bool paused = false;
+    public static bool paused = false;
 
     public GameObject gameOver;
+
+    public TMP_Text moneyTxt;
 
 
 
     void Start()
     {
+        paused = false;
         playerLane = 0;
         playerHp = 3;
         moneyAmount = 0;
@@ -54,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
         Skills.resumeGame.AddListener(Unpause);
 
         newPos = transform.position;
+        moneyTxt.text = "Money: " + moneyAmount.ToString();
     }
 
     // Update is called once per frame
@@ -344,6 +348,7 @@ public class PlayerMovement : MonoBehaviour
     public void collectMoney()
     {
         moneyAmount += moneyMultiplier;
+        moneyTxt.text = "Money: " + moneyAmount.ToString();
     }
 
   

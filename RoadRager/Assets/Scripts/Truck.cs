@@ -6,17 +6,23 @@ public class Truck : MonoBehaviour
 {
     public List<Transform> trashSpawnPts;
     public List<Transform> carSpawnPts;
+    public List<Transform> moneySpawnPts;
     public GameObject trashPrefab;
     public GameObject carPrefab;
+    public GameObject moneyPrefab;
     Queue<GameObject> trashCollection = new Queue<GameObject>();
     Queue<GameObject> carCollection = new Queue<GameObject>();
+    Queue<GameObject> moneyCollection = new Queue<GameObject>();
     float trashSpawnTimeMax = 3f;
     float carSpawnTimeMax = 7f;
+    float moneySpawnTimeMax = 5f;
     float trashSpawnTime = 0f;
     float carSpawnTime = 0f;
+    float moneySpawnTime = 0f;
     int maxTrash = 5;
     int maxCars = 3;
-    public float trashSpd = 300f;
+    int maxMoney = 20;
+    public float trashSpd;// = 3f;
     public float carSpd = 10f;
 
     bool paused = false;
@@ -31,6 +37,10 @@ public class Truck : MonoBehaviour
         {
             carCollection.Enqueue(Instantiate(carPrefab, carSpawnPts[Random.Range(0, carSpawnPts.Count)].position, Quaternion.identity));
         }
+        for (int i = 0; i < maxMoney; i++)
+        {
+            moneyCollection.Enqueue(Instantiate(moneyPrefab, trashSpawnPts[Random.Range(0, moneySpawnPts.Count)].position - new Vector3(0f, 1.3f, 0f), Quaternion.identity));
+        }
 
         Skills.pauseGame.AddListener(Pause);
         Skills.resumeGame.AddListener(Unpause);
@@ -42,6 +52,7 @@ public class Truck : MonoBehaviour
         {
             SpawnTrash();
             SpawnCar();
+            SpawnMoney();
         }
     }
 
@@ -61,7 +72,7 @@ public class Truck : MonoBehaviour
             GameObject currentTrash = trashCollection.Dequeue();
             currentTrash.transform.position = trashSpawnPts[Random.Range(0, trashSpawnPts.Count)].position;
             currentTrash.SetActive(true);
-            currentTrash.GetComponent<Rigidbody>().AddForce(transform.forward * trashSpd * Time.fixedDeltaTime, ForceMode.Impulse);
+            currentTrash.GetComponent<Rigidbody>().AddForce(transform.forward * trashSpd, ForceMode.Impulse);
             trashSpawnTime = 0f;
         }
         else
@@ -84,6 +95,22 @@ public class Truck : MonoBehaviour
         else
         {
             carSpawnTime += Time.fixedDeltaTime;
+        }
+    }
+
+    void SpawnMoney()
+    {
+        if (moneyCollection.Count > 0 && moneySpawnTime > moneySpawnTimeMax) //note: mb make it so 2 cars can't spawn in same lane? Or higher time lim or lower spawn lim
+        {
+            GameObject money = moneyCollection.Dequeue();
+            money.transform.position = moneySpawnPts[Random.Range(0, moneySpawnPts.Count)].position;
+            money.SetActive(true);
+            money.GetComponent<MoneyScript>().moveSpd = carSpd;
+            moneySpawnTime = 0f;
+        }
+        else
+        {
+            moneySpawnTime += Time.fixedDeltaTime;
         }
     }
 

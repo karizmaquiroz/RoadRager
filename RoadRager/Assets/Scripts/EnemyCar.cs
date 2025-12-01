@@ -72,7 +72,14 @@ public class EnemyCar : MonoBehaviour
 
     void SpinOut()
     {
-        transform.Rotate(0f, moveSpd * spinoutDir, 0f);
+        if (spinoutDir == 0)
+        {
+            transform.Rotate(0f, moveSpd * 1, 0f);
+        }
+        else 
+        {
+            transform.Rotate(0f, moveSpd * spinoutDir, 0f);
+        }
         transform.position += new Vector3(spinoutDir * 0.5f, 0f, 1f);
         Invoke("Reset", 1);
     }
