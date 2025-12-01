@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
     int playerLane;
 
-    int playerHp;
+    float playerHp;
     int totalPlayerHp;
 
     float moneyAmount;
@@ -292,7 +292,7 @@ public class PlayerMovement : MonoBehaviour
         if (gameObject.layer == 3) //obstacle layer
         {
             Debug.Log("hit");
-            setHP(1);
+            setHP(1 );
         }
 
     }
