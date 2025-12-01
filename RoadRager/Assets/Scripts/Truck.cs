@@ -21,7 +21,7 @@ public class Truck : MonoBehaviour
     float moneySpawnTime = 0f;
     int maxTrash = 5;
     int maxCars = 3;
-    int maxMoney = 20;
+    int maxMoney = 7;
     public float trashSpd;// = 3f;
     public float carSpd = 10f;
 
