@@ -43,7 +43,7 @@ public class MoneyScript : MonoBehaviour
         {
             transform.position -= new Vector3(0f, 0f, moveSpd) * Time.deltaTime;
         }
-        transform.Rotate(0f, 3f, 0f);
+        transform.Rotate(0f, 1f, 0f);
     }
 
     void MoneyGain()
