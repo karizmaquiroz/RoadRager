@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,8 +14,8 @@ public class ItemSelection : MonoBehaviour
     [SerializeField] private Button play;
     [SerializeField] private Button locked; //when pressed it would open the shop panel
 
-    
 
+    bool islocked;
 
 
     private int currAccessorie;
@@ -44,8 +45,24 @@ public class ItemSelection : MonoBehaviour
         {
             play.gameObject.SetActive(false);
             locked.gameObject.SetActive(true);
+            //buyItem(locked);
+            
         }
+        
     }
+
+    /*
+    private void buyItem(bool isLocked)
+    {
+        if (locked.gameObject = true)
+        {
+
+        }
+
+    }
+    */
+
+
     public void ChangeAccessorie(int _change)
     {
         currAccessorie += _change;

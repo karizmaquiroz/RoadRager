@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject gameOver;
 
-    public TMP_Text moneyTxt;
+    public TMP_Text moneyTxt; //moneycounter contains this
 
 
 
@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
         paused = false;
         playerLane = 0;
         playerHp = 3;
-        moneyAmount = 0;
+        //moneyAmount = 0; is instantiated in save mamanger as money
         moneyMultiplier = 1;
         magnetizeMultiplier = 0;
 
@@ -57,7 +57,12 @@ public class PlayerMovement : MonoBehaviour
         Skills.resumeGame.AddListener(Unpause);
 
         newPos = transform.position;
-        moneyTxt.text = "Money: " + moneyAmount.ToString();
+
+        //moneyTxt.text = "Money: " + moneyAmount.ToString();
+
+        // initialize UI at start
+        if (moneyTxt != null)
+            moneyTxt.text = SaveManager.instance.money + "$";
     }
 
     // Update is called once per frame
@@ -347,8 +352,15 @@ public class PlayerMovement : MonoBehaviour
 
     public void collectMoney()
     {
-        moneyAmount += moneyMultiplier;
-        moneyTxt.text = "Money: " + moneyAmount.ToString();
+        // Increase saved money
+        SaveManager.instance.money += Mathf.RoundToInt(moneyMultiplier);
+
+        // Save the updated money value permanently
+        SaveManager.instance.Save();
+
+        // Update UI
+        if (moneyTxt != null)
+            moneyTxt.text = SaveManager.instance.money + "$";
     }
 
   

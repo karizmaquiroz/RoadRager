@@ -16,7 +16,7 @@ public class SaveManager : MonoBehaviour
     //what we want to save
 
     public int currentItem; //accessory (non consumable)
-    public int money; //in game currency
+    public int money = 0; //in game currency
     public bool[] carItemUnlocked = new bool[5] { true, false, false, false, false }; //accessory already purchased (non consumable) item goes from non to diff color dice
 
 
