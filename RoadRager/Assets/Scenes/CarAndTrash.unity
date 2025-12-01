@@ -4513,6 +4513,103 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!82 &1264410965
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264410962}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 11b043b6296f8d34782b79e5c26fc88e, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1274382581
 GameObject:
   m_ObjectHideFlags: 0
@@ -6225,6 +6322,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: car front
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 79005b9141355484c890520609379e9d, type: 3}
+      propertyPath: m_TagString
+      value: CarModel
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 65702495048144492, guid: 79005b9141355484c890520609379e9d, type: 3}
@@ -6235,6 +6336,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 79005b9141355484c890520609379e9d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1264410964}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 79005b9141355484c890520609379e9d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1264410965}
   m_SourcePrefab: {fileID: 100100000, guid: 79005b9141355484c890520609379e9d, type: 3}
 --- !u!1 &1687894575
 GameObject:
@@ -6520,30 +6624,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81cf19d683bb6de42ae24c10cde8c2cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillUIManager
+  fastCarCI: {fileID: 0}
+  fastCarRI: {fileID: 0}
+  fastCarEI: {fileID: 0}
   fastCarCISwoop: {fileID: 21300000, guid: 0bf70b533604e8c4eabd3d4f9134d9ab, type: 3}
   fastCarRISwoop: {fileID: 21300000, guid: e3c23c52eeb7eb24d8cf648f1f96f728, type: 3}
   fastCarEISwoop: {fileID: 21300000, guid: 79c0098e09dbff0489a7446999c7ca1c, type: 3}
+  gainHPCI: {fileID: 0}
+  gainHPRI: {fileID: 0}
+  gainHPEI: {fileID: 0}
   gainHPCISwoop: {fileID: 21300000, guid: a6d91a9c4703eed47b933e53bbaf2064, type: 3}
   gainHPRISwoop: {fileID: 21300000, guid: 43d5026e787b7794e8e52eca6e7c1388, type: 3}
   gainHPEISwoop: {fileID: 21300000, guid: ed2483d9a552746408306d480038606d, type: 3}
+  gainMoneyCI: {fileID: 0}
+  gainMoneyRI: {fileID: 0}
+  gainMoneyEI: {fileID: 0}
   gainMoneyCISwoop: {fileID: 21300000, guid: 40f9e4d94a330f346b7452d1746c4573, type: 3}
   gainMoneyRISwoop: {fileID: 21300000, guid: 7265a51e5c7cb2d448ebb717aaa9fcb0, type: 3}
   gainMoneyEISwoop: {fileID: 21300000, guid: afefa7e15fcf6de48956a5d6b661dc84, type: 3}
+  increaseArmorCI: {fileID: 0}
+  increaseArmorRI: {fileID: 0}
+  increaseArmorEI: {fileID: 0}
   increaseArmorCISwoop: {fileID: 21300000, guid: d77213ad184f3e243a327c618ff86620, type: 3}
   increaseArmorRISwoop: {fileID: 21300000, guid: e09acdb1f477ee14f9da301fb7448c56, type: 3}
   increaseArmorEISwoop: {fileID: 21300000, guid: b1a7de5852369b246b8ab6d98c69abf4, type: 3}
+  magnetizeMoneyCI: {fileID: 0}
+  magnetizeMoneyRI: {fileID: 0}
+  magnetizeMoneyEI: {fileID: 0}
   magnetizeMoneyCISwoop: {fileID: 21300000, guid: ea6b8a8f8d4ec2b48a28163c4085dbb4, type: 3}
   magnetizeMoneyRISwoop: {fileID: 21300000, guid: 9f57b94d482d0894abb32d01c172ceca, type: 3}
   magnetizeMoneyEISwoop: {fileID: 21300000, guid: 7fb6b67468b756647a6b702383a745bf, type: 3}
+  negateDamageCI: {fileID: 0}
+  negateDamageRI: {fileID: 0}
+  negateDamageEI: {fileID: 0}
   negateDamageCISwoop: {fileID: 21300000, guid: 6e62026410037d143bc6b4018a147cec, type: 3}
   negateDamageRISwoop: {fileID: 21300000, guid: 618e55e108c9ed1468836a950875a2eb, type: 3}
   negateDamageEISwoop: {fileID: 21300000, guid: 5370fc306652b29409578d53001d66e9, type: 3}
+  reduceDistanceCI: {fileID: 0}
+  reduceDistanceRI: {fileID: 0}
+  reduceDistanceEI: {fileID: 0}
   reduceDistanceCISwoop: {fileID: 21300000, guid: 736a37095e264b84a91298369a9d4e94, type: 3}
   reduceDistanceRISwoop: {fileID: 21300000, guid: 2f941d282fe8a104894a6e873dd7df1f, type: 3}
   reduceDistanceEISwoop: {fileID: 21300000, guid: 9c5a7e7e42700ef4c970f53f5caeff0e, type: 3}
+  slowEnemyCI: {fileID: 0}
+  slowEnemyRI: {fileID: 0}
+  slowEnemyEI: {fileID: 0}
   slowEnemyCISwoop: {fileID: 21300000, guid: 76faf797c546b34499dc11ec88affa71, type: 3}
   slowEnemyRISwoop: {fileID: 21300000, guid: 5c1d126c8e7e94e4b987470c1820ceec, type: 3}
   slowEnemyEISwoop: {fileID: 21300000, guid: 76a4872965befca43941963a2b05afce, type: 3}
+  skillSlotsIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   skillSlotsSwoops:
   - {fileID: 506776809}
   - {fileID: 381845378}

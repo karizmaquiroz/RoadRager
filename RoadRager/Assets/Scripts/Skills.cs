@@ -9,6 +9,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using Unity.VisualScripting;
 
 public class Skills : MonoBehaviour
 {
@@ -37,6 +38,8 @@ public class Skills : MonoBehaviour
     float initCarSpd;
 
     public SkillUIManager skillManager = new SkillUIManager();
+
+    //public SkillManager skillRef = new SkillManager();
 
     public GameObject pauseIcon;
     public GameObject pauseTxt;
@@ -324,6 +327,7 @@ public class Skills : MonoBehaviour
 
             switch (tempNumber2)
             {
+                case 0:
                 case 1:
                 case 2:
                 case 3:
@@ -394,12 +398,72 @@ public class Skills : MonoBehaviour
             Debug.Log("Duplicate Found");
             return true;
         }
+
+      
         Debug.Log("Duplicate Not FOund");
             return false;
     }
-   
+
+    /*
+    public bool CheckForDuplicateSkillRarity(string[,] skillArray)
+    {
+        string firstSkill = null;
+        string secondSkill = null;
+        string thirdSkill = null;
+
+        string rarityone = null;
+        string raritytwo = null;
+        string raritythree = null;
+
+
+        for (int i = 0; i < 3; i++)
+        {
+            if(i == 0)
+            {
+                firstSkill =skillArray[i, 0];
+                rarityone = skillArray[i, 1];
+            }
+            else if(i == 1)
+            {
+                secondSkill=skillArray[i, 0];   
+                raritytwo = skillArray[i, 1];
+            }
+            else if(i == 2)
+            {
+                thirdSkill=skillArray[i, 0];
+                raritytwo=skillArray[i, 1];
+            }
+        }
+
+      
+        if(skillRef.currentPlayerSkills.Count != 0)
+        {
+            foreach(SkillClass skill in skillRef.currentPlayerSkills)
+            {
+                if(firstSkill == skill.name)
+                {
+                    //if it's less than, don't display.
+                    if(rarityone == "common" && raritytwo == "rare")
+                    {
+                        return true;
+                    }
+                    //if it's greater than, display.
+                    else if(rarityone == "rare" && raritytwo == "common")
+                    {
+                        return false;
+                    }
+                    else if(rarityone == "epic")
+                    {
+                        return false;
+                    }
+
+                }
+            }
+        }
+    }
+    */   
     
-    string DetermineSkill(string skill)  //some show up blank sometimes
+    string DetermineSkill(string skill, int order)  //some show up blank sometimes
     {
         Debug.Log("DS skillPass: " +  skill);
         string[] skillParse = skill.Split(',');
@@ -410,12 +474,15 @@ public class Skills : MonoBehaviour
             {
                 case "common":
                     fullSkill = "Gain 10% more money from coins";
+                    skillManager.DisplaySkillIcon("gainmoney", "common", order);
                     break;
                 case "rare":
                     fullSkill = "Gain 15% more money from coins";
+                    skillManager.DisplaySkillIcon("gainmoney", "rare", order);
                     break;
                 case "epic":
                     fullSkill = "Gain 30% more money from coins, but your health pool decreases by one";
+                    skillManager.DisplaySkillIcon("gainmoney", "epic", order);
                     break;
 
             }
@@ -427,12 +494,15 @@ public class Skills : MonoBehaviour
             {
                 case "common":
                     fullSkill = "Gain one heart to your health pool";
+                    skillManager.DisplaySkillIcon("gainhp", "common", order);
                     break;
                 case "rare":
                     fullSkill = "Gain two hearts to your health pool";
+                    skillManager.DisplaySkillIcon("gainhp", "rare", order);
                     break;
                 case "epic":
                     fullSkill = "Gain three hearts to your health pool, but your distance to travel is increased by 50%";
+                    skillManager.DisplaySkillIcon("gainhp", "epic", order);
                     break;
             }
         }
@@ -443,12 +513,15 @@ public class Skills : MonoBehaviour
             {
                 case "common":
                     fullSkill = "Reduce distance needed by 10%";
+                    skillManager.DisplaySkillIcon("reducedistance", "common", order);
                     break;
                 case "rare":
                     fullSkill = "Reduce distance needed by 15%";
+                    skillManager.DisplaySkillIcon("reducedistance", "rare", order);
                     break;
                 case "epic":
                     fullSkill = "Reduce distance needed by 30%, but you collect 15% less money";
+                    skillManager.DisplaySkillIcon("reducedistance", "epic", order);
                     break;
             }
         }
@@ -459,12 +532,15 @@ public class Skills : MonoBehaviour
             {
                 case "common":
                     fullSkill = "Money is magnetized by 5%";
+                    skillManager.DisplaySkillIcon("magnetize", "common", order);
                     break;
                 case "rare":
                     fullSkill = "Money is magnetized by 8%";
+                    skillManager.DisplaySkillIcon("magnetize", "rare", order);
                     break;
                 case "epic":
                     fullSkill = "Money is magnetized by 10%";
+                    skillManager.DisplaySkillIcon("magnetize", "epic", order);
                     break;
             }
         }
@@ -475,12 +551,15 @@ public class Skills : MonoBehaviour
             {
                 case "common":
                     fullSkill = "You take 50% less damage.";
+                    skillManager.DisplaySkillIcon("increasearmor", "common", order);
                     break;
                 case "rare":
                     fullSkill = "You take 75% less damage";
+                    skillManager.DisplaySkillIcon("increasearmor", "rare", order);
                     break;
                 case "epic":
                     fullSkill = "You take 100% less damage, but your travel distance is increased by 50%";
+                    skillManager.DisplaySkillIcon("increasearmor", "epic", order);
                     break;
             }
         }
@@ -491,12 +570,15 @@ public class Skills : MonoBehaviour
             {
                 case "common":
                     fullSkill = "You have a 10% chance to not take damage.";
+                    skillManager.DisplaySkillIcon("negate", "common", order);
                     break;
                 case "rare":
                     fullSkill = "You have a 15% chance to not take damage.";
+                    skillManager.DisplaySkillIcon("negate", "rare", order);
                     break;
                 case "epic":
                     fullSkill = "You have a 20% chance to not take damage.";
+                    skillManager.DisplaySkillIcon("negate", "epic", order);
                     break;
             }
         }
@@ -508,12 +590,15 @@ public class Skills : MonoBehaviour
             {
                 case "common":
                     fullSkill = "Make your car 5% faster";
+                    skillManager.DisplaySkillIcon("fastcar", "common", order);
                     break;
                 case "rare":
                     fullSkill = "Make your car 10% faster";
+                    skillManager.DisplaySkillIcon("fastcar", "rare", order);
                     break;
                 case "epic":
                     fullSkill = "Make your car 15% faster";
+                    skillManager.DisplaySkillIcon("fastcar", "epic", order);
                     break;
 
             }
@@ -526,12 +611,15 @@ public class Skills : MonoBehaviour
             {
                 case "common":
                     fullSkill = "Trash and enemy cars go 20% slower";
+                    skillManager.DisplaySkillIcon("slowenemy", "common", order);
                     break;
                 case "rare":
                     fullSkill = "Trash and enemy cars go 50% slower";
+                    skillManager.DisplaySkillIcon("slowenemy", "rare", order);
                     break;
                 case "epic":
                     fullSkill = "Trash and enemy cars go 75% slower";
+                    skillManager.DisplaySkillIcon("slowenemy", "epic", order);
                     break;
             }
         }
@@ -581,9 +669,9 @@ public class Skills : MonoBehaviour
         Debug.Log("Skill2 " + skill2);
 
 
-        skillText1.text = DetermineSkill(skill0);
-        skillText2.text = DetermineSkill(skill1);
-        skillText3.text = DetermineSkill(skill2);
+        skillText1.text = DetermineSkill(skill0, 0);
+        skillText2.text = DetermineSkill(skill1, 1);
+        skillText3.text = DetermineSkill(skill2, 2);
 
         Debug.Log("1.String: " + skillText1.text);
         Debug.Log("2.String: " + skillText2.text);
@@ -620,14 +708,17 @@ public class Skills : MonoBehaviour
                     case "common":
                         skillGainHP("common");
                         skillManager.DisplaySkillSprite("gainhp", "common");
+                        SkillClass gainHPCommon = new SkillClass("gainhp", "common");
                         break;
                     case "rare":
                         skillGainHP("rare");
                         skillManager.DisplaySkillSprite("gainhp", "rare");
+                        SkillClass gainHPRare = new SkillClass("gainhp", "rare");
                         break;
                     case "epic":
                         skillGainHP("epic");
                         skillManager.DisplaySkillSprite("gainhp", "epic");
+                        SkillClass gainHPEpic = new SkillClass("gainhp", "epic");
                         break;
                 }
             }
@@ -639,14 +730,17 @@ public class Skills : MonoBehaviour
                     case "common":
                         skillReduceDistance("common");
                         skillManager.DisplaySkillSprite("reducedis", "common");
+                        SkillClass reduceDisCommon = new SkillClass("reduceddis", "common");
                         break;
                     case "rare":
                         skillReduceDistance("rare");
                         skillManager.DisplaySkillSprite("reducedis", "rare");
+                        SkillClass reduceDisRare = new SkillClass("reduceddis", "rare");
                         break;
                     case "epic":
                         skillReduceDistance("epic");
                         skillManager.DisplaySkillSprite("reducedis", "epic");
+                        SkillClass reduceDisEpic = new SkillClass("reduceddis", "epic");
                         break;
                 }
             }
@@ -658,14 +752,17 @@ public class Skills : MonoBehaviour
                     case "common":
                         skillMagnetizeMoney("common");
                         skillManager.DisplaySkillSprite("magnetize", "common");
+                        SkillClass magnetizeMoneyCommon = new SkillClass("magnetize", "common");
                         break;
                     case "rare":
                         skillMagnetizeMoney("rare");
                         skillManager.DisplaySkillSprite("magnetize", "rare");
+                        SkillClass magnetizeMoneyRare = new SkillClass("magnetize", "rare");
                         break;
                     case "epic":
                         skillMagnetizeMoney("epic");
                         skillManager.DisplaySkillSprite("magnetize", "epic");
+                        SkillClass magnetizeMoneyEpic = new SkillClass("magnetize", "epic");
                         break;
                 }
             }
@@ -677,14 +774,17 @@ public class Skills : MonoBehaviour
                     case "common":
                         skillIncreaseArmor("common");
                         skillManager.DisplaySkillSprite("armor", "common");
+                        SkillClass armorCommon = new SkillClass("armor", "common");
                         break;
                     case "rare":
                         skillIncreaseArmor("rare");
                         skillManager.DisplaySkillSprite("armor", "rare");
+                        SkillClass armorRare = new SkillClass("armor", "rare");
                         break;
                     case "epic":
                         skillIncreaseArmor("epic");
                         skillManager.DisplaySkillSprite("armor", "epic");
+                        SkillClass armorEpic = new SkillClass("armor", "epic");
                         break;
                 }
             }
@@ -696,14 +796,17 @@ public class Skills : MonoBehaviour
                     case "common":
                         skillNegateDamage("common");
                         skillManager.DisplaySkillSprite("negate", "common");
+                        SkillClass negateCommon = new SkillClass("negate", "common");
                         break;
                     case "rare":
                         skillNegateDamage("rare");
                         skillManager.DisplaySkillSprite("negate", "rare");
+                        SkillClass negateRare = new SkillClass("negate", "rare");
                         break;
                     case "epic":
                         skillNegateDamage("epic");
                         skillManager.DisplaySkillSprite("negate", "epic");
+                        SkillClass negateEpic = new SkillClass("negate", "epic");
                         break;
                 }
             }
@@ -716,14 +819,17 @@ public class Skills : MonoBehaviour
                     case "common":
                         skillFasterCar("common");
                         skillManager.DisplaySkillSprite("fast", "common");
+                        SkillClass fastCommon = new SkillClass("fast", "common");
                         break;
                     case "rare":
                         skillFasterCar("rare");
                         skillManager.DisplaySkillSprite("fast", "rare");
+                        SkillClass fastRare = new SkillClass("fast", "rare");
                         break;
                     case "epic":
                         skillFasterCar("epic");
                         skillManager.DisplaySkillSprite("fast", "epic");
+                        SkillClass fastEpic = new SkillClass("fast", "epic");
                         break;
 
                 }
@@ -737,14 +843,17 @@ public class Skills : MonoBehaviour
                     case "common":
                         skillSlowEnemy("common");
                         skillManager.DisplaySkillSprite("slow", "common");
+                        SkillClass slowCommon = new SkillClass("slow", "common");
                         break;
                     case "rare":
                         skillSlowEnemy("rare");
                         skillManager.DisplaySkillSprite("slow", "rare");
+                        SkillClass slowRare = new SkillClass("slow", "rare");
                         break;
                     case "epic":
                         skillSlowEnemy("epic");
                         skillManager.DisplaySkillSprite("slow", "epic");
+                        SkillClass slowEpic = new SkillClass("slow", "epic");
                         break;
                 }
             }
@@ -754,286 +863,328 @@ public class Skills : MonoBehaviour
             
                 string[] skillParse = skill1.Split(',');
 
-                if (skill1.Contains("gainhp"))
+            if (skill1.Contains("gainhp"))
+            {
+
+                switch (skillParse[1])
                 {
-
-                    switch (skillParse[1])
-                    {
-                        case "common":
-                            skillGainHP("common");
-                            skillManager.DisplaySkillSprite("gainhp", "common");
-                            break;
-                        case "rare":
-                            skillGainHP("rare");
-                            skillManager.DisplaySkillSprite("gainhp", "rare");
-                            break;
-                        case "epic":
-                            skillGainHP("epic");
-                            skillManager.DisplaySkillSprite("gainhp", "epic");
-                            break;
-                    }
+                    case "common":
+                        skillGainHP("common");
+                        skillManager.DisplaySkillSprite("gainhp", "common");
+                        SkillClass gainHPCommon = new SkillClass("gainhp", "common");
+                        break;
+                    case "rare":
+                        skillGainHP("rare");
+                        skillManager.DisplaySkillSprite("gainhp", "rare");
+                        SkillClass gainHPRare = new SkillClass("gainhp", "rare");
+                        break;
+                    case "epic":
+                        skillGainHP("epic");
+                        skillManager.DisplaySkillSprite("gainhp", "epic");
+                        SkillClass gainHPEpic = new SkillClass("gainhp", "epic");
+                        break;
                 }
+            }
 
-                if (skill1.Contains("reducedistance"))
+            if (skill1.Contains("reducedistance"))
+            {
+                switch (skillParse[1])
                 {
-                    switch (skillParse[1])
-                    {
-                        case "common":
-                            skillReduceDistance("common");
-                            skillManager.DisplaySkillSprite("reducedis", "common");
-                            break;
-                        case "rare":
-                            skillReduceDistance("rare");
-                            skillManager.DisplaySkillSprite("reducedis", "rare");
-                            break;
-                        case "epic":
-                            skillReduceDistance("epic");
-                            skillManager.DisplaySkillSprite("reducedis", "epic");
-                            break;
-                    }
+                    case "common":
+                        skillReduceDistance("common");
+                        skillManager.DisplaySkillSprite("reducedis", "common");
+                        SkillClass reduceDisCommon = new SkillClass("reduceddis", "common");
+                        break;
+                    case "rare":
+                        skillReduceDistance("rare");
+                        skillManager.DisplaySkillSprite("reducedis", "rare");
+                        SkillClass reduceDisRare = new SkillClass("reduceddis", "rare");
+                        break;
+                    case "epic":
+                        skillReduceDistance("epic");
+                        skillManager.DisplaySkillSprite("reducedis", "epic");
+                        SkillClass reduceDisEpic = new SkillClass("reduceddis", "epic");
+                        break;
                 }
+            }
 
-                if (skill1.Contains("magnetize"))
+            if (skill1.Contains("magnetize"))
+            {
+                switch (skillParse[1])
                 {
-                    switch (skillParse[1])
-                    {
-                        case "common":
-                            skillMagnetizeMoney("common");
-                            skillManager.DisplaySkillSprite("magnetize", "common");
-                            break;
-                        case "rare":
-                            skillMagnetizeMoney("rare");
-                            skillManager.DisplaySkillSprite("magnetize", "rare");
-                            break;
-                        case "epic":
-                            skillMagnetizeMoney("epic");
-                            skillManager.DisplaySkillSprite("magnetize", "epic");
-                            break;
-                    }
+                    case "common":
+                        skillMagnetizeMoney("common");
+                        skillManager.DisplaySkillSprite("magnetize", "common");
+                        SkillClass magnetizeMoneyCommon = new SkillClass("magnetize", "common");
+                        break;
+                    case "rare":
+                        skillMagnetizeMoney("rare");
+                        skillManager.DisplaySkillSprite("magnetize", "rare");
+                        SkillClass magnetizeMoneyRare = new SkillClass("magnetize", "rare");
+                        break;
+                    case "epic":
+                        skillMagnetizeMoney("epic");
+                        skillManager.DisplaySkillSprite("magnetize", "epic");
+                        SkillClass magnetizeMoneyEpic = new SkillClass("magnetize", "epic");
+                        break;
                 }
+            }
 
-                if (skill1.Contains("increasearmor"))
+            if (skill1.Contains("increasearmor"))
+            {
+                switch (skillParse[1])
                 {
-                    switch (skillParse[1])
-                    {
-                        case "common":
-                            skillIncreaseArmor("common");
-                            skillManager.DisplaySkillSprite("armor", "common");
-                            break;
-                        case "rare":
-                            skillIncreaseArmor("rare");
-                            skillManager.DisplaySkillSprite("armor", "rare");
-                            break;
-                        case "epic":
-                            skillIncreaseArmor("epic");
-                            skillManager.DisplaySkillSprite("armor", "epic");
-                            break;
-                    }
+                    case "common":
+                        skillIncreaseArmor("common");
+                        skillManager.DisplaySkillSprite("armor", "common");
+                        SkillClass armorCommon = new SkillClass("armor", "common");
+                        break;
+                    case "rare":
+                        skillIncreaseArmor("rare");
+                        skillManager.DisplaySkillSprite("armor", "rare");
+                        SkillClass armorRare = new SkillClass("armor", "rare");
+                        break;
+                    case "epic":
+                        skillIncreaseArmor("epic");
+                        skillManager.DisplaySkillSprite("armor", "epic");
+                        SkillClass armorEpic = new SkillClass("armor", "epic");
+                        break;
                 }
+            }
 
-                if (skill1.Contains("negate"))
+            if (skill1.Contains("negate"))
+            {
+                switch (skillParse[1])
                 {
-                    switch (skillParse[1])
-                    {
-                        case "common":
-                            skillNegateDamage("common");
-                            skillManager.DisplaySkillSprite("negate", "common");
-                            break;
-                        case "rare":
-                            skillNegateDamage("rare");
-                            skillManager.DisplaySkillSprite("negate", "rare");
-                            break;
-                        case "epic":
-                            skillNegateDamage("epic");
-                            skillManager.DisplaySkillSprite("negate", "epic");
-                            break;
-                    }
+                    case "common":
+                        skillNegateDamage("common");
+                        skillManager.DisplaySkillSprite("negate", "common");
+                        SkillClass negateCommon = new SkillClass("negate", "common");
+                        break;
+                    case "rare":
+                        skillNegateDamage("rare");
+                        skillManager.DisplaySkillSprite("negate", "rare");
+                        SkillClass negateRare = new SkillClass("negate", "rare");
+                        break;
+                    case "epic":
+                        skillNegateDamage("epic");
+                        skillManager.DisplaySkillSprite("negate", "epic");
+                        SkillClass negateEpic = new SkillClass("negate", "epic");
+                        break;
                 }
+            }
 
-                if (skill1.Contains("fastcar"))
+            if (skill1.Contains("fastcar"))
+            {
+                //Ivy here :)
+                switch (skillParse[1])
                 {
-                    //Ivy here :)
-                    switch (skillParse[1])
-                    {
-                        case "common":
-                            skillFasterCar("common");
-                            skillManager.DisplaySkillSprite("fast", "common");
-                            break;
-                        case "rare":
-                            skillFasterCar("rare");
-                            skillManager.DisplaySkillSprite("fast", "rare");
-                            break;
-                        case "epic":
-                            skillFasterCar("epic");
-                            skillManager.DisplaySkillSprite("fast", "epic");
-                            break;
+                    case "common":
+                        skillFasterCar("common");
+                        skillManager.DisplaySkillSprite("fast", "common");
+                        SkillClass fastCommon = new SkillClass("fast", "common");
+                        break;
+                    case "rare":
+                        skillFasterCar("rare");
+                        skillManager.DisplaySkillSprite("fast", "rare");
+                        SkillClass fastRare = new SkillClass("fast", "rare");
+                        break;
+                    case "epic":
+                        skillFasterCar("epic");
+                        skillManager.DisplaySkillSprite("fast", "epic");
+                        SkillClass fastEpic = new SkillClass("fast", "epic");
+                        break;
 
-                    }
                 }
+            }
 
-                if (skill1.Contains("slowenemy"))
+            if (skill1.Contains("slowenemy"))
+            {
+                //Aiden here :)
+                switch (skillParse[1])
                 {
-                    //Aiden here :)
-                    switch (skillParse[1])
-                    {
-                        case "common":
-                            skillSlowEnemy("common");
-                            skillManager.DisplaySkillSprite("slow", "common");
-                            break;
-                        case "rare":
-                            skillSlowEnemy("rare");
-                            skillManager.DisplaySkillSprite("slow", "rare");
-                            break;
-                        case "epic":
-                            skillSlowEnemy("epic");
-                            skillManager.DisplaySkillSprite("slow", "epic");
-                            break;
-                    }
+                    case "common":
+                        skillSlowEnemy("common");
+                        skillManager.DisplaySkillSprite("slow", "common");
+                        SkillClass slowCommon = new SkillClass("slow", "common");
+                        break;
+                    case "rare":
+                        skillSlowEnemy("rare");
+                        skillManager.DisplaySkillSprite("slow", "rare");
+                        SkillClass slowRare = new SkillClass("slow", "rare");
+                        break;
+                    case "epic":
+                        skillSlowEnemy("epic");
+                        skillManager.DisplaySkillSprite("slow", "epic");
+                        SkillClass slowEpic = new SkillClass("slow", "epic");
+                        break;
                 }
-            
+            }
+
         }
         else if(tempString == skillText3.text)
         {
             
                 string[] skillParse = skill2.Split(',');
 
-                if (skill2.Contains("gainhp"))
+            if (skill2.Contains("gainhp"))
+            {
+
+                switch (skillParse[1])
                 {
-
-                    switch (skillParse[1])
-                    {
-                        case "common":
-                            skillGainHP("common");
-                            skillManager.DisplaySkillSprite("gainhp", "common");
-                            break;
-                        case "rare":
-                            skillGainHP("rare");
-                            skillManager.DisplaySkillSprite("gainhp", "rare");
-                            break;
-                        case "epic":
-                            skillGainHP("epic");
-                            skillManager.DisplaySkillSprite("gainhp", "epic");
-                            break;
-                    }
+                    case "common":
+                        skillGainHP("common");
+                        skillManager.DisplaySkillSprite("gainhp", "common");
+                        SkillClass gainHPCommon = new SkillClass("gainhp", "common");
+                        break;
+                    case "rare":
+                        skillGainHP("rare");
+                        skillManager.DisplaySkillSprite("gainhp", "rare");
+                        SkillClass gainHPRare = new SkillClass("gainhp", "rare");
+                        break;
+                    case "epic":
+                        skillGainHP("epic");
+                        skillManager.DisplaySkillSprite("gainhp", "epic");
+                        SkillClass gainHPEpic = new SkillClass("gainhp", "epic");
+                        break;
                 }
+            }
 
-                if (skill2.Contains("reducedistance"))
+            if (skill2.Contains("reducedistance"))
+            {
+                switch (skillParse[1])
                 {
-                    switch (skillParse[1])
-                    {
-                        case "common":
-                            skillReduceDistance("common");
-                            skillManager.DisplaySkillSprite("reducedis", "common");
-                            break;
-                        case "rare":
-                            skillReduceDistance("rare");
-                            skillManager.DisplaySkillSprite("reducedis", "rare");
-                            break;
-                        case "epic":
-                            skillReduceDistance("epic");
-                            skillManager.DisplaySkillSprite("reducedis", "epic");
-                            break;
-                    }
+                    case "common":
+                        skillReduceDistance("common");
+                        skillManager.DisplaySkillSprite("reducedis", "common");
+                        SkillClass reduceDisCommon = new SkillClass("reduceddis", "common");
+                        break;
+                    case "rare":
+                        skillReduceDistance("rare");
+                        skillManager.DisplaySkillSprite("reducedis", "rare");
+                        SkillClass reduceDisRare = new SkillClass("reduceddis", "rare");
+                        break;
+                    case "epic":
+                        skillReduceDistance("epic");
+                        skillManager.DisplaySkillSprite("reducedis", "epic");
+                        SkillClass reduceDisEpic = new SkillClass("reduceddis", "epic");
+                        break;
                 }
+            }
 
-                if (skill2.Contains("magnetize"))
+            if (skill2.Contains("magnetize"))
+            {
+                switch (skillParse[1])
                 {
-                    switch (skillParse[1])
-                    {
-                        case "common":
-                            skillMagnetizeMoney("common");
-                            skillManager.DisplaySkillSprite("magnetize", "common");
-                            break;
-                        case "rare":
-                            skillMagnetizeMoney("rare");
-                            skillManager.DisplaySkillSprite("magnetize", "rare");
-                            break;
-                        case "epic":
-                            skillMagnetizeMoney("epic");
-                            skillManager.DisplaySkillSprite("magnetize", "epic");
-                            break;
-                    }
+                    case "common":
+                        skillMagnetizeMoney("common");
+                        skillManager.DisplaySkillSprite("magnetize", "common");
+                        SkillClass magnetizeMoneyCommon = new SkillClass("magnetize", "common");
+                        break;
+                    case "rare":
+                        skillMagnetizeMoney("rare");
+                        skillManager.DisplaySkillSprite("magnetize", "rare");
+                        SkillClass magnetizeMoneyRare = new SkillClass("magnetize", "rare");
+                        break;
+                    case "epic":
+                        skillMagnetizeMoney("epic");
+                        skillManager.DisplaySkillSprite("magnetize", "epic");
+                        SkillClass magnetizeMoneyEpic = new SkillClass("magnetize", "epic");
+                        break;
                 }
+            }
 
-                if (skill2.Contains("increasearmor"))
+            if (skill2.Contains("increasearmor"))
+            {
+                switch (skillParse[1])
                 {
-                    switch (skillParse[1])
-                    {
-                        case "common":
-                            skillIncreaseArmor("common");
-                            skillManager.DisplaySkillSprite("armor", "common");
-                            break;
-                        case "rare":
-                            skillIncreaseArmor("rare");
-                            skillManager.DisplaySkillSprite("armor", "rare");
-                            break;
-                        case "epic":
-                            skillIncreaseArmor("epic");
-                            skillManager.DisplaySkillSprite("armor", "epic");
-                            break;
-                    }
+                    case "common":
+                        skillIncreaseArmor("common");
+                        skillManager.DisplaySkillSprite("armor", "common");
+                        SkillClass armorCommon = new SkillClass("armor", "common");
+                        break;
+                    case "rare":
+                        skillIncreaseArmor("rare");
+                        skillManager.DisplaySkillSprite("armor", "rare");
+                        SkillClass armorRare = new SkillClass("armor", "rare");
+                        break;
+                    case "epic":
+                        skillIncreaseArmor("epic");
+                        skillManager.DisplaySkillSprite("armor", "epic");
+                        SkillClass armorEpic = new SkillClass("armor", "epic");
+                        break;
                 }
+            }
 
-                if (skill2.Contains("negate"))
+            if (skill2.Contains("negate"))
+            {
+                switch (skillParse[1])
                 {
-                    switch (skillParse[1])
-                    {
-                        case "common":
-                            skillNegateDamage("common");
-                            skillManager.DisplaySkillSprite("negate", "common");
-                            break;
-                        case "rare":
-                            skillNegateDamage("rare");
-                            skillManager.DisplaySkillSprite("negate", "rare");
-                            break;
-                        case "epic":
-                            skillNegateDamage("epic");
-                            skillManager.DisplaySkillSprite("negate", "epic");
-                            break;
-                    }
+                    case "common":
+                        skillNegateDamage("common");
+                        skillManager.DisplaySkillSprite("negate", "common");
+                        SkillClass negateCommon = new SkillClass("negate", "common");
+                        break;
+                    case "rare":
+                        skillNegateDamage("rare");
+                        skillManager.DisplaySkillSprite("negate", "rare");
+                        SkillClass negateRare = new SkillClass("negate", "rare");
+                        break;
+                    case "epic":
+                        skillNegateDamage("epic");
+                        skillManager.DisplaySkillSprite("negate", "epic");
+                        SkillClass negateEpic = new SkillClass("negate", "epic");
+                        break;
                 }
+            }
 
-                if (skill2.Contains("fastcar"))
+            if (skill2.Contains("fastcar"))
+            {
+                //Ivy here :)
+                switch (skillParse[1])
                 {
-                    //Ivy here :)
-                    switch (skillParse[1])
-                    {
-                        case "common":
-                            skillFasterCar("common");
-                            skillManager.DisplaySkillSprite("fast", "common");
-                            break;
-                        case "rare":
-                            skillFasterCar("rare");
-                            skillManager.DisplaySkillSprite("fast", "rare");
-                            break;
-                        case "epic":
-                            skillFasterCar("epic");
-                            skillManager.DisplaySkillSprite("fast", "epic");
-                            break;
+                    case "common":
+                        skillFasterCar("common");
+                        skillManager.DisplaySkillSprite("fast", "common");
+                        SkillClass fastCommon = new SkillClass("fast", "common");
+                        break;
+                    case "rare":
+                        skillFasterCar("rare");
+                        skillManager.DisplaySkillSprite("fast", "rare");
+                        SkillClass fastRare = new SkillClass("fast", "rare");
+                        break;
+                    case "epic":
+                        skillFasterCar("epic");
+                        skillManager.DisplaySkillSprite("fast", "epic");
+                        SkillClass fastEpic = new SkillClass("fast", "epic");
+                        break;
 
-                    }
                 }
+            }
 
-                if (skill2.Contains("slowenemy"))
+            if (skill2.Contains("slowenemy"))
+            {
+                //Aiden here :)
+                switch (skillParse[1])
                 {
-                    //Aiden here :)
-                    switch (skillParse[1])
-                    {
-                        case "common":
-                            skillSlowEnemy("common");
-                            skillManager.DisplaySkillSprite("slow", "common");
-                            break;
-                        case "rare":
-                            skillSlowEnemy("rare");
-                            skillManager.DisplaySkillSprite("slow", "rare");
-                            break;
-                        case "epic":
-                            skillSlowEnemy("epic");
-                            skillManager.DisplaySkillSprite("slow", "epic");
-                            break;
-                    }
+                    case "common":
+                        skillSlowEnemy("common");
+                        skillManager.DisplaySkillSprite("slow", "common");
+                        SkillClass slowCommon = new SkillClass("slow", "common");
+                        break;
+                    case "rare":
+                        skillSlowEnemy("rare");
+                        skillManager.DisplaySkillSprite("slow", "rare");
+                        SkillClass slowRare = new SkillClass("slow", "rare");
+                        break;
+                    case "epic":
+                        skillSlowEnemy("epic");
+                        skillManager.DisplaySkillSprite("slow", "epic");
+                        SkillClass slowEpic = new SkillClass("slow", "epic");
+                        break;
                 }
-            
+            }
+
         }
 
 
