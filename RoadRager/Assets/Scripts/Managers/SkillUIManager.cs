@@ -72,7 +72,7 @@ public class SkillUIManager : MonoBehaviour
     public Sprite slowEnemyRISwoop;
     public Sprite slowEnemyEISwoop;
 
-    public GameObject[] skillSlotsIcons = new GameObject[3];
+    //public GameObject[] skillSlotsIcons = new GameObject[3];
     public GameObject[] skillSlotsSwoops = new GameObject[8];
     public TMP_Text[] stackTexts = new TMP_Text[8];
 
@@ -786,153 +786,153 @@ public class SkillUIManager : MonoBehaviour
         }
     }
 
-    public void DisplaySkillIcon(string skill, string rarity, int order)
-    {
-        if (skill == "fastcar")
-                {
-                    if (rarity == "common")
-                    {
-                        skillSlotsIcons[order].GetComponent<Image>().sprite = fastCarCI;
+    //public void DisplaySkillIcon(string skill, string rarity, int order)
+    //{
+    //    if (skill == "fastcar")
+    //            {
+    //                if (rarity == "common")
+    //                {
+    //                    //skillSlotsIcons[order].GetComponent<Image>().sprite = fastCarCI;
 
-                    }
-                    else if (rarity == "rare")
-                    {
-                        skillSlotsIcons[order].GetComponent<Image>().sprite = fastCarRI;
+    //                }
+    //                else if (rarity == "rare")
+    //                {
+    //                    //skillSlotsIcons[order].GetComponent<Image>().sprite = fastCarRI;
                       
-                    }
-                    else if (rarity == "epic")
-                    {
-                        skillSlotsIcons[order].GetComponent<Image>().sprite = fastCarEI;
+    //                }
+    //                else if (rarity == "epic")
+    //                {
+    //                    //skillSlotsIcons[order].GetComponent<Image>().sprite = fastCarEI;
                    
                         
-                    }
-                }
-        else if (skill == "gainhp")
-                {
-                    if (rarity == "common")
-                    {
-                        skillSlotsIcons[order].GetComponent<Image>().sprite = gainHPCI;
-                    }
-                    else if (rarity == "rare")
-                    {
-                        skillSlotsIcons[order].GetComponent<Image>().sprite = gainHPRI;  
-                    }
-                    else if (rarity == "epic")
-                    {
-                        skillSlotsIcons[order].GetComponent<Image>().sprite = gainHPEI;
+    //                }
+    //            }
+    //    else if (skill == "gainhp")
+    //            {
+    //                if (rarity == "common")
+    //                {
+    //                    //skillSlotsIcons[order].GetComponent<Image>().sprite = gainHPCI;
+    //                }
+    //                else if (rarity == "rare")
+    //                {
+    //                    //skillSlotsIcons[order].GetComponent<Image>().sprite = gainHPRI;  
+    //                }
+    //                else if (rarity == "epic")
+    //                {
+    //                    //skillSlotsIcons[order].GetComponent<Image>().sprite = gainHPEI;
                    
                        
-                    }
-                }
-        else if (skill == "gainmoney")
-                {
-                    if (rarity == "common")
-                    {
-                        skillSlotsIcons[order].GetComponent<Image>().sprite = gainMoneyCI;
+    //                }
+    //            }
+    //    else if (skill == "gainmoney")
+    //            {
+    //                if (rarity == "common")
+    //                {
+    //                    //skillSlotsIcons[order].GetComponent<Image>().sprite = gainMoneyCI;
                       
-                    }
-                    else if (rarity == "rare")
-                    {
-                        skillSlotsIcons[order].GetComponent<Image>().sprite = gainMoneyRI;
+    //                }
+    //                else if (rarity == "rare")
+    //                {
+    //                    //skillSlotsIcons[order].GetComponent<Image>().sprite = gainMoneyRI;
                        
-                    }
-                    else if (rarity == "epic")
-                    {
-                        skillSlotsIcons[order].GetComponent<Image>().sprite = gainMoneyEI;
+    //                }
+    //                else if (rarity == "epic")
+    //                {
+    //                    //skillSlotsIcons[order].GetComponent<Image>().sprite = gainMoneyEI;
                       
-                    }
-                }
-        else if (skill == "increasearmor")
-                {
-                    if (rarity == "common")
-                    {
-                        skillSlotsIcons[order].GetComponent<Image>().sprite = increaseArmorCI;
+    //                }
+    //            }
+    //    else if (skill == "increasearmor")
+    //            {
+    //                if (rarity == "common")
+    //                {
+    //                    //skillSlotsIcons[order].GetComponent<Image>().sprite = increaseArmorCI;
                      
-                    }
-                    else if (rarity == "rare")
-                    {
-                        skillSlotsIcons[order].GetComponent<Image>().sprite= increaseArmorRI;
+    //                }
+    //                else if (rarity == "rare")
+    //                {
+    //                    //skillSlotsIcons[order].GetComponent<Image>().sprite= increaseArmorRI;
                        
-                    }
-                    else if (rarity == "epic")
-                    {
-                        skillSlotsIcons[order].GetComponent<Image>().sprite = increaseArmorEI;
+    //                }
+    //                else if (rarity == "epic")
+    //                {
+    //                    //skillSlotsIcons[order].GetComponent<Image>().sprite = increaseArmorEI;
                        
 
-                    }
-                }
-        else if (skill == "magnetize")
-                {
-                    if (rarity == "common")
-                    {
-                        skillSlotsIcons[order].GetComponent<Image>().sprite = magnetizeMoneyCI;
+    //                }
+    //            }
+    //    else if (skill == "magnetize")
+    //            {
+    //                if (rarity == "common")
+    //                {
+    //                    //skillSlotsIcons[order].GetComponent<Image>().sprite = magnetizeMoneyCI;
                      
-                    }
-                    else if (rarity == "rare")
-                    {
-                        skillSlotsIcons[order].GetComponent< Image>().sprite = magnetizeMoneyRI;
+    //                }
+    //                else if (rarity == "rare")
+    //                {
+    //                    //skillSlotsIcons[order].GetComponent< Image>().sprite = magnetizeMoneyRI;
 
-                    }
-                    else if (rarity == "epic")
-                    {
-                        skillSlotsIcons[order].GetComponent<Image>().sprite = magnetizeMoneyEI;
+    //                }
+    //                else if (rarity == "epic")
+    //                {
+    //                    //skillSlotsIcons[order].GetComponent<Image>().sprite = magnetizeMoneyEI;
                         
-                    }
-                }
-        else if (skill == "negate")
-                {
-                    if (rarity == "common")
-                    {
-                        skillSlotsIcons[order].GetComponent<Image>().sprite = negateDamageCI;
+    //                }
+    //            }
+    //    else if (skill == "negate")
+    //            {
+    //                if (rarity == "common")
+    //                {
+    //                    //skillSlotsIcons[order].GetComponent<Image>().sprite = negateDamageCI;
                      
-                    }
-                    else if (rarity == "rare")
-                    {
-                        skillSlotsIcons[order].GetComponent<Image>().sprite = negateDamageRI;
+    //                }
+    //                else if (rarity == "rare")
+    //                {
+    //                    //skillSlotsIcons[order].GetComponent<Image>().sprite = negateDamageRI;
                        
-                    }
-                    else if (rarity == "epic")
-                    {
-                        skillSlotsIcons[order].GetComponent<Image>().sprite = negateDamageEI;
+    //                }
+    //                else if (rarity == "epic")
+    //                {
+    //                    //skillSlotsIcons[order].GetComponent<Image>().sprite = negateDamageEI;
                        
-                    }
-                }
-        else if (skill == "reducedistance")
-                {
-                    if (rarity == "common")
-                    {
-                        skillSlotsIcons[order].GetComponent<Image>().sprite = reduceDistanceCI;
+    //                }
+    //            }
+    //    else if (skill == "reducedistance")
+    //            {
+    //                if (rarity == "common")
+    //                {
+    //                    //skillSlotsIcons[order].GetComponent<Image>().sprite = reduceDistanceCI;
                        
-                    }
-                    else if (rarity == "rare")
-                    {
-                        skillSlotsIcons[order].GetComponent<Image>().sprite = reduceDistanceRI;
+    //                }
+    //                else if (rarity == "rare")
+    //                {
+    //                    //skillSlotsIcons[order].GetComponent<Image>().sprite = reduceDistanceRI;
                        
-                    }
-                    else if (rarity == "epic")
-                    {
-                        skillSlotsIcons[order].GetComponent<Image>().sprite = reduceDistanceEI;
+    //                }
+    //                else if (rarity == "epic")
+    //                {
+    //                    //skillSlotsIcons[order].GetComponent<Image>().sprite = reduceDistanceEI;
                       
-                    }
-                }
-        else if (skill == "slowenemy")
-                {
-                    if (rarity == "common")
-                    {
-                        skillSlotsIcons[order].GetComponent<Image>().sprite = slowEnemyCI;
+    //                }
+    //            }
+    //    else if (skill == "slowenemy")
+    //            {
+    //                if (rarity == "common")
+    //                {
+    //                    //skillSlotsIcons[order].GetComponent<Image>().sprite = slowEnemyCI;
                        
-                    }
-                    else if (rarity == "rare")
-                    {
-                        skillSlotsIcons[order].GetComponent <Image>().sprite = slowEnemyRI;
+    //                }
+    //                else if (rarity == "rare")
+    //                {
+    //                    //skillSlotsIcons[order].GetComponent <Image>().sprite = slowEnemyRI;
                       
-                    }
-                    else if (rarity == "epic")
-                    {
-                        skillSlotsIcons[order].GetComponent<Image>().sprite = slowEnemyEI;
+    //                }
+    //                else if (rarity == "epic")
+    //                {
+    //                    //skillSlotsIcons[order].GetComponent<Image>().sprite = slowEnemyEI;
                        
-                    }
-                }
+    //                }
+    //            }
             
 
         
