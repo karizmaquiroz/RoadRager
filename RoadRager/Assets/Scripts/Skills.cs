@@ -38,6 +38,9 @@ public class Skills : MonoBehaviour
 
     public SkillUIManager skillManager = new SkillUIManager();
 
+    public GameObject pauseIcon;
+    public GameObject pauseTxt;
+
     void Start()
     {
         skillArray = new int[3, 2];
@@ -200,22 +203,38 @@ public class Skills : MonoBehaviour
         {
             case "common":
                 truck.carSpd = initCarSpd - initCarSpd * 0.2f;
-                truck.trashSpd = initTrashSpd - initTrashSpd * 0.2f;
+                //truck.trashSpd = initTrashSpd - initTrashSpd * 0.2f;
                 break;
             case "rare":
                 truck.carSpd = initCarSpd - initCarSpd * 0.5f;
-                truck.trashSpd = initTrashSpd - initTrashSpd * 0.5f;
+                //truck.trashSpd = initTrashSpd - initTrashSpd * 0.5f;
                 break;
             case "epic":
                 truck.carSpd = initCarSpd - initCarSpd * 0.75f;
-                truck.trashSpd = initTrashSpd - initTrashSpd * 0.75f;
+                //truck.trashSpd = initTrashSpd - initTrashSpd * 0.75f;
                 break;
+        }
+    }
+
+    public void PauseUnpause() //for pause button
+    {
+        if (!PlayerMovement.paused)
+        {
+            pauseGame.Invoke();
+            pauseTxt.SetActive(true);
+        }
+        else
+        {
+            resumeGame.Invoke();
+            pauseTxt.SetActive(false);
         }
     }
 
     public void SkillGenerator()
     {
         pauseGame.Invoke();
+        pauseIcon.GetComponent<Image>().color = new Color (1f, 1f, 1f, 0.5f);
+        pauseIcon.GetComponent<Button>().interactable = false;
         skillCanvas.SetActive(true);
         //iterate and set
         for (int i = 0; i < 3; i++)
@@ -579,6 +598,8 @@ public class Skills : MonoBehaviour
 
         skillCanvas.SetActive(false);
         resumeGame.Invoke();
+        pauseIcon.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+        pauseIcon.GetComponent<Button>().interactable = true;
 
         Debug.Log(tempString);
         Debug.Log("SkillText1: " + skillText1.text);
