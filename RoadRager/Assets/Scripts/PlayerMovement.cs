@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
 
         // initialize UI at start
         if (moneyTxt != null)
-            moneyTxt.text = SaveManager.instance.money + "$";
+            moneyTxt.text = "Money: $" + SaveManager.instance.money;
     }
 
     // Update is called once per frame
@@ -360,7 +360,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Update UI
         if (moneyTxt != null)
-            moneyTxt.text = SaveManager.instance.money + "$";
+            moneyTxt.text = "Money: $" + SaveManager.instance.money;
     }
 
   
