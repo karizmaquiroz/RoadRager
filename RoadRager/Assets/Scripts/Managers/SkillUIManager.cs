@@ -7,71 +7,71 @@ public class SkillUIManager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    //public Sprite fastCarCI;
-    //public Sprite fastCarRI;
-    //public Sprite fastCarEI;
+    public Sprite fastCarCI;
+    public Sprite fastCarRI;
+    public Sprite fastCarEI;
 
     public Sprite fastCarCISwoop;
     public Sprite fastCarRISwoop;
     public Sprite fastCarEISwoop;
 
-    //public Sprite gainHPCI;
-    //public Sprite gainHPRI;
-    //public Sprite gainHPEI;
+    public Sprite gainHPCI;
+    public Sprite gainHPRI;
+    public Sprite gainHPEI;
 
     public Sprite gainHPCISwoop;
     public Sprite gainHPRISwoop;
     public Sprite gainHPEISwoop;
 
-    //public Sprite gainMoneyCI;
-    //public Sprite gainMoneyRI;
-    //public Sprite gainMoneyEI;
+    public Sprite gainMoneyCI;
+    public Sprite gainMoneyRI;
+    public Sprite gainMoneyEI;
 
     public Sprite gainMoneyCISwoop;
     public Sprite gainMoneyRISwoop;
     public Sprite gainMoneyEISwoop;
 
-    //public Sprite increaseArmorCI;
-    //public Sprite increaseArmorRI;
-    //public Sprite increaseArmorEI;
+    public Sprite increaseArmorCI;
+    public Sprite increaseArmorRI;
+   public Sprite increaseArmorEI;
 
     public Sprite increaseArmorCISwoop;
     public Sprite increaseArmorRISwoop;
     public Sprite increaseArmorEISwoop;
 
-    //public Sprite magnetizeMoneyCI;
-    //public Sprite magnetizeMoneyRI;
-    //public Sprite magnetizeMoneyEI;
+    public Sprite magnetizeMoneyCI;
+    public Sprite magnetizeMoneyRI;
+    public Sprite magnetizeMoneyEI;
 
     public Sprite magnetizeMoneyCISwoop;
     public Sprite magnetizeMoneyRISwoop;
     public Sprite magnetizeMoneyEISwoop;
 
-    //public Sprite negateDamageCI;
-    //public Sprite negateDamageRI;
-    //public Sprite negateDamageEI;
+    public Sprite negateDamageCI;
+    public Sprite negateDamageRI;
+    public Sprite negateDamageEI;
 
     public Sprite negateDamageCISwoop;
     public Sprite negateDamageRISwoop;
     public Sprite negateDamageEISwoop;
 
-    //public Sprite reduceDistanceCI;
-    //public Sprite reduceDistanceRI;
-    //public Sprite reduceDistanceEI;
+    public Sprite reduceDistanceCI;
+    public Sprite reduceDistanceRI;
+    public Sprite reduceDistanceEI;
 
     public Sprite reduceDistanceCISwoop;
     public Sprite reduceDistanceRISwoop;
     public Sprite reduceDistanceEISwoop;
 
-    //public Sprite slowEnemyCI;
-    //public Sprite slowEnemyRI;
-    //public Sprite slowEnemyEI;
+    public Sprite slowEnemyCI;
+    public Sprite slowEnemyRI;
+    public Sprite slowEnemyEI;
 
     public Sprite slowEnemyCISwoop;
     public Sprite slowEnemyRISwoop;
     public Sprite slowEnemyEISwoop;
 
-    //public GameObject[] skillSlotsIcons = new GameObject[8];
+    public GameObject[] skillSlotsIcons = new GameObject[3];
     public GameObject[] skillSlotsSwoops = new GameObject[8];
     
     void Start()
@@ -79,9 +79,10 @@ public class SkillUIManager : MonoBehaviour
         //for(int i = 0; i < skillSlotsIcons.Length; i++)
         for(int i = 0; i < skillSlotsSwoops.Length; i++)
         {
-            //skillSlotsIcons[i].SetActive(false);
+            
             skillSlotsSwoops[i].SetActive(false);
         }
+        
     }
 
     // Update is called once per frame
@@ -364,5 +365,157 @@ public class SkillUIManager : MonoBehaviour
             }
            
         }
+    }
+
+    public void DisplaySkillIcon(string skill, string rarity, int order)
+    {
+        if (skill == "fastcar")
+                {
+                    if (rarity == "common")
+                    {
+                        skillSlotsIcons[order].GetComponent<Image>().sprite = fastCarCI;
+
+                    }
+                    else if (rarity == "rare")
+                    {
+                        skillSlotsIcons[order].GetComponent<Image>().sprite = fastCarRI;
+                      
+                    }
+                    else if (rarity == "epic")
+                    {
+                        skillSlotsIcons[order].GetComponent<Image>().sprite = fastCarEI;
+                   
+                        
+                    }
+                }
+        else if (skill == "gainhp")
+                {
+                    if (rarity == "common")
+                    {
+                        skillSlotsIcons[order].GetComponent<Image>().sprite = gainHPCI;
+                    }
+                    else if (rarity == "rare")
+                    {
+                        skillSlotsIcons[order].GetComponent<Image>().sprite = gainHPRI;  
+                    }
+                    else if (rarity == "epic")
+                    {
+                        skillSlotsIcons[order].GetComponent<Image>().sprite = gainHPEI;
+                   
+                       
+                    }
+                }
+        else if (skill == "gainMoney")
+                {
+                    if (rarity == "common")
+                    {
+                        skillSlotsIcons[order].GetComponent<Image>().sprite = gainMoneyCI;
+                      
+                    }
+                    else if (rarity == "rare")
+                    {
+                        skillSlotsIcons[order].GetComponent<Image>().sprite = gainMoneyRI;
+                       
+                    }
+                    else if (rarity == "epic")
+                    {
+                        skillSlotsIcons[order].GetComponent<Image>().sprite = gainMoneyEI;
+                      
+                    }
+                }
+        else if (skill == "increasearmor")
+                {
+                    if (rarity == "common")
+                    {
+                        skillSlotsIcons[order].GetComponent<Image>().sprite = increaseArmorCI;
+                     
+                    }
+                    else if (rarity == "rare")
+                    {
+                        skillSlotsIcons[order].GetComponent<Image>().sprite= increaseArmorRI;
+                       
+                    }
+                    else if (rarity == "epic")
+                    {
+                        skillSlotsIcons[order].GetComponent<Image>().sprite = increaseArmorEI;
+                       
+
+                    }
+                }
+        else if (skill == "magnetize")
+                {
+                    if (rarity == "common")
+                    {
+                        skillSlotsIcons[order].GetComponent<Image>().sprite = magnetizeMoneyCI;
+                     
+                    }
+                    else if (rarity == "rare")
+                    {
+                        skillSlotsIcons[order].GetComponent< Image>().sprite = magnetizeMoneyRI;
+
+                    }
+                    else if (rarity == "epic")
+                    {
+                        skillSlotsIcons[order].GetComponent<Image>().sprite = magnetizeMoneyEI;
+                        
+                    }
+                }
+        else if (skill == "negate")
+                {
+                    if (rarity == "common")
+                    {
+                        skillSlotsIcons[order].GetComponent<Image>().sprite = negateDamageCI;
+                     
+                    }
+                    else if (rarity == "rare")
+                    {
+                        skillSlotsIcons[order].GetComponent<Image>().sprite = negateDamageRI;
+                       
+                    }
+                    else if (rarity == "epic")
+                    {
+                        skillSlotsIcons[order].GetComponent<Image>().sprite = negateDamageEI;
+                       
+                    }
+                }
+        else if (skill == "reducedistance")
+                {
+                    if (rarity == "common")
+                    {
+                        skillSlotsIcons[order].GetComponent<Image>().sprite = reduceDistanceCI;
+                       
+                    }
+                    else if (rarity == "rare")
+                    {
+                        skillSlotsIcons[order].GetComponent<Image>().sprite = reduceDistanceRI;
+                       
+                    }
+                    else if (rarity == "epic")
+                    {
+                        skillSlotsIcons[order].GetComponent<Image>().sprite = reduceDistanceEI;
+                      
+                    }
+                }
+        else if (skill == "slowenemy")
+                {
+                    if (rarity == "common")
+                    {
+                        skillSlotsIcons[order].GetComponent<Image>().sprite = slowEnemyCI;
+                       
+                    }
+                    else if (rarity == "rare")
+                    {
+                        skillSlotsIcons[order].GetComponent <Image>().sprite = slowEnemyRI;
+                      
+                    }
+                    else if (rarity == "epic")
+                    {
+                        skillSlotsIcons[order].GetComponent<Image>().sprite = slowEnemyEI;
+                       
+                    }
+                }
+            
+
+        
     }
 }

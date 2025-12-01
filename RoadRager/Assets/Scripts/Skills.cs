@@ -462,7 +462,7 @@ public class Skills : MonoBehaviour
     }
     */   
     
-    string DetermineSkill(string skill)  //some show up blank sometimes
+    string DetermineSkill(string skill, int order)  //some show up blank sometimes
     {
         Debug.Log("DS skillPass: " +  skill);
         string[] skillParse = skill.Split(',');
@@ -473,12 +473,15 @@ public class Skills : MonoBehaviour
             {
                 case "common":
                     fullSkill = "Gain 10% more money from coins";
+                    skillManager.DisplaySkillIcon("gainmoney", "common", order);
                     break;
                 case "rare":
                     fullSkill = "Gain 15% more money from coins";
+                    skillManager.DisplaySkillIcon("gainmoney", "rare", order);
                     break;
                 case "epic":
                     fullSkill = "Gain 30% more money from coins, but your health pool decreases by one";
+                    skillManager.DisplaySkillIcon("gainmoney", "epic", order);
                     break;
 
             }
@@ -490,12 +493,15 @@ public class Skills : MonoBehaviour
             {
                 case "common":
                     fullSkill = "Gain one heart to your health pool";
+                    skillManager.DisplaySkillIcon("gainhp", "common", order);
                     break;
                 case "rare":
                     fullSkill = "Gain two hearts to your health pool";
+                    skillManager.DisplaySkillIcon("gainhp", "rare", order);
                     break;
                 case "epic":
                     fullSkill = "Gain three hearts to your health pool, but your distance to travel is increased by 50%";
+                    skillManager.DisplaySkillIcon("gainhp", "epic", order);
                     break;
             }
         }
@@ -506,12 +512,15 @@ public class Skills : MonoBehaviour
             {
                 case "common":
                     fullSkill = "Reduce distance needed by 10%";
+                    skillManager.DisplaySkillIcon("reducedistance", "common", order);
                     break;
                 case "rare":
                     fullSkill = "Reduce distance needed by 15%";
+                    skillManager.DisplaySkillIcon("reducedistance", "rare", order);
                     break;
                 case "epic":
                     fullSkill = "Reduce distance needed by 30%, but you collect 15% less money";
+                    skillManager.DisplaySkillIcon("reducedistance", "epic", order);
                     break;
             }
         }
@@ -522,12 +531,15 @@ public class Skills : MonoBehaviour
             {
                 case "common":
                     fullSkill = "Money is magnetized by 5%";
+                    skillManager.DisplaySkillIcon("magnetize", "common", order);
                     break;
                 case "rare":
                     fullSkill = "Money is magnetized by 8%";
+                    skillManager.DisplaySkillIcon("magnetize", "rare", order);
                     break;
                 case "epic":
                     fullSkill = "Money is magnetized by 10%";
+                    skillManager.DisplaySkillIcon("magnetize", "epic", order);
                     break;
             }
         }
@@ -538,12 +550,15 @@ public class Skills : MonoBehaviour
             {
                 case "common":
                     fullSkill = "You take 50% less damage.";
+                    skillManager.DisplaySkillIcon("increasearmor", "common", order);
                     break;
                 case "rare":
                     fullSkill = "You take 75% less damage";
+                    skillManager.DisplaySkillIcon("increasearmor", "rare", order);
                     break;
                 case "epic":
                     fullSkill = "You take 100% less damage, but your travel distance is increased by 50%";
+                    skillManager.DisplaySkillIcon("increasearmor", "epic", order);
                     break;
             }
         }
@@ -554,12 +569,15 @@ public class Skills : MonoBehaviour
             {
                 case "common":
                     fullSkill = "You have a 10% chance to not take damage.";
+                    skillManager.DisplaySkillIcon("negate", "common", order);
                     break;
                 case "rare":
                     fullSkill = "You have a 15% chance to not take damage.";
+                    skillManager.DisplaySkillIcon("negate", "rare", order);
                     break;
                 case "epic":
                     fullSkill = "You have a 20% chance to not take damage.";
+                    skillManager.DisplaySkillIcon("negate", "epic", order);
                     break;
             }
         }
@@ -571,12 +589,15 @@ public class Skills : MonoBehaviour
             {
                 case "common":
                     fullSkill = "Make your car 5% faster";
+                    skillManager.DisplaySkillIcon("fastcar", "common", order);
                     break;
                 case "rare":
                     fullSkill = "Make your car 10% faster";
+                    skillManager.DisplaySkillIcon("fastcar", "rare", order);
                     break;
                 case "epic":
                     fullSkill = "Make your car 15% faster";
+                    skillManager.DisplaySkillIcon("fastcar", "epic", order);
                     break;
 
             }
@@ -589,12 +610,15 @@ public class Skills : MonoBehaviour
             {
                 case "common":
                     fullSkill = "Trash and enemy cars go 20% slower";
+                    skillManager.DisplaySkillIcon("slowenemy", "common", order);
                     break;
                 case "rare":
                     fullSkill = "Trash and enemy cars go 50% slower";
+                    skillManager.DisplaySkillIcon("slowenemy", "rare", order);
                     break;
                 case "epic":
                     fullSkill = "Trash and enemy cars go 75% slower";
+                    skillManager.DisplaySkillIcon("slowenemy", "epic", order);
                     break;
             }
         }
@@ -644,9 +668,9 @@ public class Skills : MonoBehaviour
         Debug.Log("Skill2 " + skill2);
 
 
-        skillText1.text = DetermineSkill(skill0);
-        skillText2.text = DetermineSkill(skill1);
-        skillText3.text = DetermineSkill(skill2);
+        skillText1.text = DetermineSkill(skill0, 0);
+        skillText2.text = DetermineSkill(skill1, 1);
+        skillText3.text = DetermineSkill(skill2, 2);
 
         Debug.Log("1.String: " + skillText1.text);
         Debug.Log("2.String: " + skillText2.text);
