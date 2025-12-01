@@ -6,7 +6,7 @@ public class MoneyScript : MonoBehaviour
     GameObject truck;
     Vector3 initPos;
     [System.NonSerialized] public float moveSpd = 10f; //make it match enemy car when it slows down?
-    //AudioSource aud;
+    AudioSource aud;
     GameObject player;
     PlayerMovement magnetizeRef;
     private void Start()
@@ -19,7 +19,7 @@ public class MoneyScript : MonoBehaviour
         Skills.pauseGame.AddListener(Reset);
         Skills.resumeGame.AddListener(Reset);
 
-        //aud = GetComponent<AudioSource>();
+        aud = GetComponent<AudioSource>();
 
         player = GameObject.FindWithTag("Player");
         magnetizeRef = player.GetComponent<PlayerMovement>();
@@ -35,6 +35,7 @@ public class MoneyScript : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, step);
             if (dist < 0.2f)
             {
+                //aud.Play();
                 MoneyGain();
             }
         }
@@ -47,9 +48,9 @@ public class MoneyScript : MonoBehaviour
 
     void MoneyGain()
     {
+        aud.Play();
         magnetizeRef.collectMoney();
         Reset();
-        //aud.Play();
     }
 
     private void Reset()
@@ -70,6 +71,7 @@ public class MoneyScript : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Player")) //add later; sound and explosion
         {
+            //aud.Play();
             MoneyGain();
         }
     }
