@@ -560,8 +560,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 15c3de02f5047834e9c61c87514e0cd9, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2836,8 +2836,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 15c3de02f5047834e9c61c87514e0cd9, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5116,8 +5116,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 15c3de02f5047834e9c61c87514e0cd9, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5556,15 +5556,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Button
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e15e205e9258631459054ba08fba6111, type: 2}
+  m_sharedMaterial: {fileID: 8273772790466881266, guid: e15e205e9258631459054ba08fba6111, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5694,15 +5694,15 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e15e205e9258631459054ba08fba6111, type: 2}
+  m_sharedMaterial: {fileID: 8273772790466881266, guid: e15e205e9258631459054ba08fba6111, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5830,15 +5830,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Button
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e15e205e9258631459054ba08fba6111, type: 2}
+  m_sharedMaterial: {fileID: 8273772790466881266, guid: e15e205e9258631459054ba08fba6111, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5966,15 +5966,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Button
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e15e205e9258631459054ba08fba6111, type: 2}
+  m_sharedMaterial: {fileID: 8273772790466881266, guid: e15e205e9258631459054ba08fba6111, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6371,8 +6371,8 @@ Transform:
   - {fileID: 399579819}
   - {fileID: 1761822594}
   - {fileID: 1716224457}
-  - {fileID: 717946768}
   - {fileID: 1537031181}
+  - {fileID: 717946768}
   - {fileID: 607830707}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6831,36 +6831,36 @@ MonoBehaviour:
   gainMoneyCISwoop: {fileID: 21300000, guid: 9ae7b2aa5b3e8ee428055c5f0cf2fdcb, type: 3}
   gainMoneyRISwoop: {fileID: 21300000, guid: a3f9a6045f0e89e439330310f98446f5, type: 3}
   gainMoneyEISwoop: {fileID: 21300000, guid: 3f12d5fa634dc2745b23c5da52f15fb5, type: 3}
-  increaseArmorCI: {fileID: 21300000, guid: ed1bf5be629ad0e43b919f22abb6621f, type: 3}
-  increaseArmorRI: {fileID: 21300000, guid: 6c6d733bcc954184996df9295e01162f, type: 3}
-  increaseArmorEI: {fileID: 21300000, guid: 9bc3104c0c9b4244f827dc299a98ee10, type: 3}
-  increaseArmorCISwoop: {fileID: 21300000, guid: d77213ad184f3e243a327c618ff86620, type: 3}
-  increaseArmorRISwoop: {fileID: 21300000, guid: e09acdb1f477ee14f9da301fb7448c56, type: 3}
-  increaseArmorEISwoop: {fileID: 21300000, guid: b1a7de5852369b246b8ab6d98c69abf4, type: 3}
-  magnetizeMoneyCI: {fileID: 21300000, guid: a014626d0cb91e6429932eb75a7237c4, type: 3}
-  magnetizeMoneyRI: {fileID: 21300000, guid: 61b5b58fe3ea16242a4ba806f69f16c7, type: 3}
-  magnetizeMoneyEI: {fileID: 21300000, guid: 1c1065d5471fd764f9ba3fea67277ad3, type: 3}
-  magnetizeMoneyCISwoop: {fileID: 21300000, guid: ea6b8a8f8d4ec2b48a28163c4085dbb4, type: 3}
-  magnetizeMoneyRISwoop: {fileID: 21300000, guid: 9f57b94d482d0894abb32d01c172ceca, type: 3}
-  magnetizeMoneyEISwoop: {fileID: 21300000, guid: 7fb6b67468b756647a6b702383a745bf, type: 3}
-  negateDamageCI: {fileID: 21300000, guid: 8bb283b14fbea384e85421cecb5db69a, type: 3}
-  negateDamageRI: {fileID: 21300000, guid: 303e2436ebbcc5943bd371d821e025aa, type: 3}
-  negateDamageEI: {fileID: 21300000, guid: d7c8d9bc716cbcc4fb5b8ddf778854d4, type: 3}
-  negateDamageCISwoop: {fileID: 21300000, guid: 6e62026410037d143bc6b4018a147cec, type: 3}
-  negateDamageRISwoop: {fileID: 21300000, guid: 618e55e108c9ed1468836a950875a2eb, type: 3}
-  negateDamageEISwoop: {fileID: 21300000, guid: 5370fc306652b29409578d53001d66e9, type: 3}
-  reduceDistanceCI: {fileID: 21300000, guid: 67ba41fc6e02ff3429ccf538fddd6f08, type: 3}
-  reduceDistanceRI: {fileID: 21300000, guid: ceae63a8e70a01b46a40a7c1b036b202, type: 3}
-  reduceDistanceEI: {fileID: 21300000, guid: 300c055e268288f42aea605fc5d25590, type: 3}
-  reduceDistanceCISwoop: {fileID: 21300000, guid: 736a37095e264b84a91298369a9d4e94, type: 3}
-  reduceDistanceRISwoop: {fileID: 21300000, guid: 2f941d282fe8a104894a6e873dd7df1f, type: 3}
-  reduceDistanceEISwoop: {fileID: 21300000, guid: 9c5a7e7e42700ef4c970f53f5caeff0e, type: 3}
-  slowEnemyCI: {fileID: 21300000, guid: b2ac423b07c56d94ead09b0640c9100f, type: 3}
-  slowEnemyRI: {fileID: 21300000, guid: 8d45e80c5d56e8f48bec6ad34aac5864, type: 3}
-  slowEnemyEI: {fileID: 21300000, guid: 9eff14633b9f189449f60aa6ac773330, type: 3}
-  slowEnemyCISwoop: {fileID: 21300000, guid: 76faf797c546b34499dc11ec88affa71, type: 3}
-  slowEnemyRISwoop: {fileID: 21300000, guid: 5c1d126c8e7e94e4b987470c1820ceec, type: 3}
-  slowEnemyEISwoop: {fileID: 21300000, guid: 76a4872965befca43941963a2b05afce, type: 3}
+  increaseArmorCI: {fileID: 21300000, guid: d4e2595b9a857b549bac0a22080128ae, type: 3}
+  increaseArmorRI: {fileID: 21300000, guid: 6f21e2fefcca1074ba6f63a6fb27303d, type: 3}
+  increaseArmorEI: {fileID: 21300000, guid: e81908e5e0fa90247ad46ec6777cd387, type: 3}
+  increaseArmorCISwoop: {fileID: 21300000, guid: 9b4d3cdb2deba8d49935031631637bdb, type: 3}
+  increaseArmorRISwoop: {fileID: 21300000, guid: 6176d4b9e2dcb5c44b0a02b47b2f6b8f, type: 3}
+  increaseArmorEISwoop: {fileID: 21300000, guid: 1cf8c1ed8b7573f4a9dce04250878294, type: 3}
+  magnetizeMoneyCI: {fileID: 21300000, guid: a7e41a0e0c63f654f9bd291cca6689d2, type: 3}
+  magnetizeMoneyRI: {fileID: 21300000, guid: cdf8753dc010e374f9a7a95616830ad1, type: 3}
+  magnetizeMoneyEI: {fileID: 21300000, guid: e8f1b80c4d497e340bfd8e4d265d277b, type: 3}
+  magnetizeMoneyCISwoop: {fileID: 21300000, guid: d1eb9245a6ed7584fac73fa0edb923df, type: 3}
+  magnetizeMoneyRISwoop: {fileID: 21300000, guid: 2f28b034f43d75e4aad68c3169a66657, type: 3}
+  magnetizeMoneyEISwoop: {fileID: 21300000, guid: 21f23cc3fb2cfbe46996f4d23c5afea7, type: 3}
+  negateDamageCI: {fileID: 21300000, guid: e3644b14b512add42bc1a9060404ec08, type: 3}
+  negateDamageRI: {fileID: 21300000, guid: 54e8ac55c4289ad4b94477adf64d5d7b, type: 3}
+  negateDamageEI: {fileID: 21300000, guid: cdfb1ab747ca3244f8b04be18b7eb7e0, type: 3}
+  negateDamageCISwoop: {fileID: 21300000, guid: 8e219518d2f3750429f6a031a69dcf30, type: 3}
+  negateDamageRISwoop: {fileID: 21300000, guid: 2344aa566884f524b9f2939f5142a6c5, type: 3}
+  negateDamageEISwoop: {fileID: 21300000, guid: d46862fb5c386ad45a62765ebb6f3db4, type: 3}
+  reduceDistanceCI: {fileID: 21300000, guid: 30b49983ecef6e7448e61ac74e1b469e, type: 3}
+  reduceDistanceRI: {fileID: 21300000, guid: 1f8e8b56bcabfde48ac668cfa6c67bd8, type: 3}
+  reduceDistanceEI: {fileID: 21300000, guid: 87218f20f57c32446addc8fb4b8308fc, type: 3}
+  reduceDistanceCISwoop: {fileID: 21300000, guid: f5a9fead96d65684d8f1178df0c7d2d4, type: 3}
+  reduceDistanceRISwoop: {fileID: 21300000, guid: bf77fbfc863cd724d9d1b61a024bedae, type: 3}
+  reduceDistanceEISwoop: {fileID: 21300000, guid: a6cfd912c6b24f940bf3de5ae5dfa7e9, type: 3}
+  slowEnemyCI: {fileID: 21300000, guid: 5bb2cd7b55877344098e6929b5329d30, type: 3}
+  slowEnemyRI: {fileID: 21300000, guid: a7c9d26333877bf48a6ac17d527eddea, type: 3}
+  slowEnemyEI: {fileID: 21300000, guid: 6886b762e0966474bb0ab5f115ed7032, type: 3}
+  slowEnemyCISwoop: {fileID: 21300000, guid: 16e3ad63f13776d4eb8c6bfa926eb87e, type: 3}
+  slowEnemyRISwoop: {fileID: 21300000, guid: cd4be6bc1501e184c8f677897e4f6217, type: 3}
+  slowEnemyEISwoop: {fileID: 21300000, guid: 35b09e4023ba69f4ea4382a311538805, type: 3}
   skillSlotsIcons:
   - {fileID: 709154713}
   - {fileID: 1838703168}
@@ -6999,8 +6999,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 15c3de02f5047834e9c61c87514e0cd9, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -8132,7 +8132,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6f5ced6ac1294864d8464d56147b28f5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 15c3de02f5047834e9c61c87514e0cd9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
