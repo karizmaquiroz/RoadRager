@@ -327,6 +327,7 @@ public class Skills : MonoBehaviour
 
             switch (tempNumber2)
             {
+                case 0:
                 case 1:
                 case 2:
                 case 3:
