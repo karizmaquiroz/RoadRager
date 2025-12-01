@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.Burst.Intrinsics;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
@@ -33,7 +34,7 @@ public class SkillUIManager : MonoBehaviour
 
     public Sprite increaseArmorCI;
     public Sprite increaseArmorRI;
-   public Sprite increaseArmorEI;
+    public Sprite increaseArmorEI;
 
     public Sprite increaseArmorCISwoop;
     public Sprite increaseArmorRISwoop;
@@ -73,15 +74,19 @@ public class SkillUIManager : MonoBehaviour
 
     public GameObject[] skillSlotsIcons = new GameObject[3];
     public GameObject[] skillSlotsSwoops = new GameObject[8];
+    public TMP_Text[] stackTexts = new TMP_Text[8];
+
+    
     
     void Start()
     {
         //for(int i = 0; i < skillSlotsIcons.Length; i++)
         for(int i = 0; i < skillSlotsSwoops.Length; i++)
         {
-            
             skillSlotsSwoops[i].SetActive(false);
+           
         }
+        
         
     }
 
@@ -103,31 +108,85 @@ public class SkillUIManager : MonoBehaviour
                 {
                     if(rarity == "common")
                     {
-                        //skillSlotsIcons[i].GetComponent<Image>().sprite = fastCarCI;
-                        skillSlotsSwoops[i].GetComponent<Image>().sprite = fastCarCISwoop;
+                        if (CheckForAbility(fastCarCISwoop))
+                        {
+                            for(int j = 0; j < skillSlotsSwoops.Length; j++)
+                            {
+                                if(fastCarCISwoop == skillSlotsSwoops[j].GetComponent<Image>().sprite)
+                                {
+                                    int num = int.Parse(stackTexts[j].text);
+                                    int stack = num + 1;
 
-                        //skillSlotsIcons[i].SetActive(true);
-                        skillSlotsSwoops[i].SetActive(true);
+                                    stackTexts[j].text = stack.ToString();
+                                    
+                                }
+                            }
+                        }
+                        else
+                        {
+                            //skillSlotsIcons[i].GetComponent<Image>().sprite = fastCarCI;
+                            skillSlotsSwoops[i].GetComponent<Image>().sprite = fastCarCISwoop;
+
+                            //skillSlotsIcons[i].SetActive(true);
+                            skillSlotsSwoops[i].SetActive(true);
+                        }
+                           
 
                         break;
                     }
                     else if(rarity == "rare")
                     {
-                        //skillSlotsIcons[i].GetComponent<Image>().sprite = fastCarRI;
-                        skillSlotsSwoops[i].GetComponent<Image>().sprite = fastCarRISwoop;
+                        if (CheckForAbility(fastCarRISwoop))
+                        {
+                            for(int j = 0; j < skillSlotsSwoops.Length; j++)
+                            {
+                                if(fastCarRISwoop == skillSlotsSwoops[j].GetComponent<Image>().sprite)
+                                {
+                                    int num = int.Parse(stackTexts[j].text);
+                                    int stack = num + 1;
 
-                        //skillSlotsIcons[i].SetActive(true);
-                        skillSlotsSwoops[i].SetActive(true);
+                                    stackTexts[j].text = stack.ToString();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            //skillSlotsIcons[i].GetComponent<Image>().sprite = fastCarRI;
+                            skillSlotsSwoops[i].GetComponent<Image>().sprite = fastCarRISwoop;
+
+                            //skillSlotsIcons[i].SetActive(true);
+                            skillSlotsSwoops[i].SetActive(true);
+
+                            
+                        }
 
                         break;
+
                     }
                     else if(rarity == "epic")
                     {
-                        //skillSlotsIcons[i].GetComponent<Image>().sprite = fastCarEI;
-                        skillSlotsSwoops[i].GetComponent<Image>().sprite = fastCarEISwoop;
+                        if (CheckForAbility(fastCarEISwoop))
+                        {
+                            for(int j=0; j < skillSlotsSwoops.Length; j++)
+                            {
+                                if (fastCarEISwoop == skillSlotsSwoops[j].GetComponent<Image>().sprite)
+                                {
+                                    int num = int.Parse(stackTexts[j].text);
+                                    int stack = num + 1;
 
-                        //skillSlotsIcons[i].SetActive(true);
-                        skillSlotsSwoops[i].SetActive(true);
+                                    stackTexts[j].text = stack.ToString();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            //skillSlotsIcons[i].GetComponent<Image>().sprite = fastCarEI;
+                            skillSlotsSwoops[i].GetComponent<Image>().sprite = fastCarEISwoop;
+
+                            //skillSlotsIcons[i].SetActive(true);
+                            skillSlotsSwoops[i].SetActive(true);
+                        }
+                          
 
                         break;
                     }
@@ -136,31 +195,82 @@ public class SkillUIManager : MonoBehaviour
                 {
                     if(rarity == "common")
                     {
-                        //skillSlotsIcons[i].GetComponent<Image>().sprite = gainHPCI;
-                        skillSlotsSwoops[i].GetComponent<Image>().sprite = gainHPCISwoop;
+                        if (CheckForAbility(gainHPCISwoop))
+                        {
+                            for (int j = 0; j < skillSlotsSwoops.Length; j++)
+                            {
+                                if (gainHPCISwoop == skillSlotsSwoops[j].GetComponent<Image>().sprite)
+                                {
+                                    int num = int.Parse(stackTexts[j].text);
+                                    int stack = num + 1;
 
-                        //skillSlotsIcons[i].SetActive(true);
-                        skillSlotsSwoops[i].SetActive(true);
+                                    stackTexts[j].text = stack.ToString();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            //skillSlotsIcons[i].GetComponent<Image>().sprite = gainHPCI;
+                            skillSlotsSwoops[i].GetComponent<Image>().sprite = gainHPCISwoop;
+
+                            //skillSlotsIcons[i].SetActive(true);
+                            skillSlotsSwoops[i].SetActive(true);
+                        }
+                      
 
                         break;
                     }
                     else if(rarity == "rare")
                     {
-                        //skillSlotsIcons[i].GetComponent<Image>().sprite = gainHPRI;
-                        skillSlotsSwoops[i].GetComponent<Image>().sprite = gainHPRISwoop;
+                        if (CheckForAbility(gainHPRISwoop))
+                        {
+                            for (int j = 0; j < skillSlotsSwoops.Length; j++)
+                            {
+                                if (gainHPRISwoop == skillSlotsSwoops[j].GetComponent<Image>().sprite)
+                                {
+                                    int num = int.Parse(stackTexts[j].text);
+                                    int stack = num + 1;
 
-                        //skillSlotsIcons[i].SetActive(true);
-                        skillSlotsSwoops[i].SetActive(true);
+                                    stackTexts[j].text = stack.ToString();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            //skillSlotsIcons[i].GetComponent<Image>().sprite = gainHPRI;
+                            skillSlotsSwoops[i].GetComponent<Image>().sprite = gainHPRISwoop;
+
+                            //skillSlotsIcons[i].SetActive(true);
+                            skillSlotsSwoops[i].SetActive(true);
+                        }
+                          
 
                         break;
                     }
                     else if(rarity == "epic")
                     {
-                        //skillSlotsIcons[i].GetComponent<Image>().sprite = gainHPEI;
-                        skillSlotsSwoops[i].GetComponent<Image>().sprite = gainHPEISwoop;
+                        if (CheckForAbility(gainHPEISwoop))
+                        {
+                            for (int j = 0; j < skillSlotsSwoops.Length; j++)
+                            {
+                                if (gainHPEISwoop == skillSlotsSwoops[j].GetComponent<Image>().sprite)
+                                {
+                                    int num = int.Parse(stackTexts[j].text);
+                                    int stack = num + 1;
 
-                        //skillSlotsIcons[i].SetActive(true);
-                        skillSlotsSwoops[i].SetActive(true);
+                                    stackTexts[j].text = stack.ToString();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            //skillSlotsIcons[i].GetComponent<Image>().sprite = gainHPEI;
+                            skillSlotsSwoops[i].GetComponent<Image>().sprite = gainHPEISwoop;
+
+                            //skillSlotsIcons[i].SetActive(true);
+                            skillSlotsSwoops[i].SetActive(true);
+                        }
+                       
 
                         break;
                     }
@@ -169,31 +279,82 @@ public class SkillUIManager : MonoBehaviour
                 {
                     if(rarity == "common")
                     {
-                        //skillSlotsIcons[i].GetComponent<Image>().sprite = gainMoneyCI;
-                        skillSlotsSwoops[i].GetComponent <Image>().sprite = gainMoneyCISwoop;
+                        if (CheckForAbility(gainMoneyCISwoop))
+                        {
+                            for (int j = 0; j < skillSlotsSwoops.Length; j++)
+                            {
+                                if (gainMoneyCISwoop == skillSlotsSwoops[j].GetComponent<Image>().sprite)
+                                {
+                                    int num = int.Parse(stackTexts[j].text);
+                                    int stack = num + 1;
 
-                        //skillSlotsIcons[i].SetActive(true);
-                        skillSlotsSwoops[i].SetActive(true);
+                                    stackTexts[j].text = stack.ToString();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            //skillSlotsIcons[i].GetComponent<Image>().sprite = gainMoneyCI;
+                            skillSlotsSwoops[i].GetComponent<Image>().sprite = gainMoneyCISwoop;
+
+                            //skillSlotsIcons[i].SetActive(true);
+                            skillSlotsSwoops[i].SetActive(true);
+                        }
+                            
 
                         break;
                     }
                     else if(rarity == "rare")
                     {
-                        //skillSlotsIcons[i].GetComponent<Image>().sprite = gainMoneyRI;
-                        skillSlotsSwoops[i].GetComponent<Image>().sprite = gainMoneyRISwoop;
+                        if (CheckForAbility(gainMoneyRISwoop))
+                        {
+                            for (int j = 0; j < skillSlotsSwoops.Length; j++)
+                            {
+                                if (gainMoneyRISwoop == skillSlotsSwoops[j].GetComponent<Image>().sprite)
+                                {
+                                    int num = int.Parse(stackTexts[j].text);
+                                    int stack = num + 1;
 
-                        //skillSlotsIcons[i].SetActive(true);
-                        skillSlotsSwoops[i].SetActive(true);
+                                    stackTexts[j].text = stack.ToString();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            //skillSlotsIcons[i].GetComponent<Image>().sprite = gainMoneyRI;
+                            skillSlotsSwoops[i].GetComponent<Image>().sprite = gainMoneyRISwoop;
+
+                            //skillSlotsIcons[i].SetActive(true);
+                            skillSlotsSwoops[i].SetActive(true);
+                        }
+                       
 
                         break;
                     }
                     else if(rarity == "epic")
                     {
-                        //skillSlotsIcons[i].GetComponent<Image>().sprite = gainMoneyEI;
-                        skillSlotsSwoops[i].GetComponent<Image>().sprite = gainMoneyEISwoop;
+                        if (CheckForAbility(gainMoneyEISwoop))
+                        {
+                            for (int j = 0; j < skillSlotsSwoops.Length; j++)
+                            {
+                                if (gainMoneyEISwoop == skillSlotsSwoops[j].GetComponent<Image>().sprite)
+                                {
+                                    int num = int.Parse(stackTexts[j].text);
+                                    int stack = num + 1;
 
-                        //skillSlotsIcons[i].SetActive(true);
-                        skillSlotsSwoops[i].SetActive(true);
+                                    stackTexts[j].text = stack.ToString();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            //skillSlotsIcons[i].GetComponent<Image>().sprite = gainMoneyEI;
+                            skillSlotsSwoops[i].GetComponent<Image>().sprite = gainMoneyEISwoop;
+
+                            //skillSlotsIcons[i].SetActive(true);
+                            skillSlotsSwoops[i].SetActive(true);
+                        }
+                          
 
                         break;
                     }
@@ -202,31 +363,83 @@ public class SkillUIManager : MonoBehaviour
                 {
                     if(rarity == "common")
                     {
-                        //skillSlotsIcons[i].GetComponent<Image>().sprite = increaseArmorCI;
-                        skillSlotsSwoops[i].GetComponent<Image>().sprite = increaseArmorCISwoop;
+                        if (CheckForAbility(increaseArmorCISwoop))
+                        {
+                            for (int j = 0; j < skillSlotsSwoops.Length; j++)
+                            {
+                                if (increaseArmorCISwoop == skillSlotsSwoops[j].GetComponent<Image>().sprite)
+                                {
+                                    int num = int.Parse(stackTexts[j].text);
+                                    int stack = num + 1;
 
-                        //skillSlotsIcons[i].SetActive(true);
-                        skillSlotsSwoops[i].SetActive(true);
+                                    stackTexts[j].text = stack.ToString();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            //skillSlotsIcons[i].GetComponent<Image>().sprite = increaseArmorCI;
+                            skillSlotsSwoops[i].GetComponent<Image>().sprite = increaseArmorCISwoop;
+
+                            //skillSlotsIcons[i].SetActive(true);
+                            skillSlotsSwoops[i].SetActive(true);
+                        }
+                            
 
                         break;
                     }
                     else if (rarity == "rare")
                     {
-                        //skillSlotsIcons[i].GetComponent<Image>().sprite= increaseArmorRI;
-                        skillSlotsSwoops[i].GetComponent<Image>().sprite = increaseArmorRISwoop;
+                        if (CheckForAbility(increaseArmorRISwoop))
+                        {
+                            for (int j = 0; j < skillSlotsSwoops.Length; j++)
+                            {
+                                if (increaseArmorRISwoop == skillSlotsSwoops[j].GetComponent<Image>().sprite)
+                                {
+                                    int num = int.Parse(stackTexts[j].text);
+                                    int stack = num + 1;
 
-                        //skillSlotsIcons[i].SetActive(true);
-                        skillSlotsSwoops[i].SetActive(true);
+                                    stackTexts[j].text = stack.ToString();
+                                }
+                            }
+                        }
+                        else
+                        {
+
+                            //skillSlotsIcons[i].GetComponent<Image>().sprite= increaseArmorRI;
+                            skillSlotsSwoops[i].GetComponent<Image>().sprite = increaseArmorRISwoop;
+
+                            //skillSlotsIcons[i].SetActive(true);
+                            skillSlotsSwoops[i].SetActive(true);
+                        }
+
 
                         break;
                     }
                     else if(rarity == "epic")
                     {
-                        //skillSlotsIcons[i].GetComponent<Image>().sprite = increaseArmorEI;
-                        skillSlotsSwoops[i].GetComponent<Image>().sprite = increaseArmorEISwoop;
+                        if (CheckForAbility(increaseArmorEISwoop))
+                        {
+                            for (int j = 0; j < skillSlotsSwoops.Length; j++)
+                            {
+                                if (increaseArmorEISwoop == skillSlotsSwoops[j].GetComponent<Image>().sprite)
+                                {
+                                    int num = int.Parse(stackTexts[j].text);
+                                    int stack = num + 1;
 
-                        //skillSlotsIcons[i].SetActive(true);
-                        skillSlotsSwoops[i].SetActive(true);
+                                    stackTexts[j].text = stack.ToString();
+                                }
+                            }
+                        }
+                        else
+                        {
+
+                            //skillSlotsIcons[i].GetComponent<Image>().sprite = increaseArmorEI;
+                            skillSlotsSwoops[i].GetComponent<Image>().sprite = increaseArmorEISwoop;
+
+                            //skillSlotsIcons[i].SetActive(true);
+                            skillSlotsSwoops[i].SetActive(true);
+                        }
                         break;
 
                     }
@@ -235,31 +448,82 @@ public class SkillUIManager : MonoBehaviour
                 {
                     if(rarity == "common")
                     {
-                        //skillSlotsIcons[i].GetComponent<Image>().sprite = magnetizeMoneyCI;
-                        skillSlotsSwoops[i].GetComponent<Image>().sprite = magnetizeMoneyCISwoop;
+                        if (CheckForAbility(magnetizeMoneyCISwoop))
+                        {
+                            for (int j = 0; j < skillSlotsSwoops.Length; j++)
+                            {
+                                if (magnetizeMoneyCISwoop == skillSlotsSwoops[j].GetComponent<Image>().sprite)
+                                {
+                                    int num = int.Parse(stackTexts[j].text);
+                                    int stack = num + 1;
 
-                        //skillSlotsIcons[i].SetActive(true);
-                        skillSlotsSwoops[i].SetActive(true);
+                                    stackTexts[j].text = stack.ToString();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            //skillSlotsIcons[i].GetComponent<Image>().sprite = magnetizeMoneyCI;
+                            skillSlotsSwoops[i].GetComponent<Image>().sprite = magnetizeMoneyCISwoop;
+
+                            //skillSlotsIcons[i].SetActive(true);
+                            skillSlotsSwoops[i].SetActive(true);
+                        }
+                          
 
                         break;
                     }
                     else if(rarity == "rare")
                     {
-                        //skillSlotsIcons[i].GetComponent< Image>().sprite = magnetizeMoneyRI;
-                        skillSlotsSwoops[i].GetComponent<Image>().sprite = magnetizeMoneyRISwoop;
+                        if (CheckForAbility(magnetizeMoneyRISwoop))
+                        {
+                            for (int j = 0; j < skillSlotsSwoops.Length; j++)
+                            {
+                                if (magnetizeMoneyRISwoop == skillSlotsSwoops[j].GetComponent<Image>().sprite)
+                                {
+                                    int num = int.Parse(stackTexts[j].text);
+                                    int stack = num + 1;
 
-                        //skillSlotsIcons[i].SetActive(true);
-                        skillSlotsSwoops[i].SetActive(true);
+                                    stackTexts[j].text = stack.ToString();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            //skillSlotsIcons[i].GetComponent< Image>().sprite = magnetizeMoneyRI;
+                            skillSlotsSwoops[i].GetComponent<Image>().sprite = magnetizeMoneyRISwoop;
+
+                            //skillSlotsIcons[i].SetActive(true);
+                            skillSlotsSwoops[i].SetActive(true);
+                        }
+                            
 
                         break;
                     }
                     else if(rarity == "epic")
                     {
-                        //skillSlotsIcons[i].GetComponent<Image>().sprite = magnetizeMoneyEI;
-                        skillSlotsSwoops[i].GetComponent<Image>().sprite = magnetizeMoneyEISwoop;
+                        if (CheckForAbility(magnetizeMoneyEISwoop))
+                        {
+                            for (int j = 0; j < skillSlotsSwoops.Length; j++)
+                            {
+                                if (magnetizeMoneyEISwoop == skillSlotsSwoops[j].GetComponent<Image>().sprite)
+                                {
+                                    int num = int.Parse(stackTexts[j].text);
+                                    int stack = num + 1;
 
-                        //skillSlotsIcons[i].SetActive(true);
-                        skillSlotsSwoops[i].SetActive(true);
+                                    stackTexts[j].text = stack.ToString();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            //skillSlotsIcons[i].GetComponent<Image>().sprite = magnetizeMoneyEI;
+                            skillSlotsSwoops[i].GetComponent<Image>().sprite = magnetizeMoneyEISwoop;
+
+                            //skillSlotsIcons[i].SetActive(true);
+                            skillSlotsSwoops[i].SetActive(true);
+                        }
+                           
 
                         break;
                     }
@@ -268,31 +532,82 @@ public class SkillUIManager : MonoBehaviour
                 {
                     if(rarity == "common")
                     {
-                        //skillSlotsIcons[i].GetComponent<Image>().sprite = negateDamageCI;
-                        skillSlotsSwoops[i].GetComponent<Image>().sprite = negateDamageCISwoop;
+                        if (CheckForAbility(negateDamageCISwoop))
+                        {
+                            for (int j = 0; j < skillSlotsSwoops.Length; j++)
+                            {
+                                if (negateDamageCISwoop == skillSlotsSwoops[j].GetComponent<Image>().sprite)
+                                {
+                                    int num = int.Parse(stackTexts[j].text);
+                                    int stack = num + 1;
 
-                        //skillSlotsIcons[i].SetActive(true);
-                        skillSlotsSwoops[i].SetActive(true);
+                                    stackTexts[j].text = stack.ToString();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            //skillSlotsIcons[i].GetComponent<Image>().sprite = negateDamageCI;
+                            skillSlotsSwoops[i].GetComponent<Image>().sprite = negateDamageCISwoop;
+
+                            //skillSlotsIcons[i].SetActive(true);
+                            skillSlotsSwoops[i].SetActive(true);
+                        }
+                            
 
                         break;
                     }
                     else if(rarity == "rare")
                     {
-                        //skillSlotsIcons[i].GetComponent<Image>().sprite = negateDamageRI;
-                        skillSlotsSwoops[i].GetComponent<Image>().sprite = negateDamageRISwoop;
+                        if (CheckForAbility(negateDamageRISwoop))
+                        {
+                            for (int j = 0; j < skillSlotsSwoops.Length; j++)
+                            {
+                                if (negateDamageRISwoop == skillSlotsSwoops[j].GetComponent<Image>().sprite)
+                                {
+                                    int num = int.Parse(stackTexts[j].text);
+                                    int stack = num + 1;
 
-                        //skillSlotsIcons[i].SetActive(true);
-                        skillSlotsSwoops[i].SetActive(true);
+                                    stackTexts[j].text = stack.ToString();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            //skillSlotsIcons[i].GetComponent<Image>().sprite = negateDamageRI;
+                            skillSlotsSwoops[i].GetComponent<Image>().sprite = negateDamageRISwoop;
+
+                            //skillSlotsIcons[i].SetActive(true);
+                            skillSlotsSwoops[i].SetActive(true);
+                        }
+                            
 
                         break;
                     }
                     else if(rarity == "epic")
                     {
-                        //skillSlotsIcons[i].GetComponent<Image>().sprite = negateDamageEI;
-                        skillSlotsSwoops[i].GetComponent<Image>().sprite = negateDamageEISwoop;
+                        if (CheckForAbility(negateDamageEISwoop))
+                        {
+                            for (int j = 0; j < skillSlotsSwoops.Length; j++)
+                            {
+                                if (negateDamageEISwoop == skillSlotsSwoops[j].GetComponent<Image>().sprite)
+                                {
+                                    int num = int.Parse(stackTexts[j].text);
+                                    int stack = num + 1;
 
-                        //skillSlotsIcons[i].SetActive(true);
-                        skillSlotsSwoops[i].SetActive(true);
+                                    stackTexts[j].text = stack.ToString();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            //skillSlotsIcons[i].GetComponent<Image>().sprite = negateDamageEI;
+                            skillSlotsSwoops[i].GetComponent<Image>().sprite = negateDamageEISwoop;
+
+                            //skillSlotsIcons[i].SetActive(true);
+                            skillSlotsSwoops[i].SetActive(true);
+
+                        }
 
                         break;
                     }
@@ -301,30 +616,81 @@ public class SkillUIManager : MonoBehaviour
                 {
                     if(rarity == "common")
                     {
-                        //skillSlotsIcons[i].GetComponent<Image>().sprite = reduceDistanceCI;
-                        skillSlotsSwoops[i].GetComponent<Image>().sprite = reduceDistanceCISwoop;
+                        if (CheckForAbility(reduceDistanceCISwoop))
+                        {
+                            for (int j = 0; j < skillSlotsSwoops.Length; j++)
+                            {
+                                if (reduceDistanceCISwoop == skillSlotsSwoops[j].GetComponent<Image>().sprite)
+                                {
+                                    int num = int.Parse(stackTexts[j].text);
+                                    int stack = num + 1;
 
-                        //skillSlotsIcons[i].SetActive(true);
-                        skillSlotsSwoops[i].SetActive(true);
+                                    stackTexts[j].text = stack.ToString();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            //skillSlotsIcons[i].GetComponent<Image>().sprite = reduceDistanceCI;
+                            skillSlotsSwoops[i].GetComponent<Image>().sprite = reduceDistanceCISwoop;
+
+                            //skillSlotsIcons[i].SetActive(true);
+                            skillSlotsSwoops[i].SetActive(true);
+                        }
+                           
                         break;
                     }
                     else if(rarity == "rare")
                     {
-                        //skillSlotsIcons[i].GetComponent<Image>().sprite = reduceDistanceRI;
-                        skillSlotsSwoops[i].GetComponent<Image>().sprite = reduceDistanceCISwoop;
+                        if (CheckForAbility(reduceDistanceRISwoop))
+                        {
+                            for (int j = 0; j < skillSlotsSwoops.Length; j++)
+                            {
+                                if (reduceDistanceRISwoop == skillSlotsSwoops[j].GetComponent<Image>().sprite)
+                                {
+                                    int num = int.Parse(stackTexts[j].text);
+                                    int stack = num + 1;
 
-                        //skillSlotsIcons[i].SetActive(true);
-                        skillSlotsSwoops[i].SetActive(true);
+                                    stackTexts[j].text = stack.ToString();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            //skillSlotsIcons[i].GetComponent<Image>().sprite = reduceDistanceRI;
+                            skillSlotsSwoops[i].GetComponent<Image>().sprite = reduceDistanceCISwoop;
+
+                            //skillSlotsIcons[i].SetActive(true);
+                            skillSlotsSwoops[i].SetActive(true);
+                        }
+                       
 
                         break;
                     }
                     else if(rarity == "epic")
                     {
-                        //skillSlotsIcons[i].GetComponent<Image>().sprite = reduceDistanceEI;
-                        skillSlotsSwoops[i].GetComponent<Image>().sprite = reduceDistanceEISwoop;
+                        if (CheckForAbility(reduceDistanceEISwoop))
+                        {
+                            for (int j = 0; j < skillSlotsSwoops.Length; j++)
+                            {
+                                if (reduceDistanceEISwoop == skillSlotsSwoops[j].GetComponent<Image>().sprite)
+                                {
+                                    int num = int.Parse(stackTexts[j].text);
+                                    int stack = num + 1;
 
-                        //skillSlotsIcons[i].SetActive(true);
-                        skillSlotsSwoops[i].SetActive(true);
+                                    stackTexts[j].text = stack.ToString();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            //skillSlotsIcons[i].GetComponent<Image>().sprite = reduceDistanceEI;
+                            skillSlotsSwoops[i].GetComponent<Image>().sprite = reduceDistanceEISwoop;
+
+                            //skillSlotsIcons[i].SetActive(true);
+                            skillSlotsSwoops[i].SetActive(true);
+                        }
+                            
 
                         break;
                     }
@@ -333,31 +699,84 @@ public class SkillUIManager : MonoBehaviour
                 {
                     if(rarity == "common")
                     {
-                        //skillSlotsIcons[i].GetComponent<Image>().sprite = slowEnemyCI;
-                        skillSlotsSwoops[i].GetComponent<Image>().sprite = slowEnemyCISwoop;
+                        if (CheckForAbility(slowEnemyCISwoop))
+                        {
+                            for (int j = 0; j < skillSlotsSwoops.Length; j++)
+                            {
+                                if (slowEnemyCISwoop == skillSlotsSwoops[j].GetComponent<Image>().sprite)
+                                {
+                                    int num = int.Parse(stackTexts[j].text);
+                                    int stack = num + 1;
 
-                        //skillSlotsIcons[i].SetActive(true);
-                        skillSlotsSwoops[i].SetActive(true);
+                                    stackTexts[j].text = stack.ToString();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            //skillSlotsIcons[i].GetComponent<Image>().sprite = slowEnemyCI;
+                            skillSlotsSwoops[i].GetComponent<Image>().sprite = slowEnemyCISwoop;
+
+                            //skillSlotsIcons[i].SetActive(true);
+                            skillSlotsSwoops[i].SetActive(true);
+                        }
+                           
 
                         break;
                     }
                     else if(rarity == "rare")
                     {
-                        //skillSlotsIcons[i].GetComponent <Image>().sprite = slowEnemyRI;
-                        skillSlotsSwoops[i].GetComponent<Image>().sprite = slowEnemyRISwoop;
+                        if (CheckForAbility(slowEnemyRISwoop))
+                        {
+                            for (int j = 0; j < skillSlotsSwoops.Length; j++)
+                            {
+                                if (slowEnemyRISwoop == skillSlotsSwoops[j].GetComponent<Image>().sprite)
+                                {
+                                    int num = int.Parse(stackTexts[j].text);
+                                    int stack = num + 1;
 
-                        //skillSlotsIcons[i].SetActive(true);
-                        skillSlotsSwoops[i].SetActive(true);
+                                    stackTexts[j].text = stack.ToString();
+                                }
+                            }
+                        }
+                        else
+                        {
+
+                            //skillSlotsIcons[i].GetComponent <Image>().sprite = slowEnemyRI;
+                            skillSlotsSwoops[i].GetComponent<Image>().sprite = slowEnemyRISwoop;
+
+                            //skillSlotsIcons[i].SetActive(true);
+                            skillSlotsSwoops[i].SetActive(true);
+
+                        }
+                       
 
                         break;
                     }
                     else if(rarity == "epic")
                     {
-                        //skillSlotsIcons[i].GetComponent<Image>().sprite = slowEnemyEI;
-                        skillSlotsSwoops[i].GetComponent<Image>().sprite = slowEnemyEISwoop;
+                        if (CheckForAbility(slowEnemyEISwoop))
+                        {
+                            for (int j = 0; j < skillSlotsSwoops.Length; j++)
+                            {
+                                if (slowEnemyEISwoop == skillSlotsSwoops[j].GetComponent<Image>().sprite)
+                                {
+                                    int num = int.Parse(stackTexts[j].text);
+                                    int stack = num + 1;
 
-                        //skillSlotsIcons[i].SetActive(true);
-                        skillSlotsSwoops[i].SetActive(true);
+                                    stackTexts[j].text = stack.ToString();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            //skillSlotsIcons[i].GetComponent<Image>().sprite = slowEnemyEI;
+                            skillSlotsSwoops[i].GetComponent<Image>().sprite = slowEnemyEISwoop;
+
+                            //skillSlotsIcons[i].SetActive(true);
+                            skillSlotsSwoops[i].SetActive(true);
+                        }
+                          
 
                         break;
                     }
@@ -405,7 +824,7 @@ public class SkillUIManager : MonoBehaviour
                        
                     }
                 }
-        else if (skill == "gainMoney")
+        else if (skill == "gainmoney")
                 {
                     if (rarity == "common")
                     {
@@ -517,5 +936,18 @@ public class SkillUIManager : MonoBehaviour
             
 
         
+    }
+
+    public bool CheckForAbility(Sprite sprite)
+    {
+        for(int i = 0; i < skillSlotsSwoops.Length; i++)
+        {
+            if(sprite == skillSlotsSwoops[i].GetComponent<Image>().sprite)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
