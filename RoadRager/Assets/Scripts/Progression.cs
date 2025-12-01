@@ -1,5 +1,5 @@
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class Progression : MonoBehaviour
 {
@@ -10,7 +10,10 @@ public class Progression : MonoBehaviour
     bool paused = false;
 
     public Skills skillRef;
-    public TMP_Text distUI;
+    public GameObject distUIObj;
+    public GameObject distUITxt;
+    Slider distUI;
+    //public TMP_Text distUI;
 
     void Start()
     {
@@ -18,6 +21,10 @@ public class Progression : MonoBehaviour
         distance = 500.0f;
         Skills.pauseGame.AddListener(Pause);
         Skills.resumeGame.AddListener(Unpause);
+
+        distUI = distUIObj.GetComponent<Slider>();
+        distUI.minValue = 0;
+        distUI.maxValue = distance;
     }
 
     void Update()
@@ -25,7 +32,7 @@ public class Progression : MonoBehaviour
         if (!paused)
         {
             CheckIfDistanceCrossed();
-            distUI.text = playerDistance.ToString() + " of " + distance.ToString();
+            distUI.value = playerDistance;
         }
     }
 
@@ -44,6 +51,7 @@ public class Progression : MonoBehaviour
     void Unpause()
     {
         paused = false;
+        distUI.maxValue = distance;
     }
 
     void CalculateDistance()
@@ -60,6 +68,7 @@ public class Progression : MonoBehaviour
             ChangeLevel();
 
             skillRef.SkillGenerator();
+            distUI.minValue = playerDistance;
         }
     }
 

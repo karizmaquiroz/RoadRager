@@ -13,6 +13,8 @@ public class TrashScript : MonoBehaviour
         initPos = transform.position;
         gameObject.SetActive(false);
 
+        transform.rotation = Quaternion.identity;
+
         Skills.pauseGame.AddListener(Reset);
         Skills.resumeGame.AddListener(Reset);
 
