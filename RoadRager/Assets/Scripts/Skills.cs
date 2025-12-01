@@ -39,7 +39,7 @@ public class Skills : MonoBehaviour
 
     public SkillUIManager skillManager = new SkillUIManager();
 
-    public SkillManager skillRef = new SkillManager();
+    //public SkillManager skillRef = new SkillManager();
 
     public GameObject pauseIcon;
     public GameObject pauseTxt;
@@ -708,19 +708,16 @@ public class Skills : MonoBehaviour
                         skillGainHP("common");
                         skillManager.DisplaySkillSprite("gainhp", "common");
                         SkillClass gainHPCommon = new SkillClass("gainhp", "common");
-                        skillRef.currentPlayerSkills.Add(gainHPCommon);
                         break;
                     case "rare":
                         skillGainHP("rare");
                         skillManager.DisplaySkillSprite("gainhp", "rare");
                         SkillClass gainHPRare = new SkillClass("gainhp", "rare");
-                        skillRef.currentPlayerSkills.Add(gainHPRare);
                         break;
                     case "epic":
                         skillGainHP("epic");
                         skillManager.DisplaySkillSprite("gainhp", "epic");
                         SkillClass gainHPEpic = new SkillClass("gainhp", "epic");
-                        skillRef.currentPlayerSkills.Add(gainHPEpic);
                         break;
                 }
             }
@@ -733,19 +730,16 @@ public class Skills : MonoBehaviour
                         skillReduceDistance("common");
                         skillManager.DisplaySkillSprite("reducedis", "common");
                         SkillClass reduceDisCommon = new SkillClass("reduceddis", "common");
-                        skillRef.currentPlayerSkills.Add(reduceDisCommon);
                         break;
                     case "rare":
                         skillReduceDistance("rare");
                         skillManager.DisplaySkillSprite("reducedis", "rare");
                         SkillClass reduceDisRare = new SkillClass("reduceddis", "rare");
-                        skillRef.currentPlayerSkills.Add(reduceDisRare);
                         break;
                     case "epic":
                         skillReduceDistance("epic");
                         skillManager.DisplaySkillSprite("reducedis", "epic");
                         SkillClass reduceDisEpic = new SkillClass("reduceddis", "epic");
-                        skillRef.currentPlayerSkills.Add(reduceDisEpic);
                         break;
                 }
             }
@@ -758,19 +752,16 @@ public class Skills : MonoBehaviour
                         skillMagnetizeMoney("common");
                         skillManager.DisplaySkillSprite("magnetize", "common");
                         SkillClass magnetizeMoneyCommon = new SkillClass("magnetize", "common");
-                        skillRef.currentPlayerSkills.Add(magnetizeMoneyCommon);
                         break;
                     case "rare":
                         skillMagnetizeMoney("rare");
                         skillManager.DisplaySkillSprite("magnetize", "rare");
                         SkillClass magnetizeMoneyRare = new SkillClass("magnetize", "rare");
-                        skillRef.currentPlayerSkills.Add(magnetizeMoneyRare);
                         break;
                     case "epic":
                         skillMagnetizeMoney("epic");
                         skillManager.DisplaySkillSprite("magnetize", "epic");
                         SkillClass magnetizeMoneyEpic = new SkillClass("magnetize", "epic");
-                        skillRef.currentPlayerSkills.Add(magnetizeMoneyEpic);
                         break;
                 }
             }
@@ -783,19 +774,16 @@ public class Skills : MonoBehaviour
                         skillIncreaseArmor("common");
                         skillManager.DisplaySkillSprite("armor", "common");
                         SkillClass armorCommon = new SkillClass("armor", "common");
-                        skillRef.currentPlayerSkills.Add(armorCommon);
                         break;
                     case "rare":
                         skillIncreaseArmor("rare");
                         skillManager.DisplaySkillSprite("armor", "rare");
                         SkillClass armorRare = new SkillClass("armor", "rare");
-                        skillRef.currentPlayerSkills.Add(armorRare);
                         break;
                     case "epic":
                         skillIncreaseArmor("epic");
                         skillManager.DisplaySkillSprite("armor", "epic");
                         SkillClass armorEpic = new SkillClass("armor", "epic");
-                        skillRef.currentPlayerSkills.Add(armorEpic);
                         break;
                 }
             }
@@ -808,19 +796,16 @@ public class Skills : MonoBehaviour
                         skillNegateDamage("common");
                         skillManager.DisplaySkillSprite("negate", "common");
                         SkillClass negateCommon = new SkillClass("negate", "common");
-                        skillRef.currentPlayerSkills.Add(negateCommon);
                         break;
                     case "rare":
                         skillNegateDamage("rare");
                         skillManager.DisplaySkillSprite("negate", "rare");
                         SkillClass negateRare = new SkillClass("negate", "rare");
-                        skillRef.currentPlayerSkills.Add(negateRare);
                         break;
                     case "epic":
                         skillNegateDamage("epic");
                         skillManager.DisplaySkillSprite("negate", "epic");
                         SkillClass negateEpic = new SkillClass("negate", "epic");
-                        skillRef.currentPlayerSkills.Add(negateEpic);
                         break;
                 }
             }
@@ -834,19 +819,16 @@ public class Skills : MonoBehaviour
                         skillFasterCar("common");
                         skillManager.DisplaySkillSprite("fast", "common");
                         SkillClass fastCommon = new SkillClass("fast", "common");
-                        skillRef.currentPlayerSkills.Add(fastCommon);
                         break;
                     case "rare":
                         skillFasterCar("rare");
                         skillManager.DisplaySkillSprite("fast", "rare");
                         SkillClass fastRare = new SkillClass("fast", "rare");
-                        skillRef.currentPlayerSkills.Add(fastRare);
                         break;
                     case "epic":
                         skillFasterCar("epic");
                         skillManager.DisplaySkillSprite("fast", "epic");
                         SkillClass fastEpic = new SkillClass("fast", "epic");
-                        skillRef.currentPlayerSkills.Add(fastEpic);
                         break;
 
                 }
@@ -861,19 +843,16 @@ public class Skills : MonoBehaviour
                         skillSlowEnemy("common");
                         skillManager.DisplaySkillSprite("slow", "common");
                         SkillClass slowCommon = new SkillClass("slow", "common");
-                        skillRef.currentPlayerSkills.Add(slowCommon);
                         break;
                     case "rare":
                         skillSlowEnemy("rare");
                         skillManager.DisplaySkillSprite("slow", "rare");
                         SkillClass slowRare = new SkillClass("slow", "rare");
-                        skillRef.currentPlayerSkills.Add(slowRare);
                         break;
                     case "epic":
                         skillSlowEnemy("epic");
                         skillManager.DisplaySkillSprite("slow", "epic");
                         SkillClass slowEpic = new SkillClass("slow", "epic");
-                        skillRef.currentPlayerSkills.Add(slowEpic);
                         break;
                 }
             }
@@ -892,19 +871,16 @@ public class Skills : MonoBehaviour
                         skillGainHP("common");
                         skillManager.DisplaySkillSprite("gainhp", "common");
                         SkillClass gainHPCommon = new SkillClass("gainhp", "common");
-                        skillRef.currentPlayerSkills.Add(gainHPCommon);
                         break;
                     case "rare":
                         skillGainHP("rare");
                         skillManager.DisplaySkillSprite("gainhp", "rare");
                         SkillClass gainHPRare = new SkillClass("gainhp", "rare");
-                        skillRef.currentPlayerSkills.Add(gainHPRare);
                         break;
                     case "epic":
                         skillGainHP("epic");
                         skillManager.DisplaySkillSprite("gainhp", "epic");
                         SkillClass gainHPEpic = new SkillClass("gainhp", "epic");
-                        skillRef.currentPlayerSkills.Add(gainHPEpic);
                         break;
                 }
             }
@@ -917,19 +893,16 @@ public class Skills : MonoBehaviour
                         skillReduceDistance("common");
                         skillManager.DisplaySkillSprite("reducedis", "common");
                         SkillClass reduceDisCommon = new SkillClass("reduceddis", "common");
-                        skillRef.currentPlayerSkills.Add(reduceDisCommon);
                         break;
                     case "rare":
                         skillReduceDistance("rare");
                         skillManager.DisplaySkillSprite("reducedis", "rare");
                         SkillClass reduceDisRare = new SkillClass("reduceddis", "rare");
-                        skillRef.currentPlayerSkills.Add(reduceDisRare);
                         break;
                     case "epic":
                         skillReduceDistance("epic");
                         skillManager.DisplaySkillSprite("reducedis", "epic");
                         SkillClass reduceDisEpic = new SkillClass("reduceddis", "epic");
-                        skillRef.currentPlayerSkills.Add(reduceDisEpic);
                         break;
                 }
             }
@@ -942,19 +915,16 @@ public class Skills : MonoBehaviour
                         skillMagnetizeMoney("common");
                         skillManager.DisplaySkillSprite("magnetize", "common");
                         SkillClass magnetizeMoneyCommon = new SkillClass("magnetize", "common");
-                        skillRef.currentPlayerSkills.Add(magnetizeMoneyCommon);
                         break;
                     case "rare":
                         skillMagnetizeMoney("rare");
                         skillManager.DisplaySkillSprite("magnetize", "rare");
                         SkillClass magnetizeMoneyRare = new SkillClass("magnetize", "rare");
-                        skillRef.currentPlayerSkills.Add(magnetizeMoneyRare);
                         break;
                     case "epic":
                         skillMagnetizeMoney("epic");
                         skillManager.DisplaySkillSprite("magnetize", "epic");
                         SkillClass magnetizeMoneyEpic = new SkillClass("magnetize", "epic");
-                        skillRef.currentPlayerSkills.Add(magnetizeMoneyEpic);
                         break;
                 }
             }
@@ -967,19 +937,16 @@ public class Skills : MonoBehaviour
                         skillIncreaseArmor("common");
                         skillManager.DisplaySkillSprite("armor", "common");
                         SkillClass armorCommon = new SkillClass("armor", "common");
-                        skillRef.currentPlayerSkills.Add(armorCommon);
                         break;
                     case "rare":
                         skillIncreaseArmor("rare");
                         skillManager.DisplaySkillSprite("armor", "rare");
                         SkillClass armorRare = new SkillClass("armor", "rare");
-                        skillRef.currentPlayerSkills.Add(armorRare);
                         break;
                     case "epic":
                         skillIncreaseArmor("epic");
                         skillManager.DisplaySkillSprite("armor", "epic");
                         SkillClass armorEpic = new SkillClass("armor", "epic");
-                        skillRef.currentPlayerSkills.Add(armorEpic);
                         break;
                 }
             }
@@ -992,19 +959,16 @@ public class Skills : MonoBehaviour
                         skillNegateDamage("common");
                         skillManager.DisplaySkillSprite("negate", "common");
                         SkillClass negateCommon = new SkillClass("negate", "common");
-                        skillRef.currentPlayerSkills.Add(negateCommon);
                         break;
                     case "rare":
                         skillNegateDamage("rare");
                         skillManager.DisplaySkillSprite("negate", "rare");
                         SkillClass negateRare = new SkillClass("negate", "rare");
-                        skillRef.currentPlayerSkills.Add(negateRare);
                         break;
                     case "epic":
                         skillNegateDamage("epic");
                         skillManager.DisplaySkillSprite("negate", "epic");
                         SkillClass negateEpic = new SkillClass("negate", "epic");
-                        skillRef.currentPlayerSkills.Add(negateEpic);
                         break;
                 }
             }
@@ -1018,19 +982,16 @@ public class Skills : MonoBehaviour
                         skillFasterCar("common");
                         skillManager.DisplaySkillSprite("fast", "common");
                         SkillClass fastCommon = new SkillClass("fast", "common");
-                        skillRef.currentPlayerSkills.Add(fastCommon);
                         break;
                     case "rare":
                         skillFasterCar("rare");
                         skillManager.DisplaySkillSprite("fast", "rare");
                         SkillClass fastRare = new SkillClass("fast", "rare");
-                        skillRef.currentPlayerSkills.Add(fastRare);
                         break;
                     case "epic":
                         skillFasterCar("epic");
                         skillManager.DisplaySkillSprite("fast", "epic");
                         SkillClass fastEpic = new SkillClass("fast", "epic");
-                        skillRef.currentPlayerSkills.Add(fastEpic);
                         break;
 
                 }
@@ -1045,19 +1006,16 @@ public class Skills : MonoBehaviour
                         skillSlowEnemy("common");
                         skillManager.DisplaySkillSprite("slow", "common");
                         SkillClass slowCommon = new SkillClass("slow", "common");
-                        skillRef.currentPlayerSkills.Add(slowCommon);
                         break;
                     case "rare":
                         skillSlowEnemy("rare");
                         skillManager.DisplaySkillSprite("slow", "rare");
                         SkillClass slowRare = new SkillClass("slow", "rare");
-                        skillRef.currentPlayerSkills.Add(slowRare);
                         break;
                     case "epic":
                         skillSlowEnemy("epic");
                         skillManager.DisplaySkillSprite("slow", "epic");
                         SkillClass slowEpic = new SkillClass("slow", "epic");
-                        skillRef.currentPlayerSkills.Add(slowEpic);
                         break;
                 }
             }
@@ -1077,19 +1035,16 @@ public class Skills : MonoBehaviour
                         skillGainHP("common");
                         skillManager.DisplaySkillSprite("gainhp", "common");
                         SkillClass gainHPCommon = new SkillClass("gainhp", "common");
-                        skillRef.currentPlayerSkills.Add(gainHPCommon);
                         break;
                     case "rare":
                         skillGainHP("rare");
                         skillManager.DisplaySkillSprite("gainhp", "rare");
                         SkillClass gainHPRare = new SkillClass("gainhp", "rare");
-                        skillRef.currentPlayerSkills.Add(gainHPRare);
                         break;
                     case "epic":
                         skillGainHP("epic");
                         skillManager.DisplaySkillSprite("gainhp", "epic");
                         SkillClass gainHPEpic = new SkillClass("gainhp", "epic");
-                        skillRef.currentPlayerSkills.Add(gainHPEpic);
                         break;
                 }
             }
@@ -1102,19 +1057,16 @@ public class Skills : MonoBehaviour
                         skillReduceDistance("common");
                         skillManager.DisplaySkillSprite("reducedis", "common");
                         SkillClass reduceDisCommon = new SkillClass("reduceddis", "common");
-                        skillRef.currentPlayerSkills.Add(reduceDisCommon);
                         break;
                     case "rare":
                         skillReduceDistance("rare");
                         skillManager.DisplaySkillSprite("reducedis", "rare");
                         SkillClass reduceDisRare = new SkillClass("reduceddis", "rare");
-                        skillRef.currentPlayerSkills.Add(reduceDisRare);
                         break;
                     case "epic":
                         skillReduceDistance("epic");
                         skillManager.DisplaySkillSprite("reducedis", "epic");
                         SkillClass reduceDisEpic = new SkillClass("reduceddis", "epic");
-                        skillRef.currentPlayerSkills.Add(reduceDisEpic);
                         break;
                 }
             }
@@ -1127,19 +1079,16 @@ public class Skills : MonoBehaviour
                         skillMagnetizeMoney("common");
                         skillManager.DisplaySkillSprite("magnetize", "common");
                         SkillClass magnetizeMoneyCommon = new SkillClass("magnetize", "common");
-                        skillRef.currentPlayerSkills.Add(magnetizeMoneyCommon);
                         break;
                     case "rare":
                         skillMagnetizeMoney("rare");
                         skillManager.DisplaySkillSprite("magnetize", "rare");
                         SkillClass magnetizeMoneyRare = new SkillClass("magnetize", "rare");
-                        skillRef.currentPlayerSkills.Add(magnetizeMoneyRare);
                         break;
                     case "epic":
                         skillMagnetizeMoney("epic");
                         skillManager.DisplaySkillSprite("magnetize", "epic");
                         SkillClass magnetizeMoneyEpic = new SkillClass("magnetize", "epic");
-                        skillRef.currentPlayerSkills.Add(magnetizeMoneyEpic);
                         break;
                 }
             }
@@ -1152,19 +1101,16 @@ public class Skills : MonoBehaviour
                         skillIncreaseArmor("common");
                         skillManager.DisplaySkillSprite("armor", "common");
                         SkillClass armorCommon = new SkillClass("armor", "common");
-                        skillRef.currentPlayerSkills.Add(armorCommon);
                         break;
                     case "rare":
                         skillIncreaseArmor("rare");
                         skillManager.DisplaySkillSprite("armor", "rare");
                         SkillClass armorRare = new SkillClass("armor", "rare");
-                        skillRef.currentPlayerSkills.Add(armorRare);
                         break;
                     case "epic":
                         skillIncreaseArmor("epic");
                         skillManager.DisplaySkillSprite("armor", "epic");
                         SkillClass armorEpic = new SkillClass("armor", "epic");
-                        skillRef.currentPlayerSkills.Add(armorEpic);
                         break;
                 }
             }
@@ -1177,19 +1123,16 @@ public class Skills : MonoBehaviour
                         skillNegateDamage("common");
                         skillManager.DisplaySkillSprite("negate", "common");
                         SkillClass negateCommon = new SkillClass("negate", "common");
-                        skillRef.currentPlayerSkills.Add(negateCommon);
                         break;
                     case "rare":
                         skillNegateDamage("rare");
                         skillManager.DisplaySkillSprite("negate", "rare");
                         SkillClass negateRare = new SkillClass("negate", "rare");
-                        skillRef.currentPlayerSkills.Add(negateRare);
                         break;
                     case "epic":
                         skillNegateDamage("epic");
                         skillManager.DisplaySkillSprite("negate", "epic");
                         SkillClass negateEpic = new SkillClass("negate", "epic");
-                        skillRef.currentPlayerSkills.Add(negateEpic);
                         break;
                 }
             }
@@ -1203,19 +1146,16 @@ public class Skills : MonoBehaviour
                         skillFasterCar("common");
                         skillManager.DisplaySkillSprite("fast", "common");
                         SkillClass fastCommon = new SkillClass("fast", "common");
-                        skillRef.currentPlayerSkills.Add(fastCommon);
                         break;
                     case "rare":
                         skillFasterCar("rare");
                         skillManager.DisplaySkillSprite("fast", "rare");
                         SkillClass fastRare = new SkillClass("fast", "rare");
-                        skillRef.currentPlayerSkills.Add(fastRare);
                         break;
                     case "epic":
                         skillFasterCar("epic");
                         skillManager.DisplaySkillSprite("fast", "epic");
                         SkillClass fastEpic = new SkillClass("fast", "epic");
-                        skillRef.currentPlayerSkills.Add(fastEpic);
                         break;
 
                 }
@@ -1230,19 +1170,16 @@ public class Skills : MonoBehaviour
                         skillSlowEnemy("common");
                         skillManager.DisplaySkillSprite("slow", "common");
                         SkillClass slowCommon = new SkillClass("slow", "common");
-                        skillRef.currentPlayerSkills.Add(slowCommon);
                         break;
                     case "rare":
                         skillSlowEnemy("rare");
                         skillManager.DisplaySkillSprite("slow", "rare");
                         SkillClass slowRare = new SkillClass("slow", "rare");
-                        skillRef.currentPlayerSkills.Add(slowRare);
                         break;
                     case "epic":
                         skillSlowEnemy("epic");
                         skillManager.DisplaySkillSprite("slow", "epic");
                         SkillClass slowEpic = new SkillClass("slow", "epic");
-                        skillRef.currentPlayerSkills.Add(slowEpic);
                         break;
                 }
             }
