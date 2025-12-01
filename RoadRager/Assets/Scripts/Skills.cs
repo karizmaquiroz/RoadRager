@@ -203,15 +203,15 @@ public class Skills : MonoBehaviour
         {
             case "common":
                 truck.carSpd = initCarSpd - initCarSpd * 0.2f;
-                truck.trashSpd = initTrashSpd - initTrashSpd * 0.2f;
+                //truck.trashSpd = initTrashSpd - initTrashSpd * 0.2f;
                 break;
             case "rare":
                 truck.carSpd = initCarSpd - initCarSpd * 0.5f;
-                truck.trashSpd = initTrashSpd - initTrashSpd * 0.5f;
+                //truck.trashSpd = initTrashSpd - initTrashSpd * 0.5f;
                 break;
             case "epic":
                 truck.carSpd = initCarSpd - initCarSpd * 0.75f;
-                truck.trashSpd = initTrashSpd - initTrashSpd * 0.75f;
+                //truck.trashSpd = initTrashSpd - initTrashSpd * 0.75f;
                 break;
         }
     }
