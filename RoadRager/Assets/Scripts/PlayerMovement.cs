@@ -111,12 +111,12 @@ public class PlayerMovement : MonoBehaviour
         playerPos = transform.position;
         Vector3 newPos = Vector3.zero;
 
-        if (Input.acceleration.x > 1 && (playerLane == -1 || playerLane == 0))
+        if (Input.acceleration.z > 1 && (playerLane == -1 || playerLane == 0))
         {
             newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
             playerLane += 1;
         }
-        else if (Input.acceleration.x < -1 && (playerLane == 0 || playerLane == 1))
+        else if (Input.acceleration.z < -1 && (playerLane == 0 || playerLane == 1))
         {
             newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
             playerLane -= 1;
