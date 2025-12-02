@@ -28,6 +28,13 @@ public class ItemSelection : MonoBehaviour
         SelectAccessorie(0);
     }
 
+    //New (help make accesorie appear in game when selected)
+    private void Start()
+    {
+        play.onClick.AddListener(OnPlayPressed);
+    }
+
+
     public void SelectAccessorie(int _index)
     {
         bool modifyOpen = (modifyPanel != null && modifyPanel.activeInHierarchy);
@@ -93,4 +100,17 @@ public class ItemSelection : MonoBehaviour
             transform.GetChild(i).gameObject.SetActive(false);
         }
     }
+
+    //New
+    private void OnPlayPressed()
+    {
+        // Save this accessory as the active one
+        SaveManager.instance.currentItem = currAccessorie;
+
+        // Save to disk if needed
+        SaveManager.instance.Save();
+
+        Debug.Log("Selected accessory " + currAccessorie + " saved as active item.");
+    }
+
 }
