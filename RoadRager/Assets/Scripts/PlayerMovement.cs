@@ -170,9 +170,6 @@ public class PlayerMovement : MonoBehaviour
                             newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
                             playerLane += 1;
                         }
-
-
-
                     }
                     else if (touch.position.x - startPos.x < 0 && (playerLane == 1))
                     {
@@ -182,7 +179,6 @@ public class PlayerMovement : MonoBehaviour
                             newPos = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
                             playerLane -= 1;
                         }
-
                     }
                     else if (playerLane == 0)
                     {
@@ -194,7 +190,6 @@ public class PlayerMovement : MonoBehaviour
                                 newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
                                 playerLane += 1;
                             }
-
                         }
                         else if (touch.position.x - startPos.x < 0)
                         {
@@ -204,9 +199,7 @@ public class PlayerMovement : MonoBehaviour
                                 newPos = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
                                 playerLane -= 1;
                             }
-
                         }
-
                     }
 
                     break;
@@ -218,24 +211,24 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        //else if (Input.touchCount <= 0)
-        //{
-        //    if (Input.acceleration.y > 0) //right
-        //    {
-        //        newPos = new Vector3(3, playerPos.y, playerPos.z);
-        //        playerLane = 1;
-        //    }
-        //    else if (Input.acceleration.y < 0) //left
-        //    {
-        //        newPos = new Vector3(-3, playerPos.y, playerPos.z);
-        //        playerLane = -1;
-        //    }
-        //    else
-        //    {
-        //        newPos = new Vector3(0, playerPos.y, playerPos.z);
-        //        playerLane = 0;
-        //    }
-        //}
+        else if (Input.touchCount <= 0)
+        {
+            if (Input.acceleration.y > 0) //right
+            {
+                newPos = new Vector3(3, playerPos.y, playerPos.z);
+                playerLane = 1;
+            }
+            else if (Input.acceleration.y < 0) //left
+            {
+                newPos = new Vector3(-3, playerPos.y, playerPos.z);
+                playerLane = -1;
+            }
+            else
+            {
+                newPos = new Vector3(0, playerPos.y, playerPos.z);
+                playerLane = 0;
+            }
+        }
 #endif
     }
 
