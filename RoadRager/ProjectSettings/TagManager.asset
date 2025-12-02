@@ -9,6 +9,7 @@ TagManager:
   - Road
   - Trash
   - CarModel
+  - Event
   layers:
   - Default
   - TransparentFX
