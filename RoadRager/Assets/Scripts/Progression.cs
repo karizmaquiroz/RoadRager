@@ -56,12 +56,13 @@ public class Progression : MonoBehaviour
 
     void CalculateDistance()
     {
-        distance *= levelCount;
+        distance += (distance / 2) * levelCount; //making the distance increase slower I think
+        Debug.Log(distance);
     }
 
     void CheckIfDistanceCrossed()
     {
-        if(playerDistance >= distance)
+        if(playerDistance > distance)
         {
             levelCount++;
             CalculateDistance();

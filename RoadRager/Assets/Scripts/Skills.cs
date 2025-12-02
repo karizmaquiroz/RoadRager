@@ -11,7 +11,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using Unity.VisualScripting;
 
-public class Skills : MonoBehaviour
+public class Skills : MonoBehaviour //find a way to cap skills at 8?
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -100,7 +100,7 @@ public class Skills : MonoBehaviour
 
     void skillGainHP(string rarity)
     {
-        Debug.Log("running skill");
+        Debug.Log("running skill"); //heal instead of overall hp?
         switch (rarity)
         {
             case "common":
@@ -178,29 +178,32 @@ public class Skills : MonoBehaviour
        
     }
 
-    bool skillNegateDamage(string rarity)
+    bool skillNegateDamage(string rarity) //doens't do anything rn
     {
         Debug.Log("running skill");
-        int noDamageChance = UnityEngine.Random.Range(0, 11);
+        //int noDamageChance = UnityEngine.Random.Range(0, 11);
         switch (rarity)
         {
             case "common":
-                if(noDamageChance <= 1)
-                {
-                    return true;
-                }
+                //if(noDamageChance <= 1)
+                //{
+                //    return true;
+                //}
+                playerAttr.setNoDamageChance(1);
                 break;
             case "rare":
-                if(noDamageChance<=1.5)
-                {
-                    return true;
-                }
+                //if(noDamageChance<=1.5)
+                //{
+                //    return true;
+                //}
+                playerAttr.setNoDamageChance(1.5f);
                 break;
             case "epic":
-                if(noDamageChance <= 2)
-                {
-                    return true;
-                }
+                //if(noDamageChance <= 2)
+                //{
+                //    return true;
+                //}
+                playerAttr.setNoDamageChance(2);
                 break;
         }
 
@@ -210,6 +213,18 @@ public class Skills : MonoBehaviour
     void skillFasterCar(string rarity)
     {
         Debug.Log("running skill");
+        switch (rarity)
+        {
+            case "common":
+                playerAttr.spd = playerAttr.spd + playerAttr.spd * 0.05f;
+                break;
+            case "rare":
+                playerAttr.spd = playerAttr.spd + playerAttr.spd * 0.1f;
+                break;
+            case "epic":
+                playerAttr.spd = playerAttr.spd + playerAttr.spd * 0.15f;
+                break;
+        }
     }
 
     void skillSlowEnemy(string rarity)
@@ -219,15 +234,15 @@ public class Skills : MonoBehaviour
         {
             case "common":
                 truck.carSpd = initCarSpd - initCarSpd * 0.2f;
-                //truck.trashSpd = initTrashSpd - initTrashSpd * 0.2f;
+                truck.trashSpd = initTrashSpd - initTrashSpd * 0.2f;
                 break;
             case "rare":
                 truck.carSpd = initCarSpd - initCarSpd * 0.5f;
-                //truck.trashSpd = initTrashSpd - initTrashSpd * 0.5f;
+                truck.trashSpd = initTrashSpd - initTrashSpd * 0.5f;
                 break;
             case "epic":
                 truck.carSpd = initCarSpd - initCarSpd * 0.75f;
-                //truck.trashSpd = initTrashSpd - initTrashSpd * 0.75f;
+                truck.trashSpd = initTrashSpd - initTrashSpd * 0.75f;
                 break;
         }
     }

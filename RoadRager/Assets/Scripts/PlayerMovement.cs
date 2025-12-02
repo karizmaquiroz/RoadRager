@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 endPosSwipe;
 
     Vector3 newPos; //needs to be saved globally so Lerp works
-    public float spd = 3f;
+    public float spd; //3f
 
     float requiredSwipe = 200.0f;
 
@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
 
         // initialize UI at start
         if (moneyTxt != null)
-            moneyTxt.text = SaveManager.instance.money + "$";
+            moneyTxt.text = "Money: $" + SaveManager.instance.money;
     }
 
     // Update is called once per frame
@@ -109,8 +109,7 @@ public class PlayerMovement : MonoBehaviour
     {
 #if UNITY_ANDROID || UNITY_IOS
         playerPos = transform.position;
-        Vector3 newPos = Vector3.zero;
-        
+
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
@@ -123,55 +122,91 @@ public class PlayerMovement : MonoBehaviour
                     break;
 
                 case TouchPhase.Moved:
-                        if (touch.position.x - startPos.x > 0 && (playerLane == -1))
-                        {
-                            endPosSwipe = touch.position;
-                            if(DetectSwipe(TouchPhase.Ended, startPosSwipe, endPosSwipe))
-                            {
-                                newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
-                                playerLane += 1;
-                            }
-                            
-                            
-                          
-                        }
-                        else if (touch.position.x - startPos.x < 0 && (playerLane == 1))
-                        {
+                    if (touch.position.x - startPos.x > 0) //right
+                    {
                         endPosSwipe = touch.position;
-                            if (DetectSwipe(TouchPhase.Ended,startPosSwipe, endPosSwipe))
-                            {
-                                newPos = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
-                                playerLane -= 1;
-                            }
-                           
-                        }
-                        else if (playerLane == 0)
+                        if (DetectSwipe(TouchPhase.Ended, startPosSwipe, endPosSwipe))
                         {
-                            if (touch.position.x - startPos.x > 0)
+                            switch (playerLane)
                             {
-                            endPosSwipe = touch.position;
-                                if (DetectSwipe(TouchPhase.Ended,startPosSwipe, endPosSwipe))
-                                {
-                                    newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
-                                    playerLane += 1;
-                                }
-                                
+                                case 0:
+                                    newPos = new Vector3(3, playerPos.y, playerPos.z);
+                                    playerLane = 1;
+                                    break;
+                                case -1:
+                                    newPos = new Vector3(0, playerPos.y, playerPos.z);
+                                    playerLane = 0;
+                                    break;
                             }
-                            else if (touch.position.x - startPos.x < 0)
-                            {
-                                endPosSwipe = touch.position;
-                                if (DetectSwipe(TouchPhase.Ended,startPosSwipe, endPosSwipe))
-                                {
-                                    newPos = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
-                                    playerLane -= 1;
-                                }
-                             
-                            }
-
                         }
-                    
-                break;
-                        
+                    }
+                    else if (touch.position.x - startPos.x < 0) //left
+                    {
+                        endPosSwipe = touch.position;
+                        if (DetectSwipe(TouchPhase.Ended, startPosSwipe, endPosSwipe))
+                        {
+                            switch (playerLane)
+                            {
+                                case 0:
+                                    newPos = new Vector3(-3, playerPos.y, playerPos.z);
+                                    playerLane = -1;
+                                    break;
+                                case 1:
+                                    newPos = new Vector3(0, playerPos.y, playerPos.z);
+                                    playerLane = 0;
+                                    break;
+                            }
+                        }
+                    }
+
+                    //if (touch.position.x - startPos.x > 0 && (playerLane == -1))
+                    //{
+                    //    endPosSwipe = touch.position;
+                    //    if (DetectSwipe(TouchPhase.Ended, startPosSwipe, endPosSwipe))
+                    //    {
+                    //        newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
+                    //        playerLane += 1;
+                    //    }
+
+
+
+                    //}
+                    //else if (touch.position.x - startPos.x < 0 && (playerLane == 1))
+                    //{
+                    //    endPosSwipe = touch.position;
+                    //    if (DetectSwipe(TouchPhase.Ended, startPosSwipe, endPosSwipe))
+                    //    {
+                    //        newPos = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
+                    //        playerLane -= 1;
+                    //    }
+
+                    //}
+                    //else if (playerLane == 0)
+                    //{
+                    //    if (touch.position.x - startPos.x > 0)
+                    //    {
+                    //        endPosSwipe = touch.position;
+                    //        if (DetectSwipe(TouchPhase.Ended, startPosSwipe, endPosSwipe))
+                    //        {
+                    //            newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
+                    //            playerLane += 1;
+                    //        }
+
+                    //    }
+                    //    else if (touch.position.x - startPos.x < 0)
+                    //    {
+                    //        endPosSwipe = touch.position;
+                    //        if (DetectSwipe(TouchPhase.Ended, startPosSwipe, endPosSwipe))
+                    //        {
+                    //            newPos = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
+                    //            playerLane -= 1;
+                    //        }
+
+                    //    }
+
+                    //}
+
+                    break;
 
                 case TouchPhase.Ended:
                     
@@ -179,6 +214,52 @@ public class PlayerMovement : MonoBehaviour
 
             }
         }
+
+        else if (Input.touchCount <= 0)
+        {
+            if (Input.acceleration.y > 1) //right
+            {
+                switch (playerLane)
+                {
+                    case 0:
+                        newPos = new Vector3(3, playerPos.y, playerPos.z);
+                        playerLane = 1;
+                        break;
+                    case -1:
+                        newPos = new Vector3(0, playerPos.y, playerPos.z);
+                        playerLane = 0;
+                        break;
+                }
+            }
+            if (Input.acceleration.y < -1) //left
+            {
+                switch (playerLane)
+                {
+                    case 0:
+                        newPos = new Vector3(-3, playerPos.y, playerPos.z);
+                        playerLane = -1;
+                        break;
+                    case 1:
+                        newPos = new Vector3(0, playerPos.y, playerPos.z);
+                        playerLane = 0;
+                        break;
+                }
+            }
+        }
+
+
+        //switch (playerLane)
+        //{
+        //    case -1:
+        //        newPos = new Vector3(-3f, playerPos.y, playerPos.z);
+        //        break;
+        //    case 1:
+        //        newPos = new Vector3(3f, playerPos.y, playerPos.z);
+        //        break;
+        //    case 0:
+        //        newPos = new Vector3(0f, playerPos.y, playerPos.z);
+        //        break;
+        //}
 #endif
     }
 
@@ -298,17 +379,31 @@ public class PlayerMovement : MonoBehaviour
     {
         GameObject gameObject = collision.gameObject;
 
+        int chance = UnityEngine.Random.Range(0, 11);
+
         if (gameObject.layer == 3) //obstacle layer
         {
-            Debug.Log("hit");
-            setHP(1 );
+            if (!(chance <= noDamageChance))
+            {
+                GetComponent<AudioSource>().Play();
+                Debug.Log("hit");
+                setHP(1);
+            }
         }
 
     }
 
-    void setHP(int damage)
+    void setHP(int damage) //need to test
     {
-        playerHp -= damage;
+        if (armorMultiplier > 0f)
+        {
+            float reducedDmg = damage * armorMultiplier;
+            playerHp -= reducedDmg;
+        }
+        else
+        {
+            playerHp -= damage;
+        }
     }
 
     void endGame()
@@ -318,6 +413,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void setOverallHp(int hp)
     {
+        //totalPlayerHp = hp;
+        float totalHp = hp - totalPlayerHp;
+        playerHp += totalHp; //need to test
         totalPlayerHp = hp;
     }
     public void setMoneyMultiplier(float multiplier)
@@ -360,7 +458,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Update UI
         if (moneyTxt != null)
-            moneyTxt.text = SaveManager.instance.money + "$";
+            moneyTxt.text = "Money: $" + SaveManager.instance.money;
     }
 
   
