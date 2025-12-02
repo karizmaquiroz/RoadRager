@@ -108,7 +108,9 @@ public class PlayerMovement : MonoBehaviour
     void TouchPhaseTracker()
     {
 #if UNITY_ANDROID || UNITY_IOS
-        playerPos = transform.position;
+        //playerPos = transform.position;
+
+        playerPos = newPos;
 
         if (Input.touchCount > 0)
         {
@@ -162,37 +164,57 @@ public class PlayerMovement : MonoBehaviour
                     //    }
                     //}
 
-                    if (touch.position.x - startPos.x > 0 && (playerLane == -1))
+
+
+                    //if (touch.position.x - startPos.x > 0 && (playerLane == -1))
+                    //{
+                    //    playerAnim.Play("Steering Wheel Left");
+                    //    endPosSwipe = touch.position;
+                    //    if (DetectSwipe(TouchPhase.Ended, startPosSwipe, endPosSwipe))
+                    //    {
+                    //        newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
+                    //        playerLane += 1;
+                    //    }
+                    //}
+                    //else if (touch.position.x - startPos.x < 0 && (playerLane == 1))
+                    //{
+                    //    playerAnim.Play("Steering Wheel Right");
+                    //    endPosSwipe = touch.position;
+                    //    if (DetectSwipe(TouchPhase.Ended, startPosSwipe, endPosSwipe))
+                    //    {
+                    //        newPos = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
+                    //        playerLane -= 1;
+                    //    }
+                    //}
+                    //else if (playerLane == 0)
+                    //{
+                    //    if (touch.position.x - startPos.x > 0)
+                    //    {
+                    //        playerAnim.Play("Steering Wheel Right");
+                    //        endPosSwipe = touch.position;
+                    //        if (DetectSwipe(TouchPhase.Ended, startPosSwipe, endPosSwipe))
+                    //        {
+                    //            newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
+                    //            playerLane += 1;
+                    //        }
+                    //    }
+                    //    else if (touch.position.x - startPos.x < 0)
+                    //    {
+                    //        playerAnim.Play("Steering Wheel Left");
+                    //        endPosSwipe = touch.position;
+                    //        if (DetectSwipe(TouchPhase.Ended, startPosSwipe, endPosSwipe))
+                    //        {
+                    //            newPos = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
+                    //            playerLane -= 1;
+                    //        }
+                    //    }
+                    //}
+                    if (playerLane == 1)
                     {
-                        endPosSwipe = touch.position;
-                        if (DetectSwipe(TouchPhase.Ended, startPosSwipe, endPosSwipe))
+
+                        if (touch.position.x - startPos.x < 0)
                         {
-                            newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
-                            playerLane += 1;
-                        }
-                    }
-                    else if (touch.position.x - startPos.x < 0 && (playerLane == 1))
-                    {
-                        endPosSwipe = touch.position;
-                        if (DetectSwipe(TouchPhase.Ended, startPosSwipe, endPosSwipe))
-                        {
-                            newPos = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
-                            playerLane -= 1;
-                        }
-                    }
-                    else if (playerLane == 0)
-                    {
-                        if (touch.position.x - startPos.x > 0)
-                        {
-                            endPosSwipe = touch.position;
-                            if (DetectSwipe(TouchPhase.Ended, startPosSwipe, endPosSwipe))
-                            {
-                                newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
-                                playerLane += 1;
-                            }
-                        }
-                        else if (touch.position.x - startPos.x < 0)
-                        {
+                            playerAnim.Play("Steering Wheel Left");
                             endPosSwipe = touch.position;
                             if (DetectSwipe(TouchPhase.Ended, startPosSwipe, endPosSwipe))
                             {
@@ -201,6 +223,48 @@ public class PlayerMovement : MonoBehaviour
                             }
                         }
                     }
+                    else if (playerLane == 0)
+                    {
+
+                        if (touch.position.x - startPos.x > 0)
+                        {
+                            playerAnim.Play("Steering Wheel Right");
+                            endPosSwipe = touch.position;
+                            if (DetectSwipe(TouchPhase.Ended, startPosSwipe, endPosSwipe))
+                            {
+                                newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
+                                playerLane += 1;
+                            }
+
+                        }
+                        if (touch.position.x - startPos.x < 0)
+                        {
+                            playerAnim.Play("Steering Wheel Left");
+                            endPosSwipe = touch.position;
+                            if (DetectSwipe(TouchPhase.Ended, startPosSwipe, endPosSwipe))
+                            {
+                                newPos = new Vector3(playerPos.x - 3, playerPos.y, playerPos.z);
+                                playerLane -= 1;
+                            }
+
+                        }
+                    }
+                    else if (playerLane == -1)
+                    {
+
+                        if (touch.position.x - startPos.x > 0)
+                        {
+                            playerAnim.Play("Steering Wheel Right");
+                            endPosSwipe = touch.position;
+                            if (DetectSwipe(TouchPhase.Ended, startPosSwipe, endPosSwipe))
+                            {
+                                newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
+                                playerLane += 1;
+                            }
+
+                        }
+                    }
+                    Debug.Log("Player Lane: " + playerLane);
 
                     break;
 
@@ -215,11 +279,13 @@ public class PlayerMovement : MonoBehaviour
         //{
         //    if (Input.acceleration.y > 0) //right
         //    {
+        //        playerAnim.Play("Steering Wheel Right");
         //        newPos = new Vector3(3, playerPos.y, playerPos.z);
         //        playerLane = 1;
         //    }
         //    else if (Input.acceleration.y < 0) //left
         //    {
+        //        playerAnim.Play("Steering Wheel Right");
         //        newPos = new Vector3(-3, playerPos.y, playerPos.z);
         //        playerLane = -1;
         //    }
