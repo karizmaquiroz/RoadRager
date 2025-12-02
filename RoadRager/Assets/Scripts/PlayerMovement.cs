@@ -329,8 +329,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void setOverallHp(int hp)
     {
+        //totalPlayerHp = hp;
+        float totalHp = hp - totalPlayerHp;
+        playerHp += totalHp; //need to test
         totalPlayerHp = hp;
-        playerHp += hp - playerHp; //need to test
     }
     public void setMoneyMultiplier(float multiplier)
     {
