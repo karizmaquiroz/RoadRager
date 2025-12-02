@@ -76,7 +76,7 @@ public class ItemSelection : MonoBehaviour
 
     }
 
-    
+
 
     private void OnLockedPressed()
     {
@@ -92,7 +92,7 @@ public class ItemSelection : MonoBehaviour
             shopPanel.SetActive(true);
         }
 
-       
+
     }
 
     //new
