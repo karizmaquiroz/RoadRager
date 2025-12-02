@@ -306,9 +306,17 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    void setHP(int damage)
+    void setHP(int damage) //need to test
     {
-        playerHp -= damage;
+        if (armorMultiplier > 0f)
+        {
+            float reducedDmg = damage * armorMultiplier;
+            playerHp -= reducedDmg;
+        }
+        else
+        {
+            playerHp -= damage;
+        }
     }
 
     void endGame()
@@ -319,6 +327,7 @@ public class PlayerMovement : MonoBehaviour
     public void setOverallHp(int hp)
     {
         totalPlayerHp = hp;
+        playerHp += hp - playerHp; //need to test
     }
     public void setMoneyMultiplier(float multiplier)
     {

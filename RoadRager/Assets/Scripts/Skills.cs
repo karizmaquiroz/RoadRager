@@ -11,7 +11,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using Unity.VisualScripting;
 
-public class Skills : MonoBehaviour
+public class Skills : MonoBehaviour //find a way to cap skills at 8?
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
