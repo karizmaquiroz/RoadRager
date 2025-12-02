@@ -225,7 +225,7 @@ public class PlayerMovement : MonoBehaviour
                 newPos = new Vector3(3, playerPos.y, playerPos.z);
                 playerLane = 1;
             }
-            else if (Input.acceleration.y < -1) //left
+            else if (Input.acceleration.y < 0) //left
             {
                 newPos = new Vector3(-3, playerPos.y, playerPos.z);
                 playerLane = -1;
