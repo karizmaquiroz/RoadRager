@@ -44,6 +44,11 @@ public class Skills : MonoBehaviour //find a way to cap skills at 8?
     public GameObject pauseIcon;
     public GameObject pauseTxt;
 
+
+
+    //Karizma update marked as new
+    private ShopManager shopManager; //new
+
     void Start()
     {
         skillArray = new int[3, 2];
@@ -55,6 +60,14 @@ public class Skills : MonoBehaviour //find a way to cap skills at 8?
 
         initTrashSpd = truck.trashSpd;
         initCarSpd = truck.carSpd;
+
+
+        // NEW: find ShopManager in the scene
+        shopManager = Object.FindFirstObjectByType<ShopManager>();
+        if (shopManager == null)
+        {
+            Debug.LogError("Skills.cs: ShopManager not found in scene!");
+        }
 
     }
 
@@ -1204,5 +1217,78 @@ public class Skills : MonoBehaviour //find a way to cap skills at 8?
 
 
     }
+
+
+    // ===================================================
+        //new
+    //  CONSUMABLES: Use items bought in the Shop
+    //  shopUpgradeItems layout (from ShopManager):
+    //  [1, id] = itemId
+    //  [2, id] = price
+    //  [3, id] = quantity
+    // ===================================================
+    public void UseConsumable(int itemId)
+    {
+        if (shopManager == null)
+        {
+            Debug.LogError("UseConsumable: ShopManager reference is missing.");
+            return;
+        }
+
+        // Quantity index is row 3
+        int currentQty = shopManager.shopUpgradeItems[3, itemId];
+
+        if (currentQty <= 0)
+        {
+            Debug.Log($"UseConsumable: No quantity left for item {itemId}.");
+            return;
+        }
+
+        // Apply the consumable effect based on the itemId
+        // You can customize this mapping to whatever each consumable should do
+        switch (itemId)
+        {
+            case 1:
+                // Example: Item 1 = speed/fast car
+                skillFasterCar("common");
+                Debug.Log("Used consumable 1: applied increase to car speed  (common).");
+                break;
+
+            case 2:
+                
+                // Example: Item 2 = armor/defense
+                skillIncreaseArmor("common");
+                Debug.Log("Used consumable 2: applied armor (common).");
+                break;
+
+            case 3:
+                // Example: Item 3 = gainhp
+                skillGainHP("common");
+                Debug.Log("Used consumable 3: applied  applied HP gain (common).");
+                break;
+
+            case 4:
+                
+                // Example: Item 4 = extra money boost //Fast
+                skillGainMoney("common");    // or "rare"/"epic" if you want
+                Debug.Log("Used consumable 4: applied money gain (common).");
+                break;
+            case 5:
+                // Example: Item 5 = magetize coins
+                skillMagnetizeMoney("common");
+                Debug.Log("Used consumable 5: applied magnetize (common).");
+                break;
+
+
+            default:
+                Debug.LogWarning($"UseConsumable: No effect defined for itemId {itemId}.");
+                break;
+        }
+
+        // Decrease quantity after use
+        shopManager.shopUpgradeItems[3, itemId] = currentQty - 1;
+        Debug.Log($"UseConsumable: item {itemId} now has quantity {shopManager.shopUpgradeItems[3, itemId]}.");
+    }
+
 
 }

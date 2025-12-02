@@ -7,42 +7,52 @@ using UnityEngine.UI;
 public class ItemSelection : MonoBehaviour
 {
     [Header("Navigation Buttons")]
-    [SerializeField] private Button prevButton; //set to 1 in inspector 
-    [SerializeField] private Button nextButton; //set to -1 in inspector
+    [SerializeField] private Button prevButton;
+    [SerializeField] private Button nextButton;
 
     [Header("Play/Locked Buttons")]
     [SerializeField] private Button play;
-    [SerializeField] private Button locked; //when pressed it would open the shop panel
+    [SerializeField] private Button locked;
 
     [Header("Optional Shop Panel")]
-    [SerializeField] private GameObject shopPanel; // <- assign if you want
+    [SerializeField] private GameObject shopPanel;
 
+    [Header("Modify Panel (Accessories only show when this is open)")]
+    [SerializeField] private GameObject modifyPanel;   // NEW
 
     private int currAccessorie;
 
     private void Awake()
     {
-        // Attach the locked button event
         locked.onClick.AddListener(OnLockedPressed);
-
         SelectAccessorie(0);
     }
+
     public void SelectAccessorie(int _index)
     {
+        bool modifyOpen = (modifyPanel != null && modifyPanel.activeInHierarchy);
+
+        // NEW: If modify panel is NOT open, hide everything immediately
+        if (!modifyOpen)
+        {
+            HideAllAccessories();
+            play.gameObject.SetActive(false);
+            locked.gameObject.SetActive(false);
+            return;
+        }
+
+        // Your original logic -------------------------------------------------
 
         prevButton.interactable = (_index != 0);
         nextButton.interactable = (_index != transform.childCount - 1);
-
 
         currAccessorie = _index;
 
         for (int i = 0; i < transform.childCount; i++)
         {
             transform.GetChild(i).gameObject.SetActive(i == _index);
-
         }
 
-        // Show Play button or Locked button
         if (SaveManager.instance.carItemUnlocked[_index])
         {
             play.gameObject.SetActive(true);
@@ -53,15 +63,12 @@ public class ItemSelection : MonoBehaviour
             play.gameObject.SetActive(false);
             locked.gameObject.SetActive(true);
         }
-
     }
-
 
     public void ChangeAccessorie(int _change)
     {
         currAccessorie += _change;
         SelectAccessorie(currAccessorie);
-
     }
 
     private void OnLockedPressed()
@@ -72,12 +79,18 @@ public class ItemSelection : MonoBehaviour
             transform.GetChild(currAccessorie).gameObject.SetActive(false);
         }
 
-        // Optionally open shop panel if assigned
         if (shopPanel != null)
         {
             shopPanel.SetActive(true);
         }
+    }
 
-       
+    //NEW: helper to hide everything when modify panel is closed
+    private void HideAllAccessories()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(false);
+        }
     }
 }
