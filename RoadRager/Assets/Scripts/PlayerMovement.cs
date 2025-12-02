@@ -125,8 +125,8 @@ public class PlayerMovement : MonoBehaviour
                     if (touch.position.x - startPos.x > 0) //right
                     {
                         endPosSwipe = touch.position;
-                        if (DetectSwipe(TouchPhase.Ended, startPosSwipe, endPosSwipe))
-                        {
+                        //if (DetectSwipe(TouchPhase.Ended, startPosSwipe, endPosSwipe))
+                        //{
                             switch (playerLane)
                             {
                                 case 0:
@@ -138,13 +138,13 @@ public class PlayerMovement : MonoBehaviour
                                     playerLane = 0;
                                     break;
                             }
-                        }
+                        //}
                     }
                     else if (touch.position.x - startPos.x < 0) //left
                     {
                         endPosSwipe = touch.position;
-                        if (DetectSwipe(TouchPhase.Ended, startPosSwipe, endPosSwipe))
-                        {
+                        //if (DetectSwipe(TouchPhase.Ended, startPosSwipe, endPosSwipe))
+                        //{
                             switch (playerLane)
                             {
                                 case 0:
@@ -156,7 +156,7 @@ public class PlayerMovement : MonoBehaviour
                                     playerLane = 0;
                                     break;
                             }
-                        }
+                        //}
                     }
 
                     //if (touch.position.x - startPos.x > 0 && (playerLane == -1))
