@@ -308,14 +308,17 @@ public class PlayerMovement : MonoBehaviour
 
     void setHP(int damage) //need to test
     {
-        if (armorMultiplier > 0f)
+        if (!Skills.skillNegateDamage())
         {
-            float reducedDmg = damage * armorMultiplier;
-            playerHp -= reducedDmg;
-        }
-        else
-        {
-            playerHp -= damage;
+            if (armorMultiplier > 0f)
+            {
+                float reducedDmg = damage * armorMultiplier;
+                playerHp -= reducedDmg;
+            }
+            else
+            {
+                playerHp -= damage;
+            }
         }
     }
 
