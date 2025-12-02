@@ -230,18 +230,18 @@ public class PlayerMovement : MonoBehaviour
         //}
 
 
-        switch (playerLane)
-        {
-            case -1:
-                newPos = new Vector3(-3f, playerPos.y, playerPos.z);
-                break;
-            case 1:
-                newPos = new Vector3(3f, playerPos.y, playerPos.z);
-                break;
-            case 0:
-                newPos = new Vector3(0f, playerPos.y, playerPos.z);
-                break;
-        }
+        //switch (playerLane)
+        //{
+        //    case -1:
+        //        newPos = new Vector3(-3f, playerPos.y, playerPos.z);
+        //        break;
+        //    case 1:
+        //        newPos = new Vector3(3f, playerPos.y, playerPos.z);
+        //        break;
+        //    case 0:
+        //        newPos = new Vector3(0f, playerPos.y, playerPos.z);
+        //        break;
+        //}
 #endif
     }
 
