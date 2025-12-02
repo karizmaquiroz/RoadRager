@@ -14,14 +14,17 @@ public class ItemSelection : MonoBehaviour
     [SerializeField] private Button play;
     [SerializeField] private Button locked; //when pressed it would open the shop panel
 
-
-    bool islocked;
+    [Header("Optional Shop Panel")]
+    [SerializeField] private GameObject shopPanel; // <- assign if you want
 
 
     private int currAccessorie;
 
     private void Awake()
     {
+        // Attach the locked button event
+        locked.onClick.AddListener(OnLockedPressed);
+
         SelectAccessorie(0);
     }
     public void SelectAccessorie(int _index)
@@ -30,12 +33,16 @@ public class ItemSelection : MonoBehaviour
         prevButton.interactable = (_index != 0);
         nextButton.interactable = (_index != transform.childCount - 1);
 
+
+        currAccessorie = _index;
+
         for (int i = 0; i < transform.childCount; i++)
         {
             transform.GetChild(i).gameObject.SetActive(i == _index);
 
         }
 
+        // Show Play button or Locked button
         if (SaveManager.instance.carItemUnlocked[_index])
         {
             play.gameObject.SetActive(true);
@@ -45,22 +52,9 @@ public class ItemSelection : MonoBehaviour
         {
             play.gameObject.SetActive(false);
             locked.gameObject.SetActive(true);
-            //buyItem(locked);
-            
-        }
-        
-    }
-
-    /*
-    private void buyItem(bool isLocked)
-    {
-        if (locked.gameObject = true)
-        {
-
         }
 
     }
-    */
 
 
     public void ChangeAccessorie(int _change)
@@ -70,6 +64,20 @@ public class ItemSelection : MonoBehaviour
 
     }
 
+    private void OnLockedPressed()
+    {
+        // Turn OFF the currently visible accessory
+        if (currAccessorie >= 0 && currAccessorie < transform.childCount)
+        {
+            transform.GetChild(currAccessorie).gameObject.SetActive(false);
+        }
 
-  
+        // Optionally open shop panel if assigned
+        if (shopPanel != null)
+        {
+            shopPanel.SetActive(true);
+        }
+
+       
+    }
 }
