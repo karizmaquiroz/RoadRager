@@ -231,7 +231,7 @@ public class PlayerMovement : MonoBehaviour
                         break;
                 }
             }
-            if (Input.acceleration.z < 0) //left
+            if (Input.acceleration.z < -1) //left
             {
                 switch (playerLane)
                 {
