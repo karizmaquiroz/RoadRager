@@ -168,26 +168,29 @@ public class Skills : MonoBehaviour //find a way to cap skills at 8?
     bool skillNegateDamage(string rarity) //doens't do anything rn
     {
         Debug.Log("running skill");
-        int noDamageChance = UnityEngine.Random.Range(0, 11);
+        //int noDamageChance = UnityEngine.Random.Range(0, 11);
         switch (rarity)
         {
             case "common":
-                if(noDamageChance <= 1)
-                {
-                    return true;
-                }
+                //if(noDamageChance <= 1)
+                //{
+                //    return true;
+                //}
+                playerAttr.setNoDamageChance(1);
                 break;
             case "rare":
-                if(noDamageChance<=1.5)
-                {
-                    return true;
-                }
+                //if(noDamageChance<=1.5)
+                //{
+                //    return true;
+                //}
+                playerAttr.setNoDamageChance(1.5f);
                 break;
             case "epic":
-                if(noDamageChance <= 2)
-                {
-                    return true;
-                }
+                //if(noDamageChance <= 2)
+                //{
+                //    return true;
+                //}
+                playerAttr.setNoDamageChance(2);
                 break;
         }
 

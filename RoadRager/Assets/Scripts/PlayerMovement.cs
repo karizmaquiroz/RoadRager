@@ -298,28 +298,31 @@ public class PlayerMovement : MonoBehaviour
     {
         GameObject gameObject = collision.gameObject;
 
+        int chance = UnityEngine.Random.Range(0, 11);
+
         if (gameObject.layer == 3) //obstacle layer
         {
-            Debug.Log("hit");
-            setHP(1 );
+            if (!(chance <= noDamageChance))
+            {
+                GetComponent<AudioSource>().Play();
+                Debug.Log("hit");
+                setHP(1);
+            }
         }
 
     }
 
     void setHP(int damage) //need to test
     {
-        //if (!Skills.skillNegateDamage())
-        //{
-            if (armorMultiplier > 0f)
-            {
-                float reducedDmg = damage * armorMultiplier;
-                playerHp -= reducedDmg;
-            }
-            else
-            {
-                playerHp -= damage;
-            }
-        //}
+        if (armorMultiplier > 0f)
+        {
+            float reducedDmg = damage * armorMultiplier;
+            playerHp -= reducedDmg;
+        }
+        else
+        {
+            playerHp -= damage;
+        }
     }
 
     void endGame()
