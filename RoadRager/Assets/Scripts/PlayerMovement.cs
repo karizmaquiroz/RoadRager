@@ -230,19 +230,19 @@ public class PlayerMovement : MonoBehaviour
                         playerLane = 0;
                         break;
                 }
-                if (Input.acceleration.z < 0) //left
+            }
+            if (Input.acceleration.z < 0) //left
+            {
+                switch (playerLane)
                 {
-                    switch (playerLane)
-                    {
-                        case 0:
-                            newPos = new Vector3(-3, playerPos.y, playerPos.z);
-                            playerLane = -1;
-                            break;
-                        case 1:
-                            newPos = new Vector3(0, playerPos.y, playerPos.z);
-                            playerLane = 0;
-                            break;
-                    }
+                    case 0:
+                        newPos = new Vector3(-3, playerPos.y, playerPos.z);
+                        playerLane = -1;
+                        break;
+                    case 1:
+                        newPos = new Vector3(0, playerPos.y, playerPos.z);
+                        playerLane = 0;
+                        break;
                 }
             }
         }
