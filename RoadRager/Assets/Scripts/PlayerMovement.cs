@@ -222,31 +222,40 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.acceleration.y > 0) //right
             {
-                switch (playerLane)
-                {
-                    case 0:
-                        newPos = new Vector3(3, playerPos.y, playerPos.z);
-                        playerLane = 1;
-                        break;
-                    case -1:
-                        newPos = new Vector3(0, playerPos.y, playerPos.z);
-                        playerLane = 0;
-                        break;
-                }
+                newPos = new Vector3(3, playerPos.y, playerPos.z);
+                playerLane = 1;
+                //switch (playerLane)
+                //{
+                //    case 0:
+                //        newPos = new Vector3(3, playerPos.y, playerPos.z);
+                //        playerLane = 1;
+                //        break;
+                //    case -1:
+                //        newPos = new Vector3(0, playerPos.y, playerPos.z);
+                //        playerLane = 0;
+                //        break;
+                //}
             }
-            if (Input.acceleration.y < -1) //left
+            else if (Input.acceleration.y < -1) //left
             {
-                switch (playerLane)
-                {
-                    case 0:
-                        newPos = new Vector3(-3, playerPos.y, playerPos.z);
-                        playerLane = -1;
-                        break;
-                    case 1:
-                        newPos = new Vector3(0, playerPos.y, playerPos.z);
-                        playerLane = 0;
-                        break;
-                }
+                newPos = new Vector3(-3, playerPos.y, playerPos.z);
+                playerLane = -1;
+                //switch (playerLane)
+                //{
+                //    case 0:
+                //        newPos = new Vector3(-3, playerPos.y, playerPos.z);
+                //        playerLane = -1;
+                //        break;
+                //    case 1:
+                //        newPos = new Vector3(0, playerPos.y, playerPos.z);
+                //        playerLane = 0;
+                //        break;
+                //}
+            }
+            else
+            {
+                newPos = new Vector3(0, playerPos.y, playerPos.z);
+                playerLane = 0;
             }
         }
 
