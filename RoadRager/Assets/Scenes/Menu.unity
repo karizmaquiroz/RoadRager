@@ -1474,7 +1474,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a2a8b1afe04c2a42b06daea96823382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoneyCounter
-  moneyText: {fileID: 0}
 --- !u!1 &205332616
 GameObject:
   m_ObjectHideFlags: 0
@@ -8263,7 +8262,7 @@ MonoBehaviour:
   play: {fileID: 1944664701}
   locked: {fileID: 97310958}
   shopPanel: {fileID: 1257445783}
-  modifyPanel: {fileID: 0}
+  modifyPanel: {fileID: 1748998430}
 --- !u!4 &942151285
 Transform:
   m_ObjectHideFlags: 0
