@@ -179,19 +179,19 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        else if (Input.touchCount <= 0)
-        {
-            if (Input.acceleration.x > 1 && (playerLane == -1 || playerLane == 0))
-            {
-                newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
-                playerLane += 1;
-            }
-            else if (Input.acceleration.x < -1 && (playerLane == 0 || playerLane == 1))
-            {
-                newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
-                playerLane -= 1;
-            }
-        }
+        //else if (Input.touchCount <= 0)
+        //{
+        //    if (Input.acceleration.x > 1 && (playerLane == -1 || playerLane == 0))
+        //    {
+        //        newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
+        //        playerLane += 1;
+        //    }
+        //    else if (Input.acceleration.x < -1 && (playerLane == 0 || playerLane == 1))
+        //    {
+        //        newPos = new Vector3(playerPos.x + 3, playerPos.y, playerPos.z);
+        //        playerLane -= 1;
+        //    }
+        //}
 #endif
     }
 
