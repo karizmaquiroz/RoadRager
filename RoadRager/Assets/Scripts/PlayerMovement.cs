@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 endPosSwipe;
 
     Vector3 newPos; //needs to be saved globally so Lerp works
-    public float spd = 3f;
+    public float spd; //3f
 
     float requiredSwipe = 200.0f;
 
