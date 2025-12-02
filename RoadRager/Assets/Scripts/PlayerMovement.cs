@@ -217,7 +217,7 @@ public class PlayerMovement : MonoBehaviour
 
         else if (Input.touchCount <= 0)
         {
-            if (Input.acceleration.y > 1) //right
+            if (Input.acceleration.y > 0) //right
             {
                 switch (playerLane)
                 {
@@ -231,7 +231,7 @@ public class PlayerMovement : MonoBehaviour
                         break;
                 }
             }
-            if (Input.acceleration.y < -1) //left
+            if (Input.acceleration.y < 0) //left
             {
                 switch (playerLane)
                 {
