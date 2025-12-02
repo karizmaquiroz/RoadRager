@@ -2638,17 +2638,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 237de3309417e9f4aa973c80b28322a8, type: 3}
---- !u!114 &350404504 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3407358890476505976, guid: 237de3309417e9f4aa973c80b28322a8, type: 3}
-  m_PrefabInstance: {fileID: 350404503}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &352551862
 GameObject:
   m_ObjectHideFlags: 0
@@ -13499,7 +13488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bdf08947400dd841a26735b4c0d44fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopManager
-  moneyTxt: {fileID: 350404504}
+  moneyTxt: {fileID: 1624927349}
 --- !u!4 &1594229210
 Transform:
   m_ObjectHideFlags: 0
@@ -13924,6 +13913,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1622771876}
   m_CullTransparentMesh: 1
+--- !u!114 &1624927349 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3407358890476505976, guid: 237de3309417e9f4aa973c80b28322a8, type: 3}
+  m_PrefabInstance: {fileID: 1707876740911504733}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &1631031949
 GameObject:
   m_ObjectHideFlags: 0
