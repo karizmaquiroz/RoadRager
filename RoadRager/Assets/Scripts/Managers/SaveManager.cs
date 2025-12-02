@@ -17,7 +17,7 @@ public class SaveManager : MonoBehaviour
 
     public int currentItem; //accessory (non consumable)
     public int money = 0; //in game currency
-    public bool[] carItemUnlocked = new bool[5] { true, false, false, false, false }; //accessory already purchased (non consumable) item goes from non to diff color dice
+    public bool[] carItemUnlocked = new bool[4] { true, false, false, false }; //accessory already purchased (non consumable) item goes from non to diff color dice
 
 
 
@@ -52,7 +52,7 @@ public class SaveManager : MonoBehaviour
 
 
             if (data.carItemUnlocked == null)
-                carItemUnlocked = new bool[5] { true, false, false, false, false };
+                carItemUnlocked = new bool[4] { true, false, false, false };
 
 
 
