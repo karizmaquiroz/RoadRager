@@ -109,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
     {
 #if UNITY_ANDROID || UNITY_IOS
         playerPos = transform.position;
-        Vector3 newPos = Vector3.zero;
+        //Vector3 newPos = Vector3.zero;
 
         //if (Input.touchCount <= 0)
         //{
