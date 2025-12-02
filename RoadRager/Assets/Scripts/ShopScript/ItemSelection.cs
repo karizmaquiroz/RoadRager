@@ -34,7 +34,6 @@ public class ItemSelection : MonoBehaviour
         play.onClick.AddListener(OnPlayPressed);
     }
 
-
     public void SelectAccessorie(int _index)
     {
         bool modifyOpen = (modifyPanel != null && modifyPanel.activeInHierarchy);
@@ -95,6 +94,7 @@ public class ItemSelection : MonoBehaviour
     //NEW: helper to hide everything when modify panel is closed
     private void HideAllAccessories()
     {
+        Debug.Log("hiding");
         for (int i = 0; i < transform.childCount; i++)
         {
             transform.GetChild(i).gameObject.SetActive(false);
