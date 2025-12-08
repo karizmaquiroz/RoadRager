@@ -2638,17 +2638,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 237de3309417e9f4aa973c80b28322a8, type: 3}
---- !u!114 &350404504 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3407358890476505976, guid: 237de3309417e9f4aa973c80b28322a8, type: 3}
-  m_PrefabInstance: {fileID: 350404503}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &352551862
 GameObject:
   m_ObjectHideFlags: 0
@@ -9434,6 +9423,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 942151284}
+        m_TargetAssemblyTypeName: ItemSelection, Assembly-CSharp
+        m_MethodName: SelectAccessorie
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1140097752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13499,7 +13500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bdf08947400dd841a26735b4c0d44fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopManager
-  moneyTxt: {fileID: 350404504}
+  moneyTxt: {fileID: 1624927349}
 --- !u!4 &1594229210
 Transform:
   m_ObjectHideFlags: 0
@@ -13924,6 +13925,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1622771876}
   m_CullTransparentMesh: 1
+--- !u!114 &1624927349 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3407358890476505976, guid: 237de3309417e9f4aa973c80b28322a8, type: 3}
+  m_PrefabInstance: {fileID: 1707876740911504733}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &1631031949
 GameObject:
   m_ObjectHideFlags: 0
@@ -15587,6 +15599,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 942151284}
+        m_TargetAssemblyTypeName: ItemSelection, Assembly-CSharp
+        m_MethodName: SelectAccessorie
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1837558000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16961,6 +16985,10 @@ PrefabInstance:
     - target: {fileID: 3479829045718924965, guid: 35c9deeed957d024e98db9ce7bac40fa, type: 3}
       propertyPath: m_Name
       value: CarAccessoriesHolder
+      objectReference: {fileID: 0}
+    - target: {fileID: 3479829045718924965, guid: 35c9deeed957d024e98db9ce7bac40fa, type: 3}
+      propertyPath: m_TagString
+      value: AccessoryHolder
       objectReference: {fileID: 0}
     - target: {fileID: 6071447857663466771, guid: 35c9deeed957d024e98db9ce7bac40fa, type: 3}
       propertyPath: play

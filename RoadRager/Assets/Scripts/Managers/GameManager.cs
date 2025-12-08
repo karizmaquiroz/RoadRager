@@ -18,8 +18,6 @@ public class GameManager : MonoBehaviour
     public Button ModifySelectButton;
 
 
-
-
     private void Awake()
     {
         if (SceneManager.GetActiveScene().name.Equals("Menu"))
